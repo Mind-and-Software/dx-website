@@ -1,16 +1,17 @@
 module.exports = {
   siteMetadata: {
-    title: "DX Website",
+    title: 'DX Website',
   },
   plugins: [
-    "gatsby-plugin-mdx",
+    'gatsby-plugin-mdx',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "pages",
-        path: "./src/pages/",
+        name: 'md-pages',
+        path: './src/pages/markdown',
       },
-      __key: "pages",
+      __key: 'pages',
     },
+    'gatsby-transformer-remark',
   ],
 };

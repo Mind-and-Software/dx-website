@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "DX Website",
-  "author": "Elisa",
+  "author": "MindAndSoftware",
   "keywords": [
     "gatsby"
   ],
@@ -12,7 +12,9 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "cy:open": "cypress open",
+    "test": "jest"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -20,7 +22,25 @@
     "gatsby": "^3.4.1",
     "gatsby-plugin-mdx": "^2.6.0",
     "gatsby-source-filesystem": "^3.6.0",
+    "gatsby-transformer-remark": "^4.3.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^7.0.6",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
+    "babel-jest": "^26.6.3",
+    "babel-preset-gatsby": "^1.6.0",
+    "cypress": "^7.4.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-cypress": "^2.11.3",
+    "gatsby-plugin-prettier-eslint": "^1.0.6",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.0",
+    "jest-preset-gatsby": "^1.0.128",
+    "prettier": "^2.3.0",
+    "react-test-renderer": "^17.0.2"
   }
 }

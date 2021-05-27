@@ -5,6 +5,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Test outputs
+cypress/videos
+cypress/screenshots
+
 # Build Files
 public/
 node_modules/

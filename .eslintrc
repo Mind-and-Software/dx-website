@@ -6,6 +6,12 @@
     "airbnb",
     "plugin:cypress/recommended"
   ],
+  "ignorePatterns": [
+    "public", 
+    "node_modules", 
+    "coverage",
+    ".cache",
+    "build"],
   "rules": {
     "func-names": [
       "error",

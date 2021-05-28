@@ -10,9 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Testing 
-        echo and testing some more
+    - uses: actions/setup-node@v1
+      with: 
+        node-version: '14.x'
+
+    - name: npm install
+      run: npm install
+    - name: lint
+      run: npm run lint
+    - name: run unit tests
+      run: npm test
+    - name: run UI tests
+      uses: cypress-io/github-action@v2
+      with:
+        build: npm run build
+        command: npm run cy:run
+        start: npm start
+        wait-on: http://localhost:8000/

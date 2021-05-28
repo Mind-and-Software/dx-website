@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  simple_deploy:
+  run_tests_after_pushing:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -23,7 +23,6 @@ jobs:
     - name: run UI tests
       uses: cypress-io/github-action@v2
       with:
-        build: npm run build
         command: npm run cy:run
         start: npm start
         wait-on: http://localhost:8000/

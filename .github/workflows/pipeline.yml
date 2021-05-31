@@ -16,6 +16,8 @@ jobs:
 
     - name: npm install
       run: npm install
+    - name: format check
+      run: npm run prettier
     - name: lint
       run: npm run lint
     - name: run unit tests

@@ -4,9 +4,7 @@ import * as React from 'react';
 const IndexPage = () => (
   <main>
     <title>DX Website</title>
-    <h1>
-      Hello World!
-    </h1>
+    <h1>Hello World!</h1>
   </main>
 );
 

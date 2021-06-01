@@ -1,0 +1,2 @@
+(self.webpackChunkdx_website=self.webpackChunkdx_website||[]).push([[230],{4199:function(e,t,l){"use strict";l.r(t);var n=l(7294);t.default=function(){return n.createElement("main",null,n.createElement("title",null,"DX Website"),n.createElement("h1",null,"Hello World!"))}}}]);
+//# sourceMappingURL=component---src-pages-index-jsx-7bb67d28e21957d896ce.js.map

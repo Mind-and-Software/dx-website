@@ -1,4 +1,4 @@
-name: CI
+name: Test and Release
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  run_tests_after_pushing:
+  run_tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -14,8 +14,16 @@ jobs:
       with: 
         node-version: '14.x'
 
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
     - name: npm install
-      run: npm install
+      run: npm ci
     - name: format check
       run: npm run prettier
     - name: lint
@@ -28,3 +36,34 @@ jobs:
         command: npm run cy:run
         start: npm start
         wait-on: http://localhost:8000/
+
+  simple_deploy:
+    needs: run_tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    
+    - run: npm ci
+    - run: npm run deploy
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+
+
+

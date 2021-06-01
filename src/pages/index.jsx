@@ -1,11 +1,13 @@
 import * as React from 'react';
 
+import Layout from '../components/layout';
+
 // markup
 const IndexPage = () => (
-  <main>
+  <Layout>
     <title>DX Website</title>
     <h1>Hello World!</h1>
-  </main>
+  </Layout>
 );
 
 export default IndexPage;

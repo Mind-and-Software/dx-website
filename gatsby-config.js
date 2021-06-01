@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'DX Website',
   },
+  pathPrefix: '/dx-website',
   plugins: [
     'gatsby-plugin-mdx',
     {

@@ -40,6 +40,6 @@ jobs:
 
     - name: npm install
       run: npm install
-    name: deploy
+    - name: deploy
       run: npm run deploy
 

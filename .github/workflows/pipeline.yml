@@ -1,4 +1,4 @@
-name: CI
+name: Test and Release
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  run_tests_after_pushing:
+  run_tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -28,3 +28,18 @@ jobs:
         command: npm run cy:run
         start: npm start
         wait-on: http://localhost:8000/
+
+  deploy:
+    needs: run_tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with: 
+        node-version: '14.x'
+
+    - name: npm install
+      run: npm install
+    name: deploy
+      run: npm run deploy
+

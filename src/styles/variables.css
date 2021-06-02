@@ -1,0 +1,19 @@
+
+/* colors */
+:root {
+  --color-background: lightgrey;
+}
+
+/* typography */
+:root {
+  --font-size: 1rem;
+  --font-size--title: 2rem;
+  --font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  --font-family--title:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* spacing */
+
+:root {
+  --space: 1rem;
+}

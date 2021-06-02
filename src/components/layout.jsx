@@ -12,8 +12,6 @@ export default function Layout({ children }) {
         <Link to="/">Index</Link>
         {' '}
         <Link to="/docs/test-article">Markdown Test</Link>
-        {' '}
-        <Link to="/formPage">Form Demo</Link>
       </nav>
       {children}
     </div>

@@ -1,69 +1,70 @@
 name: Test and Release
 
 on:
-  pull_request:
+  push:
     branches:
       - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
 
 jobs:
   run_tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with: 
-        node-version: '14.x'
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
 
-    - name: Cache dependencies
-      uses: actions/cache@v2
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-    - name: npm install
-      run: npm ci
-    - name: format check
-      run: npm run prettier
-    - name: lint
-      run: npm run lint
-    - name: run unit tests
-      run: npm test
-    - name: run UI tests
-      uses: cypress-io/github-action@v2
-      with:
-        command: npm run cy:run
-        start: npm start
-        wait-on: http://localhost:8000/
+      - name: npm install
+        run: npm ci
+      - name: format check
+        run: npm run prettier
+      - name: lint
+        run: npm run lint
+      - name: run unit tests
+        run: npm test
+      - name: run UI tests
+        uses: cypress-io/github-action@v2
+        with:
+          command: npm run cy:run
+          start: npm start
+          wait-on: http://localhost:8000/
 
   simple_deploy:
     needs: run_tests
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14.x'
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
 
-    - name: Cache dependencies
-      uses: actions/cache@v2
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    
-    - run: npm ci
-    - run: npm run deploy
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+      - run: npm ci
+      - run: npm run deploy
 
-
-
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public

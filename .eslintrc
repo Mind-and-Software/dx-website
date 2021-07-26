@@ -1,27 +1,10 @@
 {
-  "plugins": [
-    "cypress"
-  ],
-  "extends": [
-    "airbnb",
-    "plugin:cypress/recommended"
-  ],
-  "ignorePatterns": [
-    "public", 
-    "node_modules", 
-    "coverage",
-    ".cache",
-    "build"],
+  "plugins": ["cypress"],
+  "extends": ["airbnb", "plugin:cypress/recommended"],
+  "ignorePatterns": ["public", "node_modules", "coverage", ".cache", "build"],
   "rules": {
-    "func-names": [
-      "error",
-      "never"
-    ],
-    "import/no-extraneous-dependencies": [
-      "off"
-    ],
-    "react/jsx-filename-extension": [
-      0
-    ]
+    "func-names": ["error", "never"],
+    "import/no-extraneous-dependencies": ["off"],
+    "react/jsx-filename-extension": [0]
   }
 }

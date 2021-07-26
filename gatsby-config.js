@@ -21,8 +21,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sass',
       options: {
-        additionalData: `@use "${__dirname}/src/styles/globals/variables" as var;
-          @use "${__dirname}/src/styles/globals/mixins" as mixin;`,
+        additionalData: `@use "./src/styles/globals/variables" as var;
+          @use "./src/styles/globals/mixins" as mixin;`,
       },
     },
   ],

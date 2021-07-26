@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
-import '../styles/global-styles.scss';
-
+import 'normalize.css';
+import '../styles/globals/global-styles.scss';
 import { layout } from '../styles/layout.module.scss';
 
 export default function Layout({ children }) {

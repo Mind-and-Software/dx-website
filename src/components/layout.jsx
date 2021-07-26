@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
-import '../styles/variables.css';
-import '../styles/globals.css';
+import '../styles/global-styles.scss';
+
+import { layout } from '../styles/layout.module.scss';
 
 export default function Layout({ children }) {
   return (
-    <div className="layout">
+    <div className={layout}>
       <nav>
-        <Link to="/">Index</Link>
-        {' '}
+        <Link to="/">Index</Link>{' '}
         <Link to="/docs/test-article">Markdown Test</Link>
       </nav>
       {children}

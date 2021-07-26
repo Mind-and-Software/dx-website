@@ -14,13 +14,3 @@ h1 {
   font-family: var(--font-family--title);
   font-size: var(--font-size--title);
 }
-
-.layout {
-  background-color: var(--color-background);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  max-width: 50%;
-  margin: auto;
-  padding: var(--space);
-}

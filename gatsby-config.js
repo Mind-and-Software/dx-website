@@ -14,5 +14,11 @@ module.exports = {
       __key: 'pages',
     },
     'gatsby-transformer-remark',
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        additionalData: `@use "${__dirname}/src/styles/variables" as var;`,
+      },
+    },
   ],
 };

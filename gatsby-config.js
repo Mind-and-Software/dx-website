@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: 'DX Website',
@@ -14,5 +18,12 @@ module.exports = {
       __key: 'pages',
     },
     'gatsby-transformer-remark',
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        additionalData: `@use "./src/styles/globals/variables" as var;
+          @use "./src/styles/globals/mixins" as mixin;`,
+      },
+    },
   ],
 };

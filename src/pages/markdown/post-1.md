@@ -1,7 +1,7 @@
 ---
-slug: "/docs/test-article"
-date: "2021-05-26"
-title: "Test Markdown Article"
+slug: '/docs/test-article'
+date: '2021-05-26'
+title: 'Test Markdown Article'
 ---
 
 ## Generated from a markdown file

@@ -18,7 +18,7 @@ export default function Template({
           <h2>{frontmatter.date}</h2>
           <div
             className="blog-post-content"
-          // eslint-disable-next-line react/no-danger
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: html }}
           />
         </div>
@@ -27,7 +27,7 @@ export default function Template({
   );
 }
 export const pageQuery = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {

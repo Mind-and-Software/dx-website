@@ -16,7 +16,7 @@ export default function Layout({ children }) {
         <nav className={nav}>
           <Link to="/">Index</Link>
           <LinkWithArrow to="/docs/test-article">Markdown test</LinkWithArrow>
-          <LinkWithArrow to="/docs/test-article" type='secondary'>Markdown test</LinkWithArrow>
+          <LinkWithArrow to="/docs/test-article" type="secondary">Markdown test</LinkWithArrow>
           <Link to="/docs/test-article">Markdown Test</Link>
         </nav>
       </header>

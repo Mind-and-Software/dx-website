@@ -24,6 +24,7 @@
     "@fontsource/rubik": "^4.5.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "fsevents": "^2.3.2",
     "gatsby": "^3.4.1",
     "gatsby-plugin-mdx": "^2.6.0",
     "gatsby-plugin-react-svg": "^3.0.1",

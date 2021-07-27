@@ -47,3 +47,15 @@ $button-width: 12rem;
 $button-width--link: 24rem;
 $fs-button: $fs-secondary;
 $lh-button: $button-height;
+
+/* tags */
+$tag-bg-color: color.$aqua-haze;
+$tag-bg-color--active: $color-secondary;
+$tag-border-color: color.$gothic;
+$tag-border-color--active: darken($color-secondary, 40%);
+$tag-border-radius: 2rem;
+$tag-height: 2rem;
+$tag-font-color: color.$gothic;
+$tag-font-color--active: color.$white;
+$tag-font-size: $fs-secondary;
+$tag-width: 5rem;

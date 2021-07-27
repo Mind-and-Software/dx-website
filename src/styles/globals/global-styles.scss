@@ -1,23 +1,32 @@
 // put styles that affect everything on the site (for example heading styles) here
-html,
-#___gatsby,
-#gatsby-focus-wrapper {
-  height: 100%;
+html {
   font-size: var.$fs-base;
 }
 
 body {
-  font-family: var.$fs-base;
+  color: var.$color-text-body;
+  font-family: var.$font-body;
   font-size: var.$fs-body;
   height: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: var.$color-link;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 h1 {
-  font-family: var.$fs-base;
+  font-family: var.$font-heading;
   font-size: var.$fs-heading--large;
+  font-weight: normal;
 }
 h2 {
-  font-size: var.$fs-heading;
+  font-size: var.$fs-heading--large;
+  font-weight: normal;
 }
 h3 {
   font-size: var.$fs-heading;

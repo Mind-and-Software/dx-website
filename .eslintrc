@@ -5,6 +5,7 @@
   "rules": {
     "func-names": ["error", "never"],
     "import/no-extraneous-dependencies": ["off"],
-    "react/jsx-filename-extension": [0]
+    "react/jsx-filename-extension": [0],
+    "operator-linebreak": ["off"]
   }
 }

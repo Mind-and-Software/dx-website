@@ -11,10 +11,12 @@ import { layout } from '../styles/layout.module.scss';
 export default function Layout({ children }) {
   return (
     <div className={layout}>
-      <nav>
-        <Link to="/">Index</Link>
-        <Link to="/docs/test-article">Markdown Test</Link>
-      </nav>
+      <header>
+        <nav>
+          <Link to="/">Index</Link>
+          <Link to="/docs/test-article">Markdown Test</Link>
+        </nav>
+      </header>
       {children}
     </div>
   );

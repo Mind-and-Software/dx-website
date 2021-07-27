@@ -8,6 +8,7 @@ body {
   font-family: var.$font-body;
   font-size: var.$fs-body;
   height: 100%;
+  line-height: var.$lh-body;
 }
 
 a {
@@ -15,6 +16,29 @@ a {
   color: var.$color-link;
 
   &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline-color: var.$color-secondary;
+  }
+}
+
+button {
+  background-color: var.$button-bg-color--secondary;
+  border-radius: var.$button-border-radius;
+  border-width: 0;
+  box-shadow: var.$box-shadow;
+  color: var.$button-color;
+  font-size: var.$fs-secondary;
+  font-weight: bolder;
+  height: var.$button-height;
+  text-transform: uppercase;
+  width: var.$button-width;
+
+  &:hover,
+  &:focus {
+    background-color: darken(var.$button-bg-color--secondary, 10%);
     text-decoration: underline;
   }
 }

@@ -3,6 +3,7 @@ import * as React from 'react';
 import Blurb from '../components/Blurb';
 import Layout from '../components/layout';
 import Tag from '../components/Tag';
+import ArticlePreview from '../components/ArticlePreview';
 
 // markup
 const IndexPage = () => (
@@ -31,6 +32,17 @@ const IndexPage = () => (
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.
     </div>
+    <ArticlePreview
+      previewImageSrc="images/placeholder.png"
+      tags={['Develop']}
+      title="Your first DX survey"
+      author="Author"
+      authorCredentials="DX researcher"
+      readingTime="6 min"
+    >
+      Learn how to design your first Developer Experience survey and
+      start measuring your own or your team’s DX right now!
+    </ArticlePreview>
   </Layout>
 );
 

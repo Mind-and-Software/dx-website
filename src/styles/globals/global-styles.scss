@@ -53,7 +53,9 @@ h2 {
   font-weight: normal;
 }
 h3 {
-  font-size: var.$fs-heading;
+  font-size: var.$fs-heading--medium;
+  font-weight: bold;
+  line-height: var.$lh-heading;
 }
 h4 {
   font-size: var.$fs-heading;

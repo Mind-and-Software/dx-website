@@ -1,4 +1,38 @@
 .article-preview {
+  color: var.$color-text-secondary;
   display: flex;
   flex-direction: column;
+  font-size: var.$fs-body;
+  max-width: var.$article-preview-width;
+}
+
+img {
+  max-width: var.$image-medium-width;
+  max-height: var.$image-medium-height;
+  margin-bottom: var.$article-preview-image-space;
+}
+
+.row-section {
+  display: flex;
+  font-size: var.$fs-tertiary;
+
+  div {
+    margin-right: var.$article-preview-space;
+  }
+}
+
+.authorSection {
+  margin-top: var.$article-preview-space;
+}
+
+.authorImageContainer {
+  background: var.$author-image-background;
+  border-radius: var.$author-image-border-radius;
+  height: var.$author-image-height;
+  width: var.$author-image-width;
+}
+
+h3 {
+  margin-block-start: 0.5rem;
+  margin-block-end: 0.5rem;
 }

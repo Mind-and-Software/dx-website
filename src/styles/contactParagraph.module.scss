@@ -8,7 +8,7 @@
   p {
     font-size: var.$fs-body;
     font-style: italic;
-    margin-bottom: var.$contact-paragraph-content-margin;
+    margin-bottom: var.$contact-paragraph-content-space;
 
     span {
       font-weight: var.$bold;
@@ -26,8 +26,9 @@
   color: var.$color-text-heading--small;
   display: flex;
   flex-direction: column;
+  font-size: var.$fs-secondary;
   line-height: var.$contact-paragraph-header-lh;
-  margin-left: var.$space-double;
+  margin-left: var.$contact-paragraph-logo-space;
 }
 
 .main-header {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Layout from '../components/layout';
-import LinkButton from '../components/LinkButton';
+import ContactParagraph from '../components/ContactParagraph';
 
 // markup
 const IndexPage = () => (
@@ -17,6 +17,7 @@ const IndexPage = () => (
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.
     </div>
+    <ContactParagraph />
   </Layout>
 );
 

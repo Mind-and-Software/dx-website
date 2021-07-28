@@ -1,0 +1,25 @@
+.contact-paragraph {
+  display: flex;
+  flex-direction: column;
+  font-size: var.$fs-base;
+  justify-content: space-between;
+  max-width: var.$paragraph-width;
+}
+
+.header-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-texts {
+  color: var.$color-text-heading--small;
+  display: flex;
+  flex-direction: column;
+  line-height: var.$paragraph-header-lh;
+  margin-left: var.$space-double;
+}
+
+.main-header {
+  font-weight: var.$bold;
+}

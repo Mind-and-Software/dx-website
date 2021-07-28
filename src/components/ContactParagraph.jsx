@@ -6,8 +6,6 @@ import {
   contactParagraph,
   headerArea,
   headerTexts,
-  mainHeader,
-  subHeader,
 } from '../styles/contactParagraph.module.scss';
 
 const ContactParagraph = () => (
@@ -15,8 +13,8 @@ const ContactParagraph = () => (
     <div className={headerArea}>
       <AaltoLogo />
       <div className={headerTexts}>
-        <span className={mainHeader}>Mind and Software</span>
-        <span className={subHeader}>Aalto University</span>
+        <h2>Mind and Software</h2>
+        <h3>Aalto University</h3>
       </div>
     </div>
     <p>

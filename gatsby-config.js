@@ -25,5 +25,13 @@ module.exports = {
           @use "./src/styles/globals/mixins" as mixin;`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
   ],
 };

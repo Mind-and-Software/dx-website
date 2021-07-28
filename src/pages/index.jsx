@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Layout from '../components/layout';
-import LinkButton from '../components/LinkButton';
+import Tag from '../components/tag';
 
 // markup
 const IndexPage = () => (
@@ -9,6 +9,11 @@ const IndexPage = () => (
     <title>DX Website</title>
     <h1>Hello World!</h1>
     <div>
+      <Tag>Hello</Tag>
+      <Tag type="link" action="/docs/test-article">
+        Link
+      </Tag>
+      <Tag type="toggle">Toggle</Tag>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea

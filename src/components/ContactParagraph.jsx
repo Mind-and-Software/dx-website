@@ -20,9 +20,9 @@ const ContactParagraph = () => (
       </div>
     </div>
     <p>
-      This site is built by researchers in the Mind and Software
-      research group at Aalto University,
-      Finland. We are passionate about our research on understanding software developers.
+      This site is built by researchers in the
+      <span> css Mind and Software research group at Aalto University, Finland. </span>
+      We are passionate about our research on understanding software developers.
       Many of us are or have been software developers ourselves.
     </p>
     <LinkButton to="/" type="secondary">

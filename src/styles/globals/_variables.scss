@@ -19,18 +19,23 @@ $font-body: 'Rubik', sans-serif;
 $font-heading: $font-body;
 $font-button: $font-body;
 
-$fs-base: 16px; // only for setting the font size for base html element
-$fs-body: 1.25rem;
-$fs-secondary: 1rem;
-$fs-heading: 1.5rem;
-$fs-heading--large: 2.75rem;
+$fs-base: 62.5%; // only for setting the font size for base html element
+$fs16: 1.6rem;
+$fs20: 2rem;
+$fs24: 2.4rem;
+$fs44: 4.4rem;
 
-$lh-body: 2rem;
+$fs-body: $fs20;
+$fs-secondary: $fs16;
+$fs-heading: $fs24;
+$fs-heading--large: $fs44;
+
+$lh-body: 3.2rem;
 
 /* spacing */
-$space: 1rem;
-$space-half: 0.5rem;
-$space-double: 2rem;
+$space: 1.6rem;
+$space-half: 0.5 * $space;
+$space-double: 2 * $space;
 
 /* box-shadow */
 $box-shadow: 0px 4px 4px lighten(color.$black, 75%);
@@ -42,8 +47,25 @@ $button-bg-color-focus--secondary: $color-primary;
 $button-color-focus--secondary: $color-primary--dark;
 $button-border-radius: 4px;
 $button-color: color.$white;
-$button-height: 4rem;
-$button-width: 12rem;
-$button-width--link: 24rem;
+$button-height: 6.4rem;
+$button-width: 19.2rem;
+$button-width--link: 38.4rem;
 $fs-button: $fs-secondary;
 $lh-button: $button-height;
+
+/* tags */
+$tag-bg-color: color.$aqua-haze;
+$tag-bg-color--active: $color-secondary;
+$tag-border-color: color.$gothic;
+$tag-border-color--active: darken($color-secondary, 40%);
+$tag-border-radius: 3.2rem;
+$tag-height: 3.2rem;
+$tag-font-color: color.$gothic;
+$tag-font-color--active: color.$white;
+$tag-font-size: $fs-secondary;
+$tag-width: 8rem;
+
+/* blurb */
+$blurb-bg-color: $color-primary;
+$blurb-font-color: $color-primary--dark;
+$blurb-padding: 2rem 4rem;

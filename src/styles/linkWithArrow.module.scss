@@ -1,0 +1,20 @@
+.link-with-arrow {
+  align-items: center;
+  color: var.$color-primary--dark;
+  display: flex;
+  flex-direction: row;
+  font-size: var.$fs-base;
+
+  &--bigger {
+    @extend .link-with-arrow;
+    font-size: var.$fs-body;
+  }
+
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.link-text {
+  margin-right: var.$space;
+}

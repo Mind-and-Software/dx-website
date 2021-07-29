@@ -1,0 +1,44 @@
+.contact-paragraph {
+  display: flex;
+  flex-direction: column;
+  font-size: var.$fs-base;
+  justify-content: space-between;
+  max-width: var.$contact-paragraph-width;
+
+  h2 {
+    font-size: var.$fs-body;
+    font-weight: var.$bold;
+    line-height: var.$contact-paragraph-header-lh;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  h3 {
+    font-size: var.$fs-secondary;
+    font-weight: var.$weak;
+    line-height: var.$contact-paragraph-header-lh;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  p {
+    font-size: var.$fs-body;
+    font-style: italic;
+    margin-bottom: var.$contact-paragraph-content-space;
+  }
+}
+
+.header-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-texts {
+  color: var.$color-text-heading--small;
+  display: flex;
+  flex-direction: column;
+  font-size: var.$fs-secondary;
+  line-height: var.$contact-paragraph-header-lh;
+  margin-left: var.$contact-paragraph-logo-space;
+}

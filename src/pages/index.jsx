@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Blurb from '../components/Blurb';
 import Layout from '../components/layout';
+import ContactParagraph from '../components/ContactParagraph';
 import Tag from '../components/Tag';
 import SearchBar from '../components/SearchBar';
 
@@ -33,6 +34,7 @@ const IndexPage = () => (
       est laborum.
       <SearchBar placeholder="Search articles" />
     </div>
+    <ContactParagraph />
   </Layout>
 );
 

@@ -33,6 +33,9 @@ $fs-heading--large: $fs44;
 
 $lh-body: 3.2rem;
 
+$bold: 700;
+$weak: 400;
+
 /* spacing */
 $space: 1.6rem;
 $space-half: 0.5 * $space;
@@ -53,6 +56,12 @@ $button-width: 19.2rem;
 $button-width--link: 38.4rem;
 $fs-button: $fs-secondary;
 $lh-button: $button-height;
+
+/* contact paragraph */
+$contact-paragraph-width: 34rem;
+$contact-paragraph-header-lh: 2rem;
+$contact-paragraph-content-space: 9rem;
+$contact-paragraph-logo-space: 2rem;
 
 /* text fields */
 $text-field-background: $color-text-field-bg;

@@ -36,15 +36,27 @@ const IndexPage = () => (
     </div>
     <ArticlePreview
       title="Your first DX survey"
+      tags={['Develop', 'Research']}
       articleUrl="/docs/test-article"
       date={new Date()}
       readingTime="5 min"
       previewImageSrc="images/placeholder.png"
       author="Test Author"
+      authorCredentials="Researcher"
     >
       Learn how to design your first Developer Experience survey and start
       measuring your own or your team’s DX right now!
     </ArticlePreview>
+    <ArticlePreview
+      title="Why should we care about developer experience (DX)?"
+      tags={['Develop', 'Research']}
+      articleUrl="/docs/test-article"
+      date={new Date()}
+      readingTime="5 min"
+      previewImageSrc="images/placeholder.png"
+      author="Test Author"
+      vertical
+    />
   </Layout>
 );
 

@@ -38,6 +38,7 @@ $fs-heading--large: $fs44;
 
 $lh-body: 3.2rem;
 $lh-heading: 3.6rem;
+$lh-small: 2.4rem;
 
 /* spacing */
 $space: 1.6rem;
@@ -86,7 +87,12 @@ $blurb-font-color: $color-primary--dark;
 $blurb-padding: 2rem 4rem;
 
 /* article preview */
-$article-preview-width: 32rem;
+$article-preview-horizontal-width: 32rem;
+$article-preview-horizontal-img-height: 16rem;
+$article-preview-vertical-height: 12rem;
+$article-preview-vertical-img-width: 20rem;
+$article-preview-vertical-img-height: 12rem;
+$article-preview-vertical-img-space: 2.3rem;
 $article-preview-space: 0.8rem;
 
 /* profile picture */

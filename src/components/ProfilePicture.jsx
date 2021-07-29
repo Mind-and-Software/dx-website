@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 import { profilePicture } from '../styles/profilePicture.module.scss';
 
 const ProfilePicture = ({ url, imageSrc }) => (
-  <Link to={url}>
+  <Link to={url} aria-label="Picture of the author of this article">
     <div
       className={profilePicture}
       style={{ backgroundImage: `url(${imageSrc})` }}

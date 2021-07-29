@@ -5,7 +5,7 @@ import ArticlePreview, { AuthorSection } from '../ArticlePreview';
 describe('ArticlePreview component', () => {
   it('Renders title', () => {
     const container = render(<ArticlePreview title="Title" articleUrl="url" />);
-    container.getByText('Title');
+    expect(container.getByText('Title')).toBeInTheDocument();
   });
 
   it('Renders date and read time', () => {
@@ -17,9 +17,9 @@ describe('ArticlePreview component', () => {
         readingTime="9 min"
       />
     );
-    container.getByText('Title');
-    container.getByText('12/2020');
-    container.getByText('9 min read');
+    expect(container.getByText('Title')).toBeInTheDocument();
+    expect(container.getByText('12/2020')).toBeInTheDocument();
+    expect(container.getByText('9 min read')).toBeInTheDocument();
   });
 
   it('Renders tags', () => {
@@ -30,38 +30,47 @@ describe('ArticlePreview component', () => {
         tags={['Research', 'Development']}
       />
     );
-    container.getByText('Research');
-    container.getByText('Development');
+    expect(container.getByText('Research')).toBeInTheDocument();
+    expect(container.getByText('Development')).toBeInTheDocument();
   });
 
   it('Renders image', () => {
     const container = render(
       <ArticlePreview title="Title" articleUrl="url" previewImageSrc="mock" />
     );
-    container.getByAltText('Link');
+    expect(container.getByAltText("Title")).toBeInTheDocument();
   });
 
   it('Renders authorSection', () => {
     const container = render(
       <ArticlePreview title="Title" articleUrl="url" author="Author" />
     );
-    container.getByText("Author");
-    container.getByTestId('profilepic');
+    expect(container.getByText('Author')).toBeInTheDocument();
+    expect(container.getByTestId('profilepic')).toBeInTheDocument();
   });
 });
 
 describe('AuthorSection component', () => {
   it('Renders correctly without credentials', () => {
-    const container = render(<AuthorSection author="Author" url="url" credentials="" imageSrc="mock" />);
-    container.getByText('Author');
-    container.getByTestId('profilepic');
+    const container = render(
+      <AuthorSection author="Author" url="url" credentials="" imageSrc="mock" vertical={false}/>
+    );
+    expect(container.getByText('Author')).toBeInTheDocument();
+    expect(container.getByTestId('profilepic')).toBeInTheDocument();
   });
 
   it('Renders correctly with credentials', () => {
-    const container = render(<AuthorSection author="Author" url="url" credentials="Researcher" imageSrc="mock" />);
-    container.getByText('Author,');
-    container.getByText('Researcher');
-    container.getByTestId('profilepic');
+    const container = render(
+      <AuthorSection
+        author="Author"
+        url="url"
+        credentials="Researcher"
+        imageSrc="mock"
+        vertical
+      />
+    );
+    expect(container.getByText('Author,')).toBeInTheDocument();
+    expect(container.getByText('Researcher')).toBeInTheDocument();
+    expect(container.queryByTestId('profilepic')).toBeNull();
   });
 });
-

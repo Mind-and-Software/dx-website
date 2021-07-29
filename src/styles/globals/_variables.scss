@@ -12,6 +12,7 @@ $color-text-body: $color-primary--dark;
 $color-text-secondary: color.$black;
 $color-text-heading: $color-primary--dark;
 $color-text-heading--small: color.$black;
+$color-text-field-bg: color.$snow;
 $color-link: $color-secondary;
 $color-link--main-nav: $color-primary--dark;
 
@@ -59,9 +60,13 @@ $button-width--link: 38.4rem;
 $fs-button: $fs-secondary;
 $lh-button: $button-height;
 
-/* image */
-$image-medium-width: 32rem;
-$image-medium-height: 16rem;
+/* text fields */
+$text-field-background: $color-text-field-bg;
+$text-field-border: 0.1rem solid rgba(0, 0, 0, 0.24);
+$text-field-height: 6rem;
+$text-field-padding: 2rem;
+$text-field-radius: 0.4rem;
+$text-field-width: 62rem;
 
 /* tags */
 $tag-bg-color: color.$aqua-haze;

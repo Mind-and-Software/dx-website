@@ -4,6 +4,7 @@ import Blurb from '../components/Blurb';
 import Layout from '../components/layout';
 import Tag from '../components/Tag';
 import ArticlePreview from '../components/ArticlePreview';
+import SearchBar from '../components/SearchBar';
 
 // markup
 const IndexPage = () => (
@@ -31,6 +32,7 @@ const IndexPage = () => (
       velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.
+      <SearchBar placeholder="Search articles" />
     </div>
     <ArticlePreview
       title="Your first DX survey"

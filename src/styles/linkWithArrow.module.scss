@@ -3,7 +3,7 @@
   color: var.$color-primary--dark;
   display: flex;
   flex-direction: row;
-  font-size: var.$fs-base;
+  font-size: var.$fs-secondary;
 
   &--bigger {
     @extend .link-with-arrow;

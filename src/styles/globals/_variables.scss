@@ -81,10 +81,11 @@ $blurb-font-color: $color-primary--dark;
 $blurb-padding: 2rem 4rem;
 
 /* article preview */
-$article-preview-width: 36rem;
+$article-preview-width: 32rem;
 $article-preview-space: 0.8rem;
-$article-preview-image-space: 1.4rem;
-$author-image-background: $color-placeholder;
-$author-image-border-radius: 20rem;
-$author-image-height: 3.2rem;
-$author-image-width: 3.2rem;
+
+/* profile picture */
+$profile-image-background: $color-placeholder;
+$profile-image-border-radius: 20rem;
+$profile-image-height: 3.2rem;
+$profile-image-width: 3.2rem;

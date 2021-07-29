@@ -4,13 +4,27 @@ import { Link } from 'gatsby';
 
 import {
   articlePreview,
-  imageLink,
   rowSection,
   authorSection,
-  authorImageContainer,
 } from '../styles/articlePreview.module.scss';
 import Tag from './Tag';
 import ImageLink from './ImageLink';
+import ProfilePicture from './ProfilePicture';
+
+const AuthorSection = ({ author, url, credentials, imageSrc }) => (
+  <div className={authorSection}>
+    <ProfilePicture url={url} imageSrc={imageSrc} />
+    <Link to={url}>{credentials ? `${author},` : author}</Link>
+    {credentials}
+  </div>
+);
+
+AuthorSection.propTypes = {
+  author: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  imageSrc: PropTypes.string.isRequired,
+  credentials: PropTypes.string.isRequired,
+};
 
 const ArticlePreview = ({
   children,
@@ -26,20 +40,15 @@ const ArticlePreview = ({
   authorUrl,
 }) => (
   <div className={articlePreview}>
-    {previewImageSrc && (
-      <div className={imageLink}>
-        <ImageLink
-          to={articleUrl}
-          src={previewImageSrc}
-        />
-      </div>
-    )}
+    {previewImageSrc && <ImageLink to={articleUrl} src={previewImageSrc} />}
     <div className={rowSection}>
-      <div>
-        {tags.map((tag) => (
-          <Tag>{tag}</Tag>
-        ))}
-      </div>
+      {tags.length > 0 && (
+        <div>
+          {tags.map((tag) => (
+            <Tag>{tag}</Tag>
+          ))}
+        </div>
+      )}
       {readingTime && <div>{`${readingTime} read`}</div>}
       {date && <div>{`${date.getMonth() + 1}/${date.getFullYear()}`}</div>}
     </div>
@@ -48,16 +57,12 @@ const ArticlePreview = ({
     </Link>
     {children}
     {author && (
-      <div className={`${rowSection} ${authorSection}`}>
-        <div
-          className={authorImageContainer}
-          style={{ backgroundImage: `url(${authorImageSrc})` }}
-        />
-        <Link to={authorUrl}>
-          <div>{authorCredentials ? `${author},` : author}</div>
-        </Link>
-        <div>{authorCredentials}</div>
-      </div>
+      <AuthorSection
+        author={author}
+        credentials={authorCredentials}
+        url={authorUrl}
+        imageSrc={authorImageSrc}
+      />
     )}
   </div>
 );
@@ -69,8 +74,8 @@ ArticlePreview.defaultProps = {
   readingTime: '',
   date: '',
   author: '',
-  authorUrl: '',
-  authorImageSrc: '',
+  authorUrl: '/',
+  authorImageSrc: 'images/placeholder-avatar.png',
   authorCredentials: '',
 };
 

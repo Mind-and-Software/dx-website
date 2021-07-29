@@ -33,8 +33,9 @@ const IndexPage = () => (
       est laborum.
     </div>
     <ArticlePreview
+      date={new Date()}
+      readingTime="5 min"
       previewImageSrc="images/placeholder.png"
-      authorImageSrc="images/placeholder.png"
       title="Your first DX survey"
       author="Test Author"
       authorCredentials="Researcher"

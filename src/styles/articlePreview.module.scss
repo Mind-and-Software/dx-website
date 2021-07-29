@@ -10,10 +10,6 @@ a {
   color: var.$color-text-secondary;
 }
 
-.image-link {
-  margin-bottom: var.$article-preview-image-space;
-}
-
 .row-section {
   display: flex;
   font-size: var.$fs-tertiary;
@@ -24,15 +20,12 @@ a {
 }
 
 .authorSection {
+  display: flex;
+  font-size: var.$fs-tertiary;
   margin-top: var.$article-preview-space;
-}
-
-.authorImageContainer {
-  background: var.$author-image-background;
-  background-size: var.$author-image-height var.$author-image-width;
-  border-radius: var.$author-image-border-radius;
-  height: var.$author-image-height;
-  width: var.$author-image-width;
+  a {
+    margin-right: var.$article-preview-space;
+  }
 }
 
 h3 {

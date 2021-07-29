@@ -34,14 +34,14 @@ const IndexPage = () => (
     </div>
     <ArticlePreview
       previewImageSrc="images/placeholder.png"
-      tags={['Develop']}
+      authorImageSrc="images/placeholder.png"
       title="Your first DX survey"
-      author="Author"
-      authorCredentials="DX researcher"
-      readingTime="6 min"
+      author="Test Author"
+      authorCredentials="Researcher"
+      articleUrl="/docs/test-article"
     >
-      Learn how to design your first Developer Experience survey and
-      start measuring your own or your team’s DX right now!
+      Learn how to design your first Developer Experience survey and start
+      measuring your own or your team’s DX right now!
     </ArticlePreview>
   </Layout>
 );

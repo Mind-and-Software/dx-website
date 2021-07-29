@@ -6,9 +6,11 @@
   max-width: var.$article-preview-width;
 }
 
-img {
-  max-width: var.$image-medium-width;
-  max-height: var.$image-medium-height;
+a {
+  color: var.$color-text-secondary;
+}
+
+.image-link {
   margin-bottom: var.$article-preview-image-space;
 }
 
@@ -27,6 +29,7 @@ img {
 
 .authorImageContainer {
   background: var.$author-image-background;
+  background-size: var.$author-image-height var.$author-image-width;
   border-radius: var.$author-image-border-radius;
   height: var.$author-image-height;
   width: var.$author-image-width;

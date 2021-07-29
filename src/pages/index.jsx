@@ -33,13 +33,12 @@ const IndexPage = () => (
       est laborum.
     </div>
     <ArticlePreview
+      title="Your first DX survey"
+      articleUrl="/docs/test-article"
       date={new Date()}
       readingTime="5 min"
       previewImageSrc="images/placeholder.png"
-      title="Your first DX survey"
       author="Test Author"
-      authorCredentials="Researcher"
-      articleUrl="/docs/test-article"
     >
       Learn how to design your first Developer Experience survey and start
       measuring your own or your team’s DX right now!

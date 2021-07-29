@@ -11,7 +11,7 @@ import Tag from './Tag';
 import ImageLink from './ImageLink';
 import ProfilePicture from './ProfilePicture';
 
-const AuthorSection = ({ author, url, credentials, imageSrc }) => (
+export const AuthorSection = ({ author, url, credentials, imageSrc }) => (
   <div className={authorSection}>
     <ProfilePicture url={url} imageSrc={imageSrc} />
     <Link to={url}>{credentials ? `${author},` : author}</Link>
@@ -28,6 +28,7 @@ AuthorSection.propTypes = {
 
 const ArticlePreview = ({
   children,
+  articleUrl,
   previewImageSrc,
   tags,
   title,
@@ -36,7 +37,6 @@ const ArticlePreview = ({
   author,
   authorCredentials,
   authorImageSrc,
-  articleUrl,
   authorUrl,
 }) => (
   <div className={articlePreview}>
@@ -45,7 +45,7 @@ const ArticlePreview = ({
       {tags.length > 0 && (
         <div>
           {tags.map((tag) => (
-            <Tag>{tag}</Tag>
+            <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
       )}
@@ -81,16 +81,16 @@ ArticlePreview.defaultProps = {
 
 ArticlePreview.propTypes = {
   children: PropTypes.node,
+  articleUrl: PropTypes.string.isRequired,
   previewImageSrc: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   readingTime: PropTypes.string,
-  date: PropTypes.instanceOf(Date),
+  date: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   author: PropTypes.string,
   authorUrl: PropTypes.string,
   authorImageSrc: PropTypes.string,
   authorCredentials: PropTypes.string,
-  articleUrl: PropTypes.string.isRequired,
 };
 
 export default ArticlePreview;

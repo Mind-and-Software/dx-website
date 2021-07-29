@@ -1,6 +1,11 @@
 {
-  "plugins": ["cypress"],
-  "extends": ["airbnb", "plugin:cypress/recommended", "prettier"],
+  "plugins": ["react", "cypress", "jest"],
+  "extends": [
+    "airbnb",
+    "plugin:cypress/recommended",
+    "plugin:jest/recommended",
+    "prettier"
+  ],
   "ignorePatterns": ["public", "node_modules", "coverage", ".cache", "build"],
   "rules": {
     "func-names": ["error", "never"],

@@ -9,6 +9,7 @@ const ProfilePicture = ({ url, imageSrc }) => (
     <div
       className={profilePicture}
       style={{ backgroundImage: `url(${imageSrc})` }}
+      data-testid="profilepic"
     />
   </Link>
 );

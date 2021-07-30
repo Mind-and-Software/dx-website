@@ -2,29 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
-const ImageLink = ({ to, src, alt, width, height }) => (
-  <Link style={{ maxWidth: width, height }} to={to}>
-    <img
-      style={{ maxWidth: width, height }}
-      src={src}
-      alt={alt}
-      aria-label={`Preview picture of article: ${alt}`}
-    />
+import Image from './Image';
+
+const ImageLink = ({ to, imageData, alt }) => (
+  <Link to={to} aria-label={`Preview picture of article: ${alt}`}>
+    <Image imageData={imageData} alt={alt} />
   </Link>
 );
-
 ImageLink.defaultProps = {
-  src: '../../placeholder.png',
-  width: 320,
-  height: 160,
+  imageData: 'placeholder.png',
 };
 
 ImageLink.propTypes = {
   to: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  src: PropTypes.string,
-  width: PropTypes.number,
-  height: PropTypes.number,
+  imageData: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
 
 export default ImageLink;

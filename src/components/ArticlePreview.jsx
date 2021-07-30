@@ -17,26 +17,25 @@ import Tag from './Tag';
 import ImageLink from './ImageLink';
 import ProfilePicture from './ProfilePicture';
 
-export const AuthorSection = ({
-  author,
-  url,
-  credentials,
-  imageSrc,
-  vertical,
-}) => (
+export const AuthorSection = ({ name, url, credentials, image, vertical }) => (
   <div className={vertical ? authorSectionVertical : authorSection}>
-    {!vertical && <ProfilePicture url={url} imageSrc={imageSrc} />}
-    <Link to={url} aria-label={`Link to user profile: ${author}`}>
-      {credentials ? `${author},` : author}
+    {!vertical && image && (
+      <ProfilePicture
+        url={url}
+        imageData={image.node.childImageSharp.gatsbyImageData}
+      />
+    )}
+    <Link to={url} aria-label={`Link to user profile: ${name}`}>
+      {credentials ? `${name},` : name}
     </Link>
     {credentials}
   </div>
 );
 
 AuthorSection.propTypes = {
-  author: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string.isRequired,
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   credentials: PropTypes.string.isRequired,
   vertical: PropTypes.bool.isRequired,
 };
@@ -71,26 +70,24 @@ const renderReadingTime = (readingTime) => {
 const ArticlePreview = ({
   children,
   articleUrl,
-  previewImageSrc,
+  previewImage,
   tags,
   title,
   readingTime,
   date,
-  author,
+  authorName,
   authorCredentials,
-  authorImageSrc,
+  authorImage,
   authorUrl,
   vertical,
 }) => (
   <div className={vertical ? articlePreviewVertical : articlePreviewHorizontal}>
-    {previewImageSrc && (
+    {previewImage && (
       <div className={vertical ? imageLinkVertical : imageLinkHorizontal}>
         <ImageLink
           to={articleUrl}
-          src={previewImageSrc}
+          imageData={previewImage.node.childImageSharp.gatsbyImageData}
           alt={title}
-          width={vertical ? 200 : 320}
-          height={vertical ? 120 : 160}
         />
       </div>
     )}
@@ -107,12 +104,12 @@ const ArticlePreview = ({
           <h3 className={vertical ? titleVertical : ''}>{title}</h3>
         </Link>
         {children}
-        {author && (
+        {authorName && (
           <AuthorSection
-            author={author}
+            name={authorName}
             credentials={authorCredentials}
             url={authorUrl}
-            imageSrc={authorImageSrc}
+            image={authorImage}
             vertical={vertical}
           />
         )}
@@ -124,13 +121,13 @@ const ArticlePreview = ({
 
 ArticlePreview.defaultProps = {
   children: '',
-  previewImageSrc: '',
+  previewImage: '',
   tags: [],
   readingTime: '',
   date: '',
-  author: '',
+  authorName: '',
   authorUrl: '/',
-  authorImageSrc: 'placeholder-avatar.png',
+  authorImage: '',
   authorCredentials: '',
   vertical: false,
 };
@@ -138,14 +135,14 @@ ArticlePreview.defaultProps = {
 ArticlePreview.propTypes = {
   children: PropTypes.node,
   articleUrl: PropTypes.string.isRequired,
-  previewImageSrc: PropTypes.string,
+  previewImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   tags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   readingTime: PropTypes.string,
   date: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
-  author: PropTypes.string,
+  authorName: PropTypes.string,
   authorUrl: PropTypes.string,
-  authorImageSrc: PropTypes.string,
+  authorImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   authorCredentials: PropTypes.string,
   vertical: PropTypes.bool,
 };

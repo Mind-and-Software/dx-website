@@ -1,13 +1,49 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
+import { graphql } from 'gatsby';
 
 import Blurb from '../components/Blurb';
 import Layout from '../components/layout';
 import Tag from '../components/Tag';
-import ArticlePreview from '../components/ArticlePreview';
 import SearchBar from '../components/SearchBar';
+import ArticlePreviewList from '../components/ArticlePreviewList';
+
+const previewData = [
+  {
+    title: 'Your first DX survey',
+    tags: ['Develop', 'Research'],
+    articleUrl: '/docs/test-article',
+    date: new Date(),
+    readingTime: '5 min',
+    previewImageName: 'workstation.png',
+    authorName: 'Test Author',
+    authorCredentials: 'Researcher',
+    authorImageName: 'linuxoid.png',
+    content: `Learn how to design your first Developer Experience survey and start
+    measuring your own or your team’s DX right now!`,
+  },
+  {
+    title: 'Why should we care about developer experience (DX)',
+    tags: ['Develop'],
+    articleUrl: '/docs/test-article',
+    readingTime: '5 min',
+    previewImageName: 'laptop-code.png',
+    authorName: 'Test Author',
+    authorCredentials: 'Manager',
+  },
+  {
+    title: 'How developers around the world experience their work',
+    tags: ['Develop', 'Research'],
+    articleUrl: '/docs/test-article',
+    date: new Date(),
+    authorName: 'Test Author',
+    authorCredentials: 'Developer',
+    authorImageName: 'woman-phone.png',
+  },
+];
 
 // markup
-const IndexPage = () => (
+const IndexPage = ({ data }) => (
   <Layout>
     <title>DX Website</title>
     <h1>Hello World!</h1>
@@ -34,31 +70,49 @@ const IndexPage = () => (
       est laborum.
       <SearchBar placeholder="Search articles" />
     </div>
-    <ArticlePreview
-      title="Your first DX survey"
-      tags={['Develop', 'Research']}
-      articleUrl="/docs/test-article"
-      date={new Date()}
-      readingTime="5 min"
-      previewImageSrc="placeholder.png"
-      author="Test Author"
-      authorCredentials="Researcher"
-    >
-      Learn how to design your first Developer Experience survey and start
-      measuring your own or your team’s DX right now!
-    </ArticlePreview>
-    <ArticlePreview
-      title="Why should we care about developer experience (DX)"
-      tags={['Develop', 'Research']}
-      articleUrl="/docs/test-article"
-      date={new Date()}
-      readingTime="5 min"
-      previewImageSrc="laptop-code.png"
-      author="Test Author"
-      authorCredentials="Researcher"
-      vertical
+    <ArticlePreviewList
+      previewData={previewData}
+      previewImageEdges={data.previewImages.edges}
+      authorImageEdges={data.authorImages.edges}
     />
   </Layout>
 );
-
 export default IndexPage;
+
+// Returns all the images in the directory frontpage
+export const imageQuery = graphql`
+  query {
+    previewImages: allFile(
+      filter: {
+        extension: { regex: "/jpg|png|jpeg/" }
+        relativeDirectory: { eq: "frontpage" }
+      }
+    ) {
+      edges {
+        node {
+          id
+          base
+          childImageSharp {
+            gatsbyImageData(width: 384, height: 184)
+          }
+        }
+      }
+    }
+    authorImages: allFile(
+      filter: {
+        extension: { regex: "/jpg|png|jpeg/" }
+        relativeDirectory: { eq: "profilepics" }
+      }
+    ) {
+      edges {
+        node {
+          id
+          base
+          childImageSharp {
+            gatsbyImageData(width: 40, height: 40)
+          }
+        }
+      }
+    }
+  }
+`;

@@ -90,7 +90,7 @@ $blurb-padding: 2rem 4rem;
 /* tags */
 $tag-font-color: color.$black;
 $tag-height: 3.2rem;
-$tag-font-size: $fs-secondary;
+$tag-font-size: $fs-tertiary;
 $tag-separator-color: color.$black;
 $tag-separator-margin: $space-half;
 $tag-width: 8rem;
@@ -111,7 +111,9 @@ $blurb-padding: 2rem 4rem;
 /* article preview */
 $article-preview-width: 38.4rem;
 $article-preview-img-space: 1.4rem;
-$article-preview-space: 0.8rem;
+$article-preview-space: 0.4rem;
+$article-preview-space-double: 2 * $article-preview-space;
+$article-preview-row-section-margin-bottom: 0.1rem;
 
 /* profile picture */
 $profile-image-background: $color-placeholder;

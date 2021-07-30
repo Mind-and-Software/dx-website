@@ -8,7 +8,7 @@ import {
   authorSection,
   infoSection,
   imageLink,
-  readingTimeStyle,
+  dot,
 } from '../styles/articlePreview.module.scss';
 import Tag from './Tag';
 import ImageLink from './ImageLink';
@@ -36,29 +36,44 @@ AuthorSection.propTypes = {
   credentials: PropTypes.string.isRequired,
 };
 
+const Dot = () => <div className={dot}>•</div>;
+
 const renderTags = (tags) => {
   if (tags.length > 0) {
-    return (
+    return tags.map((tag) => (
       <div>
-        {tags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
-        ))}
+        <Tag key={tag}>{tag}</Tag>
+        <Dot />
       </div>
-    );
+    ));
   }
   return '';
 };
 
 const renderDate = (date) => {
+  const monthNames = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
   if (date) {
-    return <div>{`${date.getMonth() + 1}/${date.getFullYear()}`}</div>;
+    return <div>{`${date.getDate()} ${monthNames[date.getMonth()]}, ${date.getFullYear()}`}</div>;
   }
   return '';
 };
 
 const renderReadingTime = (readingTime) => {
   if (readingTime) {
-    return <div className={readingTimeStyle}>{`${readingTime} read`}</div>;
+    return <div>{`${readingTime} read`}</div>;
   }
   return '';
 };
@@ -90,6 +105,7 @@ const ArticlePreview = ({
       <div className={rowSection}>
         {renderTags(tags)}
         {renderReadingTime(readingTime)}
+        {date && <Dot />}
         {renderDate(date)}
       </div>
       <div>

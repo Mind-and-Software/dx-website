@@ -8,6 +8,7 @@ module.exports = {
   },
   pathPrefix: '/dx-website',
   plugins: [
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-mdx',
     {
       resolve: 'gatsby-source-filesystem',

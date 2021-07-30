@@ -3,23 +3,20 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import {
-  articlePreviewVertical,
-  articlePreviewHorizontal,
+  articlePreview,
   rowSection,
   authorSection,
-  authorSectionVertical,
   infoSection,
-  titleVertical,
-  imageLinkVertical,
-  imageLinkHorizontal,
+  imageLink,
+  readingTimeStyle,
 } from '../styles/articlePreview.module.scss';
 import Tag from './Tag';
 import ImageLink from './ImageLink';
 import ProfilePicture from './ProfilePicture';
 
-export const AuthorSection = ({ name, url, credentials, image, vertical }) => (
-  <div className={vertical ? authorSectionVertical : authorSection}>
-    {!vertical && image && (
+export const AuthorSection = ({ name, url, credentials, image }) => (
+  <div className={authorSection}>
+    {image && (
       <ProfilePicture
         url={url}
         imageData={image.node.childImageSharp.gatsbyImageData}
@@ -37,7 +34,6 @@ AuthorSection.propTypes = {
   url: PropTypes.string.isRequired,
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   credentials: PropTypes.string.isRequired,
-  vertical: PropTypes.bool.isRequired,
 };
 
 const renderTags = (tags) => {
@@ -62,7 +58,7 @@ const renderDate = (date) => {
 
 const renderReadingTime = (readingTime) => {
   if (readingTime) {
-    return <div>{`${readingTime} read`}</div>;
+    return <div className={readingTimeStyle}>{`${readingTime} read`}</div>;
   }
   return '';
 };
@@ -79,11 +75,10 @@ const ArticlePreview = ({
   authorCredentials,
   authorImage,
   authorUrl,
-  vertical,
 }) => (
-  <div className={vertical ? articlePreviewVertical : articlePreviewHorizontal}>
+  <div className={articlePreview}>
     {previewImage && (
-      <div className={vertical ? imageLinkVertical : imageLinkHorizontal}>
+      <div className={imageLink}>
         <ImageLink
           to={articleUrl}
           imageData={previewImage.node.childImageSharp.gatsbyImageData}
@@ -92,16 +87,14 @@ const ArticlePreview = ({
       </div>
     )}
     <div className={infoSection}>
-      {!vertical && (
-        <div className={rowSection}>
-          {renderTags(tags)}
-          {renderReadingTime(readingTime)}
-          {renderDate(date)}
-        </div>
-      )}
+      <div className={rowSection}>
+        {renderTags(tags)}
+        {renderReadingTime(readingTime)}
+        {renderDate(date)}
+      </div>
       <div>
         <Link to={articleUrl}>
-          <h3 className={vertical ? titleVertical : ''}>{title}</h3>
+          <h3>{title}</h3>
         </Link>
         {children}
         {authorName && (
@@ -110,11 +103,9 @@ const ArticlePreview = ({
             credentials={authorCredentials}
             url={authorUrl}
             image={authorImage}
-            vertical={vertical}
           />
         )}
       </div>
-      {vertical && renderTags(tags)}
     </div>
   </div>
 );
@@ -129,7 +120,6 @@ ArticlePreview.defaultProps = {
   authorUrl: '/',
   authorImage: '',
   authorCredentials: '',
-  vertical: false,
 };
 
 ArticlePreview.propTypes = {
@@ -144,7 +134,6 @@ ArticlePreview.propTypes = {
   authorUrl: PropTypes.string,
   authorImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   authorCredentials: PropTypes.string,
-  vertical: PropTypes.bool,
 };
 
 export default ArticlePreview;

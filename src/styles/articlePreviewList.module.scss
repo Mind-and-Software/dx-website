@@ -1,0 +1,8 @@
+.article-preview-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item {
+  margin-top: var.$space-double;
+}

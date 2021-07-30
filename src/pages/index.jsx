@@ -5,6 +5,7 @@ import Layout from '../components/layout';
 import ContactParagraph from '../components/ContactParagraph';
 import Tag from '../components/Tag';
 import SearchBar from '../components/SearchBar';
+import Pager from '../components/Pager';
 
 // markup
 const IndexPage = () => (
@@ -25,6 +26,7 @@ const IndexPage = () => (
         experienced team you have, consider working on what’s called the
         developer experience to keep them eager and comfortable.
       </Blurb>
+      <Pager pages={['a', 'b', 'c', 'd', 'e']} currentPage={2} />
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea

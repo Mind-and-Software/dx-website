@@ -1,29 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
 
-import '@fontsource/rubik';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/700.css';
 import 'normalize.css';
 
-import LinkWithArrow from './LinkWithArrow';
+import Header from './Header';
+import Footer from './Footer';
 
 import '../styles/globals/global-styles.scss';
-import { layout, nav } from '../styles/layout.module.scss';
+import { layout } from '../styles/layout.module.scss';
 
 export default function Layout({ children }) {
   return (
     <div className={layout}>
-      <header>
-        <nav className={nav}>
-          <Link to="/">Index</Link>
-          <LinkWithArrow to="/docs/test-article">Markdown test</LinkWithArrow>
-          <LinkWithArrow to="/docs/test-article" type="secondary">
-            Markdown test
-          </LinkWithArrow>
-          <Link to="/docs/test-article">Markdown Test</Link>
-        </nav>
-      </header>
-      {children}
+      <Header />
+      <main aria-label="Main Content" role="main">
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 }

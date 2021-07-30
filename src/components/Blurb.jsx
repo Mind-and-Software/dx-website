@@ -6,7 +6,13 @@ import { blurb } from '../styles/blurb.module.scss';
 const Blurb = ({ children }) => {
   const isEmpty = children === '';
 
-  return isEmpty ? '' : <div className={blurb}>{children}</div>;
+  return isEmpty ? (
+    ''
+  ) : (
+    <aside className={blurb} aria-label="Text Blurb">
+      {children}
+    </aside>
+  );
 };
 
 Blurb.defaultProps = {

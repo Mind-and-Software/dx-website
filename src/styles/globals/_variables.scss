@@ -7,13 +7,14 @@ $color-secondary: color.$coral;
 $color-secondary--light: color.$linen;
 $color-background: color.$white;
 
-$color-text-body: $color-primary--dark;
+$color-text-body: color.$black;
 $color-text-secondary: color.$black;
-$color-text-heading: $color-primary--dark;
-$color-text-heading--small: color.$black;
+$color-text-heading: $color-text-body;
+$color-text-heading--small: $color-text-heading;
 $color-text-field-bg: color.$snow;
 $color-link: $color-secondary;
-$color-link--main-nav: $color-primary--dark;
+$color-link--main-nav: color.$black;
+$color-link--with-arrow: color.$black;
 
 /* typography */
 $font-body: 'Rubik', sans-serif;
@@ -32,6 +33,7 @@ $fs-heading: $fs24;
 $fs-heading--large: $fs44;
 
 $lh-body: 3.2rem;
+$lh-heading--large: 4.8rem;
 
 $bold: 700;
 $weak: 400;
@@ -79,17 +81,25 @@ $blurb-font-color: $color-primary--dark;
 $blurb-padding: 2rem 4rem;
 
 /* tags */
-$tag-bg-color: color.$aqua-haze;
-$tag-bg-color--active: $color-secondary;
-$tag-border-color: color.$gothic;
-$tag-border-color--active: darken($color-secondary, 40%);
-$tag-border-radius: 3.2rem;
+$tag-font-color: color.$black;
 $tag-height: 3.2rem;
-$tag-font-color: color.$gothic;
-$tag-font-color--active: color.$white;
 $tag-font-size: $fs-secondary;
+$tag-separator-color: color.$black;
+$tag-separator-margin: $space-half;
 $tag-width: 8rem;
 
+$toggle-tag-bg-color: color.$alabaster;
+$toggle-tag-bg-color--active: $color-secondary;
+$toggle-tag-border-color: color.$gothic;
+$toggle-tag-border-color--active: darken($color-secondary, 40%);
+$toggle-tag-border-radius: 3.2rem;
+$toggle-tag-font-color: lighten(color.$black, 50);
+$toggle-tag-font-color--active: color.$white;
+
+/* blurb */
+$blurb-bg-color: $color-primary;
+$blurb-font-color: $color-primary--dark;
+$blurb-padding: 2rem 4rem;
 /* pager */
 $pager-fs: $fs-secondary;
 $pager-padding: $space $space $space 0;

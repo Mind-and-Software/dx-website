@@ -9,9 +9,9 @@ const SearchBar = ({ placeholder }) => {
   };
 
   return (
-    <div className="input-container">
+    <div className="input-container" aria-label="Search the page" role="search">
       <input
-        type="text"
+        type="search"
         name="search-bar"
         value={currentValue}
         onChange={handleChange}

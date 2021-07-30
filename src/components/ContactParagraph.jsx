@@ -9,7 +9,7 @@ import {
 } from '../styles/contactParagraph.module.scss';
 
 const ContactParagraph = () => (
-  <div className={contactParagraph}>
+  <aside className={contactParagraph} aria-label="Contact info">
     <div className={headerArea}>
       <AaltoLogo />
       <div className={headerTexts}>
@@ -26,7 +26,7 @@ const ContactParagraph = () => (
     <LinkButton to="/" type="secondary">
       Contact Us
     </LinkButton>
-  </div>
+  </aside>
 );
 
 export default ContactParagraph;

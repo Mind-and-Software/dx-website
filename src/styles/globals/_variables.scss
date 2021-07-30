@@ -73,6 +73,13 @@ $text-field-padding: 2rem;
 $text-field-radius: 0.4rem;
 $text-field-width: 62rem;
 
+/* COMPONENTS */
+
+/* blurb */
+$blurb-bg-color: $color-primary;
+$blurb-font-color: $color-primary--dark;
+$blurb-padding: 2rem 4rem;
+
 /* tags */
 $tag-font-color: color.$black;
 $tag-height: 3.2rem;
@@ -93,3 +100,10 @@ $toggle-tag-font-color--active: color.$white;
 $blurb-bg-color: $color-primary;
 $blurb-font-color: $color-primary--dark;
 $blurb-padding: 2rem 4rem;
+/* pager */
+$pager-fs: $fs-secondary;
+$pager-padding: $space $space $space 0;
+
+$pager-arrow-height: 1.2rem;
+
+$pager-item-padding: 0 $space;

@@ -5,6 +5,7 @@ import Layout from '../components/layout';
 import ContactParagraph from '../components/ContactParagraph';
 import Tag from '../components/Tag';
 import SearchBar from '../components/SearchBar';
+import Pager from '../components/Pager';
 
 // markup
 const IndexPage = () => (
@@ -33,6 +34,7 @@ const IndexPage = () => (
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.
     </p>
+    <Pager pages={['a', 'b', 'c', 'd', 'e']} currentPage={2} />
     <SearchBar placeholder="Search articles" />
     <ContactParagraph />
   </Layout>

@@ -26,7 +26,9 @@ export const AuthorSection = ({
 }) => (
   <div className={vertical ? authorSectionVertical : authorSection}>
     {!vertical && <ProfilePicture url={url} imageSrc={imageSrc} />}
-    <Link to={url} aria-label={`Link to user profile: ${author}`}>{credentials ? `${author},` : author}</Link>
+    <Link to={url} aria-label={`Link to user profile: ${author}`}>
+      {credentials ? `${author},` : author}
+    </Link>
     {credentials}
   </div>
 );
@@ -128,7 +130,7 @@ ArticlePreview.defaultProps = {
   date: '',
   author: '',
   authorUrl: '/',
-  authorImageSrc: 'images/placeholder-avatar.png',
+  authorImageSrc: 'placeholder-avatar.png',
   authorCredentials: '',
   vertical: false,
 };

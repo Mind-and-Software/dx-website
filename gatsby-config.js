@@ -9,6 +9,18 @@ module.exports = {
   pathPrefix: '/dx-website',
   plugins: [
     'gatsby-plugin-mdx',
+    `gatsby-plugin-image`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          backgroundColor: `transparent`,
+        },
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -16,6 +28,14 @@ module.exports = {
         path: './src/pages/markdown',
       },
       __key: 'pages',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: './images',
+      },
+      __key: 'images',
     },
     'gatsby-transformer-remark',
     {

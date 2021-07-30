@@ -16,7 +16,7 @@ const ProfilePicture = ({ url, imageSrc }) => (
 
 ProfilePicture.defaultProps = {
   url: '/',
-  imageSrc: 'images/placeholder-avatar.png',
+  imageSrc: '../../placeholder-avatar.png',
 };
 
 ProfilePicture.propTypes = {

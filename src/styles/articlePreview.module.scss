@@ -9,8 +9,13 @@
   }
   &-vertical {
     @extend .article-preview;
-    height: var.$article-preview-vertical-height;
     flex-direction: row;
+    flex-wrap: wrap;
+    height: var.$article-preview-vertical-height;
+
+    .info-section {
+      max-height: var.$article-preview-vertical-height;
+    }
   }
 }
 
@@ -26,9 +31,10 @@ a {
 }
 
 .row-section {
+  align-items: center;
   display: flex;
   font-size: var.$fs-tertiary;
-  align-items: center;
+  flex-wrap: wrap;
   margin-bottom: var.$article-preview-space;
   div {
     margin-right: var.$article-preview-space;
@@ -38,6 +44,7 @@ a {
 .author-section {
   display: flex;
   font-size: var.$fs-tertiary;
+  flex-wrap: wrap;
   margin-top: var.$article-preview-space;
 
   &-vertical {
@@ -57,6 +64,7 @@ h3 {
 .title-vertical {
   font-size: var.$fs-heading;
   line-height: var.$lh-small;
+  text-overflow: ellipsis;
 }
 
 .image-link-horizontal {

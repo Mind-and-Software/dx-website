@@ -40,7 +40,7 @@ const IndexPage = () => (
       articleUrl="/docs/test-article"
       date={new Date()}
       readingTime="5 min"
-      previewImageSrc="images/placeholder.png"
+      previewImageSrc="placeholder.png"
       author="Test Author"
       authorCredentials="Researcher"
     >
@@ -48,13 +48,14 @@ const IndexPage = () => (
       measuring your own or your team’s DX right now!
     </ArticlePreview>
     <ArticlePreview
-      title="Why should we care about developer experience (DX)?"
+      title="Why should we care about developer experience (DX)"
       tags={['Develop', 'Research']}
       articleUrl="/docs/test-article"
       date={new Date()}
       readingTime="5 min"
-      previewImageSrc="images/placeholder.png"
+      previewImageSrc="laptop-code.png"
       author="Test Author"
+      authorCredentials="Researcher"
       vertical
     />
   </Layout>

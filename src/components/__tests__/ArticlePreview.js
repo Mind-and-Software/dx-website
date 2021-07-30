@@ -38,7 +38,7 @@ describe('ArticlePreview component', () => {
     const container = render(
       <ArticlePreview title="Title" articleUrl="url" previewImageSrc="mock" />
     );
-    expect(container.getByAltText("Title")).toBeInTheDocument();
+    expect(container.getByAltText('Title')).toBeInTheDocument();
   });
 
   it('Renders authorSection', () => {
@@ -53,7 +53,13 @@ describe('ArticlePreview component', () => {
 describe('AuthorSection component', () => {
   it('Renders correctly without credentials', () => {
     const container = render(
-      <AuthorSection author="Author" url="url" credentials="" imageSrc="mock" vertical={false}/>
+      <AuthorSection
+        author="Author"
+        url="url"
+        credentials=""
+        imageSrc="mock"
+        vertical={false}
+      />
     );
     expect(container.getByText('Author')).toBeInTheDocument();
     expect(container.getByTestId('profilepic')).toBeInTheDocument();

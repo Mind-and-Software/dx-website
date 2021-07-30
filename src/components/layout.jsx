@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '@fontsource/rubik';
+import '@fontsource/rubik/400.css';
+import '@fontsource/rubik/700.css';
 import 'normalize.css';
 
 import Header from './Header';

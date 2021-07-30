@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
-import { tag, tagActive } from '../styles/tag.module.scss';
+import { tag, toggleTag, toggleTagActive } from '../styles/tag.module.scss';
 
 const Tag = ({ children, type, action }) => {
   const [isActive, toggleActive] = useState(false);
@@ -11,7 +11,7 @@ const Tag = ({ children, type, action }) => {
 
   if (type === 'link') {
     return (
-      <Link to={action} className={tag}>
+      <Link to={action} className={tag} aria-label={`Goto ${children}`}>
         {children}
       </Link>
     );
@@ -20,8 +20,9 @@ const Tag = ({ children, type, action }) => {
     return (
       <button
         type="button"
-        className={`${tag} ${isActive ? tagActive : ''} `}
+        className={`${toggleTag} ${isActive ? toggleTagActive : ''} `}
         onClick={() => toggle()}
+        aria-label={`Toggle ${isActive ? 'off' : 'on'} filter for ${children} `}
       >
         {children}
       </button>
@@ -37,7 +38,7 @@ Tag.defaultProps = {
 
 Tag.propTypes = {
   action: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.string.isRequired,
   type: PropTypes.string,
 };
 

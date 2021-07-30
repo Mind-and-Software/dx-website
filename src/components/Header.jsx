@@ -11,7 +11,7 @@ const Header = () => (
   <header aria-label="Header" role="banner">
     <Helmet>
       <html lang="en" />
-      <meta charSet="utf-8" />
+      <meta charSet="UTF-8" />
       <title>DX Website</title>
       <meta name="description" content="Website about developer experience" />
     </Helmet>

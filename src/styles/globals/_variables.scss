@@ -8,13 +8,14 @@ $color-secondary--light: color.$linen;
 $color-background: color.$white;
 $color-placeholder: color.$gothic;
 
-$color-text-body: $color-primary--dark;
+$color-text-body: color.$black;
 $color-text-secondary: color.$black;
-$color-text-heading: $color-primary--dark;
-$color-text-heading--small: color.$black;
+$color-text-heading: $color-text-body;
+$color-text-heading--small: $color-text-heading;
 $color-text-field-bg: color.$snow;
 $color-link: $color-secondary;
-$color-link--main-nav: $color-primary--dark;
+$color-link--main-nav: color.$black;
+$color-link--with-arrow: color.$black;
 
 /* typography */
 $font-body: 'Rubik', sans-serif;
@@ -39,6 +40,10 @@ $fs-heading--large: $fs44;
 $lh-body: 3.2rem;
 $lh-heading: 3.6rem;
 $lh-small: 2.4rem;
+$lh-heading--large: 4.8rem;
+
+$bold: 700;
+$weak: 400;
 
 /* spacing */
 $space: 1.6rem;
@@ -61,6 +66,12 @@ $button-width--link: 38.4rem;
 $fs-button: $fs-secondary;
 $lh-button: $button-height;
 
+/* contact paragraph */
+$contact-paragraph-width: 34rem;
+$contact-paragraph-header-lh: 2rem;
+$contact-paragraph-content-space: 9rem;
+$contact-paragraph-logo-space: 2rem;
+
 /* text fields */
 $text-field-background: $color-text-field-bg;
 $text-field-border: 0.1rem solid rgba(0, 0, 0, 0.24);
@@ -69,17 +80,28 @@ $text-field-padding: 2rem;
 $text-field-radius: 0.4rem;
 $text-field-width: 62rem;
 
+/* COMPONENTS */
+
+/* blurb */
+$blurb-bg-color: $color-primary;
+$blurb-font-color: $color-primary--dark;
+$blurb-padding: 2rem 4rem;
+
 /* tags */
-$tag-bg-color: color.$aqua-haze;
-$tag-bg-color--active: $color-secondary;
-$tag-border-color: color.$gothic;
-$tag-border-color--active: darken($color-secondary, 40%);
-$tag-border-radius: 3.2rem;
+$tag-font-color: color.$black;
 $tag-height: 3.2rem;
-$tag-font-color: color.$gothic;
-$tag-font-color--active: color.$white;
 $tag-font-size: $fs-secondary;
+$tag-separator-color: color.$black;
+$tag-separator-margin: $space-half;
 $tag-width: 8rem;
+
+$toggle-tag-bg-color: color.$alabaster;
+$toggle-tag-bg-color--active: $color-secondary;
+$toggle-tag-border-color: color.$gothic;
+$toggle-tag-border-color--active: darken($color-secondary, 40%);
+$toggle-tag-border-radius: 3.2rem;
+$toggle-tag-font-color: lighten(color.$black, 50);
+$toggle-tag-font-color--active: color.$white;
 
 /* blurb */
 $blurb-bg-color: $color-primary;
@@ -100,3 +122,10 @@ $profile-image-background: $color-placeholder;
 $profile-image-border-radius: 20rem;
 $profile-image-height: 3.2rem;
 $profile-image-width: 3.2rem;
+/* pager */
+$pager-fs: $fs-secondary;
+$pager-padding: $space $space $space 0;
+
+$pager-arrow-height: 1.2rem;
+
+$pager-item-padding: 0 $space;

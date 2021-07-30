@@ -7,7 +7,11 @@ import { profilePicture } from '../styles/profilePicture.module.scss';
 
 const ProfilePicture = ({ url, imageData }) => (
   <Link to={url} aria-label="Picture of the author of this article">
-    <Image className={profilePicture} imageData={imageData} alt="Article preview profilepicture"/>
+    <Image
+      className={profilePicture}
+      imageData={imageData}
+      alt="Article preview profilepicture"
+    />
   </Link>
 );
 

@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const Image = ({ className, imageData, alt }) => {
   const image = getImage(imageData);
-  return <GatsbyImage className={className}image={image} alt={alt} />;
+  return <GatsbyImage className={className} image={image} alt={alt} />;
 };
 
 Image.defaultProps = {

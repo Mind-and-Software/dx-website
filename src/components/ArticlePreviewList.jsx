@@ -16,10 +16,10 @@ const ArticlePreviewList = ({
   previewImageEdges,
   authorImageEdges,
 }) => {
-  const sortByDate = (object1, object2) => object2.date - object1.date; 
+  const sortByDate = (object1, object2) => object2.date - object1.date;
   const sortedData = previewData.sort(sortByDate);
 
-  const renderColumn = (columnData) => (
+  const renderColumn = (columnData) =>
     columnData.map(
       ({
         title,
@@ -58,23 +58,25 @@ const ArticlePreviewList = ({
           </li>
         );
       }
-    )
-  )
+    );
+
+  const firstColumn = sortedData.slice(0, 3);
+  const secondColumn = sortedData.slice(3, 6);
+  const thirdColumn = sortedData.slice(6, 9);
   return (
     <ul className={articlePreviewList} aria-label="List of article previews">
-      <ul className={columnFirst}>
-        {renderColumn(sortedData.slice(0, 3))}
-      </ul>
-      <ul className={columnSecond}>
-        {renderColumn(sortedData.slice(3, 6))}
-      </ul>
-      <ul className={columnThird}>
-        {renderColumn(sortedData.slice(6, 9))}
-      </ul>
+      {firstColumn.length > 0 && (
+        <ul className={columnFirst}>{renderColumn(firstColumn)}</ul>
+      )}
+      {secondColumn.length > 0 && (
+        <ul className={columnSecond}>{renderColumn(secondColumn)}</ul>
+      )}
+      {thirdColumn.length > 0 && (
+        <ul className={columnThird}>{renderColumn(thirdColumn)}</ul>
+      )}
     </ul>
-
-  )
-}
+  );
+};
 
 ArticlePreviewList.propTypes = {
   previewData: PropTypes.arrayOf(PropTypes.object).isRequired,

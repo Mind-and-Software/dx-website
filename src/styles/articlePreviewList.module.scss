@@ -14,11 +14,17 @@
 
   &-first {
     @extend .column;
+    @include mixin.breakpoint('md', max) {
+      margin-right: 0;
+    }
   }
   &-second {
     @extend .column;
     @include mixin.breakpoint('md', max) {
       visibility: hidden;
+    }
+    @include mixin.breakpoint('lg', max) {
+      margin-right: 0;
     }
   }
   &-third {
@@ -26,5 +32,6 @@
     @include mixin.breakpoint('lg', max) {
       visibility: hidden;
     }
+    margin-right: 0;
   }
 }

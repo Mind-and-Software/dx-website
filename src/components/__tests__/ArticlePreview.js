@@ -73,7 +73,7 @@ describe('ArticlePreview component', () => {
         description="Example description"
       />
     );
-    expect(container.getByText("Example description")).toBeInTheDocument();
+    expect(container.getByText('Example description')).toBeInTheDocument();
   });
 
   it('Renders image', () => {

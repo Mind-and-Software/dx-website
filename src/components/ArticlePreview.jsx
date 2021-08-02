@@ -9,7 +9,7 @@ import {
   infoSection,
   imageLink,
   dot,
-  descriptionEllipsis
+  descriptionEllipsis,
 } from '../styles/articlePreview.module.scss';
 import Tag from './Tag';
 import ImageLink from './ImageLink';
@@ -89,8 +89,8 @@ const getDescriptionClassName = (description) => {
   if (description.length > 100) {
     return descriptionEllipsis;
   }
-  return ''
-}
+  return '';
+};
 
 const ArticlePreview = ({
   articleUrl,
@@ -126,7 +126,9 @@ const ArticlePreview = ({
         <Link to={articleUrl}>
           <h3>{title}</h3>
         </Link>
-        <div className={getDescriptionClassName(description)}>{description}</div>
+        <div className={getDescriptionClassName(description)}>
+          {description}
+        </div>
         {authorName && (
           <AuthorSection
             name={authorName}

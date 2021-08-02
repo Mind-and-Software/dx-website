@@ -9,6 +9,7 @@ $color-background: color.$white;
 
 $color-text-body: color.$black;
 $color-text-secondary: color.$black;
+$color-text-article: color.$mine-shaft;
 $color-text-heading: $color-text-body;
 $color-text-heading--small: $color-text-heading;
 $color-text-field-bg: color.$snow;
@@ -83,6 +84,7 @@ $text-field-width: 62rem;
 /* blurb */
 $blurb-bg-color: $color-primary;
 $blurb-font-color: $color-primary--dark;
+$blurb-margin: 3rem 0;
 $blurb-padding: 2rem 4rem;
 
 /* hero */
@@ -117,3 +119,8 @@ $pager-padding: $space $space $space 0;
 $pager-arrow-height: 1.2rem;
 
 $pager-item-padding: 0 $space;
+
+/* pages */
+$article-heading-margin: $space 0;
+$article-img-height: 30rem;
+$article-img-width: 80rem;

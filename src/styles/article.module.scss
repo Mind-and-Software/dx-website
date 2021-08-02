@@ -1,0 +1,16 @@
+.article {
+  font-size: var.$font-body;
+
+  &-content {
+    color: var.$color-text-article;
+  }
+
+  &-image {
+    max-width: var.$article-img-width;
+    max-height: var.$article-img-height;
+  }
+}
+
+h1 {
+  margin: var.$article-heading-margin;
+}

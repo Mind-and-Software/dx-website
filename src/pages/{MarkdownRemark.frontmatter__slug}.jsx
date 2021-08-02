@@ -1,28 +1,54 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
+import Blurb from '../components/Blurb';
 import Layout from '../components/layout';
+import RelatedArticles from '../components/RelatedArticles';
+import Tag from '../components/Tag';
 
-export default function Template({
-  data, // this prop will be injected by the GraphQL query below.
-}) {
+import {
+  article,
+  articleBlurb,
+  articleContent,
+  articleImage,
+} from '../styles/article.module.scss';
+
+export default function Article({ data }) {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
 
+  console.log('feature:', frontmatter.featuredImage);
+
+  const featuredImgFluid = frontmatter.featuredImage.childImageSharp.fluid;
+
   return (
     <Layout>
-      <div className="blog-post-container">
-        <div className="blog-post">
-          <h1>{frontmatter.title}</h1>
-          <h2>{frontmatter.date}</h2>
-          <div
-            className="blog-post-content"
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
+      <article className={article}>
+        <div aria-label="tags">
+          {frontmatter.tags &&
+            frontmatter.tags.map((tag) => (
+              <Tag type="link" action="/" key={tag}>
+                {tag}
+              </Tag>
+            ))}
+          {frontmatter.readingTime && (
+            <span>{`${frontmatter.readingTime} min read`}</span>
+          )}
+          <span>{frontmatter.date}</span>
         </div>
-      </div>
+        <h1>{frontmatter.title}</h1>
+        <p aria-label="author">{frontmatter.author}</p>
+        <Img fluid={featuredImgFluid} className={articleImage} />
+        <Blurb className={articleBlurb}>{frontmatter.blurb}</Blurb>
+        <div
+          className={articleContent}
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </article>
+      <RelatedArticles />
     </Layout>
   );
 }
@@ -31,9 +57,20 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "DD MMMM, YYYY")
         slug
         title
+        author
+        blurb
+        tags
+        readingTime
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

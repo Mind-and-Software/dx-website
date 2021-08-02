@@ -6,6 +6,7 @@ import '@fontsource/rubik';
 import 'normalize.css';
 
 import LinkWithArrow from './LinkWithArrow';
+import Navbar from './Navbar';
 
 import '../styles/globals/global-styles.scss';
 import { layout, nav } from '../styles/layout.module.scss';
@@ -14,6 +15,7 @@ export default function Layout({ children }) {
   return (
     <div className={layout}>
       <header>
+        <Navbar/>
         <nav className={nav}>
           <Link to="/">Index</Link>
           <LinkWithArrow to="/docs/test-article">Markdown test</LinkWithArrow>

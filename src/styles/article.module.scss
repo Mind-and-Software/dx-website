@@ -1,0 +1,31 @@
+.article {
+  font-size: var.$font-body;
+  max-width: var.$article-max-width;
+
+  &-content {
+    color: var.$color-text-article;
+  }
+
+  &-image {
+    margin: var.$article-img-margin;
+    max-height: var.$article-img-height;
+  }
+
+  .meta {
+    font-size: var.$fs-secondary;
+  }
+}
+
+.tagSeparator {
+  margin: var.$tag-separator-margin;
+}
+
+h1 {
+  margin: var.$article-heading-margin;
+}
+
+li {
+  display: list-item;
+  list-style-type: unset;
+  width: auto;
+}

@@ -24,6 +24,10 @@ a {
   }
 }
 
+ul {
+  list-style-type: none;
+}
+
 button {
   background-color: var.$button-bg-color--secondary;
   border-radius: var.$button-border-radius;

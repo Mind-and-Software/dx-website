@@ -83,12 +83,7 @@ describe('ArticlePreview component', () => {
 describe('AuthorSection component', () => {
   it('Renders correctly without credentials', () => {
     const container = render(
-      <AuthorSection
-        name="Author"
-        url="url"
-        credentials=""
-        image={mockImage}
-      />
+      <AuthorSection name="Author" url="url" credentials="" image={mockImage} />
     );
     expect(container.getByText('Author')).toBeInTheDocument();
     expect(container.getByTestId('profilepic')).toBeInTheDocument();
@@ -100,7 +95,7 @@ describe('AuthorSection component', () => {
         name="Author"
         url="url"
         credentials="Researcher"
-        image=''
+        image=""
       />
     );
     expect(container.getByText('Author,')).toBeInTheDocument();

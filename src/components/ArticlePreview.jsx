@@ -67,7 +67,7 @@ const renderDate = (date) => {
   ];
   if (date) {
     return (
-      <div>{`${date.getDate()} ${
+      <div aria-label="Release date of the article">{`${date.getDate()} ${
         monthNames[date.getMonth()]
       }, ${date.getFullYear()}`}</div>
     );
@@ -77,7 +77,9 @@ const renderDate = (date) => {
 
 const renderReadingTime = (readingTime) => {
   if (readingTime) {
-    return <div>{`${readingTime} read`}</div>;
+    return (
+      <div aria-label="Reading time of the article">{`${readingTime} read`}</div>
+    );
   }
   return '';
 };
@@ -95,7 +97,7 @@ const ArticlePreview = ({
   authorImage,
   authorUrl,
 }) => (
-  <div className={articlePreview}>
+  <div className={articlePreview} aria-label="Article preview">
     {previewImage && (
       <div className={imageLink}>
         <ImageLink

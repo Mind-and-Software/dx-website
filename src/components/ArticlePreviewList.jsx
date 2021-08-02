@@ -13,7 +13,7 @@ const ArticlePreviewList = ({
   previewImageEdges,
   authorImageEdges,
 }) => (
-  <div className={articlePreviewList}>
+  <ul className={articlePreviewList} aria-label="List of article previews">
     {previewData.map(
       ({
         title,
@@ -35,7 +35,7 @@ const ArticlePreviewList = ({
           (edge) => edge.node.base === authorImageName
         );
         return (
-          <div key={title} className={listItem}>
+          <li key={title} className={listItem}>
             <ArticlePreview
               title={title}
               tags={tags}
@@ -50,11 +50,11 @@ const ArticlePreviewList = ({
             >
               {content}
             </ArticlePreview>
-          </div>
+          </li>
         );
       }
     )}
-  </div>
+  </ul>
 );
 
 ArticlePreviewList.propTypes = {

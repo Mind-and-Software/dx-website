@@ -6,5 +6,6 @@
 }
 
 .list-item {
+  max-width: var.$article-preview-width;
   margin-top: var.$space-double;
 }

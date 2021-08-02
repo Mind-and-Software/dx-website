@@ -14,3 +14,9 @@
 h1 {
   margin: var.$article-heading-margin;
 }
+
+li {
+  display: list-item;
+  list-style-type: unset;
+  width: auto;
+}

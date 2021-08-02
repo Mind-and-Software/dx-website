@@ -15,14 +15,14 @@ The Developer Experience (DX) describes the experience developers have while usi
 
 We define a great DX by these four factors:
 
-1. Fitting architecture
+1. Fitting architecture  
    Find a compromise between simple and more complex architecture. Simple means more pain later, complex brings more pain now. Consider the size of your project and your team. Good architecture is difficult to break, has short feedback loops and it has a great introspection.
 
-2. Great tools
+2. Great tools  
    Automate where possible. Repetitive tasks are exhausting. Automation lets your team understand the configurations.
 
-3. Processes to back that all up
+3. Processes to back that all up  
    Processes work as automated checklists, and give you have consistent steps that need to be done each time. Defined processes help you with team discipline. Use processes for QA, deployment, feedback, and for onboarding if your company is big enough.
 
-4. Nontoxic team culture
+4. Nontoxic team culture  
    Define the purpose of your company: making money should not be the only goal. Culture itself is the most important brainware (a software that runs in the brain)

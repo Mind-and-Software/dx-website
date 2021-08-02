@@ -20,6 +20,17 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-transformer-remark',
     'gatsby-transformer-remark',
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          backgroundColor: `transparent`,
+        },
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -31,9 +42,12 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: './src/images',
+        name: 'images',
+        path: './images',
       },
+      __key: 'images',
     },
+    'gatsby-transformer-remark',
     {
       resolve: 'gatsby-plugin-sass',
       options: {

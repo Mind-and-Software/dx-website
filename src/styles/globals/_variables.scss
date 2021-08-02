@@ -6,6 +6,7 @@ $color-primary--dark: color.$blumine;
 $color-secondary: color.$coral;
 $color-secondary--light: color.$linen;
 $color-background: color.$white;
+$color-placeholder: color.$gothic;
 
 $color-text-body: color.$black;
 $color-text-secondary: color.$black;
@@ -24,17 +25,23 @@ $font-heading: $font-body;
 $font-button: $font-body;
 
 $fs-base: 62.5%; // only for setting the font size for base html element
+$fs14: 1.4rem;
 $fs16: 1.6rem;
 $fs20: 2rem;
 $fs24: 2.4rem;
+$fs32: 3.2rem;
 $fs44: 4.4rem;
 
 $fs-body: $fs20;
 $fs-secondary: $fs16;
+$fs-tertiary: $fs14;
 $fs-heading: $fs24;
+$fs-heading--medium: $fs32;
 $fs-heading--large: $fs44;
 
 $lh-body: 3.2rem;
+$lh-heading: 3.6rem;
+$lh-small: 2.4rem;
 $lh-heading--large: 4.8rem;
 
 $bold: 700;
@@ -94,7 +101,7 @@ $hero-padding--top: $space-double;
 /* tags */
 $tag-font-color: color.$black;
 $tag-height: 3.2rem;
-$tag-font-size: $fs-secondary;
+$tag-font-size: $fs-tertiary;
 $tag-separator-color: color.$black;
 $tag-separator-margin: $space-half;
 $tag-width: 8rem;
@@ -112,6 +119,21 @@ $blurb-bg-color: $color-primary;
 $blurb-font-color: $color-primary--dark;
 $blurb-padding: 2rem 4rem;
 
+/* article preview */
+$article-preview-width: 38.4rem;
+$article-preview-img-space: 1.4rem;
+$article-preview-space: 0.4rem;
+$article-preview-space-double: 2 * $article-preview-space;
+$article-preview-row-section-margin-bottom: 0.1rem;
+
+/* article preview list */
+$preview-list-height: 100rem;
+
+/* profile picture */
+$profile-image-background: $color-placeholder;
+$profile-image-border-radius: 20rem;
+$profile-image-height: 3.2rem;
+$profile-image-width: 3.2rem;
 /* pager */
 $pager-fs: $fs-secondary;
 $pager-padding: $space $space $space 0;

@@ -19,8 +19,6 @@ export default function Article({ data }) {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark;
 
-  console.log('feature:', frontmatter.featuredImage);
-
   const featuredImgFluid = frontmatter.featuredImage.childImageSharp.fluid;
 
   return (

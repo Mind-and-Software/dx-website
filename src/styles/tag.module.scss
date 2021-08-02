@@ -45,13 +45,6 @@
   font-size: var.$tag-font-size;
   font-weight: var.$bold;
   text-transform: uppercase;
-
-  &::after {
-    content: '\2022';
-
-    color: var.$tag-separator-color;
-    margin: var.$tag-separator-margin;
-  }
 }
 
 a.tag {

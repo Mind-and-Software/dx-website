@@ -1,15 +1,52 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
+import { graphql } from 'gatsby';
 
 import Blurb from '../components/Blurb';
 import Hero from '../components/Hero';
 import Layout from '../components/layout';
 import ContactParagraph from '../components/ContactParagraph';
+import Pager from '../components/Pager';
 import Tag from '../components/Tag';
 import SearchBar from '../components/SearchBar';
-import Pager from '../components/Pager';
+import ArticlePreviewList from '../components/ArticlePreviewList';
+
+const previewData = [
+  {
+    title: 'Your first DX survey',
+    tags: ['Develop', 'Research'],
+    articleUrl: '/docs/test-article',
+    date: new Date(),
+    readingTime: '5 min',
+    previewImageName: 'workstation.png',
+    authorName: 'Test Author',
+    authorCredentials: 'Researcher',
+    authorImageName: 'linuxoid.png',
+    content: `Learn how to design your first Developer Experience survey and start
+    measuring your own or your team’s DX right now!`,
+  },
+  {
+    title: 'Why should we care about developer experience (DX)',
+    tags: ['Develop'],
+    articleUrl: '/docs/test-article',
+    readingTime: '5 min',
+    previewImageName: 'laptop-code.png',
+    authorName: 'Test Author',
+    authorCredentials: 'Manager',
+  },
+  {
+    title: 'How developers around the world experience their work',
+    tags: ['Develop', 'Research'],
+    articleUrl: '/docs/test-article',
+    date: new Date(),
+    authorName: 'Test Author',
+    authorCredentials: 'Developer',
+    authorImageName: 'woman-phone.png',
+  },
+];
 
 // markup
-const IndexPage = () => (
+const IndexPage = ({ data }) => (
   <Layout>
     <Hero />
     <h2 id="for-developers">Grow as a developer</h2>
@@ -37,10 +74,52 @@ const IndexPage = () => (
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.
     </p>
-    <Pager pages={['a', 'b', 'c', 'd', 'e']} currentPage={2} />
     <SearchBar placeholder="Search articles" />
+    <ArticlePreviewList
+      previewData={previewData}
+      previewImageEdges={data.previewImages.edges}
+      authorImageEdges={data.authorImages.edges}
+    />
+    <Pager pages={['a', 'b', 'c', 'd', 'e']} currentPage={2} />
     <ContactParagraph />
   </Layout>
 );
-
 export default IndexPage;
+
+// Returns all the images in the directory frontpage
+export const imageQuery = graphql`
+  query {
+    previewImages: allFile(
+      filter: {
+        extension: { regex: "/jpg|png|jpeg/" }
+        relativeDirectory: { eq: "frontpage" }
+      }
+    ) {
+      edges {
+        node {
+          id
+          base
+          childImageSharp {
+            gatsbyImageData(width: 384, height: 184)
+          }
+        }
+      }
+    }
+    authorImages: allFile(
+      filter: {
+        extension: { regex: "/jpg|png|jpeg/" }
+        relativeDirectory: { eq: "profilepics" }
+      }
+    ) {
+      edges {
+        node {
+          id
+          base
+          childImageSharp {
+            gatsbyImageData(width: 40, height: 40)
+          }
+        }
+      }
+    }
+  }
+`;

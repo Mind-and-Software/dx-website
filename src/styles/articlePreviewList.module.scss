@@ -1,0 +1,11 @@
+.article-preview-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: var.$preview-list-height;
+}
+
+.list-item {
+  max-width: var.$article-preview-width;
+  margin-top: var.$space-double;
+}

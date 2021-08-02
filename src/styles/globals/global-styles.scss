@@ -73,7 +73,9 @@ h2 {
   line-height: var.$lh-heading--large;
 }
 h3 {
-  font-size: var.$fs-heading;
+  font-size: var.$fs-heading--medium;
+  font-weight: bold;
+  line-height: var.$lh-heading;
 }
 h4 {
   font-size: var.$fs-heading;

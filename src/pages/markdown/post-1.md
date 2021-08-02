@@ -2,7 +2,8 @@
 slug: '/docs/test-article'
 date: '2021-06-15'
 title: 'Why should you care about Developer Experience (DX)'
-featuredImage: ../../images/example.jpeg
+featuredImage: ../../../images/placeholder.png
+imageAlt: 'Cute bunny'
 author: 'Marek Gajda CTO - The Software House'
 tags: ['develop', 'manage']
 readingTime: '6'

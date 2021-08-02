@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import Blurb from '../components/Blurb';
 import Layout from '../components/layout';
@@ -10,36 +10,49 @@ import Tag from '../components/Tag';
 
 import {
   article,
-  articleBlurb,
   articleContent,
   articleImage,
+  meta,
+  tagSeparator,
 } from '../styles/article.module.scss';
 
 export default function Article({ data }) {
-  const { markdownRemark } = data; // data.markdownRemark holds your post data
+  const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
 
-  const featuredImgFluid = frontmatter.featuredImage.childImageSharp.fluid;
+  const featuredImg = frontmatter.featuredImage.childImageSharp.gatsbyImageData;
 
   return (
     <Layout>
       <article className={article}>
-        <div aria-label="tags">
-          {frontmatter.tags &&
-            frontmatter.tags.map((tag) => (
-              <Tag type="link" action="/" key={tag}>
-                {tag}
-              </Tag>
-            ))}
+        <div aria-label="Article info" className={meta}>
+          <span aria-label="Tags">
+            {frontmatter.tags &&
+              frontmatter.tags.map((tag) => (
+                <>
+                  <Tag type="link" action="/" key={tag}>
+                    {tag}
+                  </Tag>
+                  <span className={tagSeparator}>•</span>
+                </>
+              ))}
+          </span>
           {frontmatter.readingTime && (
-            <span>{`${frontmatter.readingTime} min read`}</span>
+            <span>
+              {`${frontmatter.readingTime} min read`}
+              <span className={tagSeparator}>•</span>
+            </span>
           )}
           <span>{frontmatter.date}</span>
         </div>
         <h1>{frontmatter.title}</h1>
         <p aria-label="author">{frontmatter.author}</p>
-        <Img fluid={featuredImgFluid} className={articleImage} />
-        <Blurb className={articleBlurb}>{frontmatter.blurb}</Blurb>
+        <GatsbyImage
+          image={featuredImg}
+          className={articleImage}
+          alt={frontmatter.imageAlt}
+        />
+        <Blurb>{frontmatter.blurb}</Blurb>
         <div
           className={articleContent}
           // eslint-disable-next-line react/no-danger
@@ -64,11 +77,10 @@ export const pageQuery = graphql`
         readingTime
         featuredImage {
           childImageSharp {
-            fluid(maxWidth: 800) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 800)
           }
         }
+        imageAlt
       }
     }
   }

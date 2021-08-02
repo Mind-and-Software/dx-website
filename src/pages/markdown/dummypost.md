@@ -3,7 +3,8 @@ slug: '/docs/dummypost'
 date: '2021-07-30'
 title: 'Dummy Article'
 author: 'Dummy Dumdum - Dummy Inc'
-featuredImage: ../../images/placeholder.png
+featuredImage: ../../../images/placeholder.png
+imageAlt: 'Cute bunny'
 tags: ['dummy', 'test', 'article']
 readingTime: '1'
 blurb: 'Dummy blurb'

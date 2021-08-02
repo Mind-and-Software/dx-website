@@ -7,7 +7,6 @@ import {
   linkWithArrow,
   linkWithArrowBigger,
   linkText,
-  arrow,
 } from '../styles/linkWithArrow.module.scss';
 
 const LinkWithArrow = ({ children, to, type }) => (
@@ -16,7 +15,7 @@ const LinkWithArrow = ({ children, to, type }) => (
     className={type === 'secondary' ? linkWithArrowBigger : linkWithArrow}
   >
     <div className={linkText}>{children}</div>
-    <LinkArrow className={arrow}/>
+    <LinkArrow/>
   </Link>
 );
 

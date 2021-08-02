@@ -3,6 +3,7 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 
 import Blurb from '../components/Blurb';
+import Hero from '../components/Hero';
 import Layout from '../components/layout';
 import ContactParagraph from '../components/ContactParagraph';
 import Pager from '../components/Pager';
@@ -47,13 +48,14 @@ const previewData = [
 // markup
 const IndexPage = ({ data }) => (
   <Layout>
-    <title>DX Website</title>
-    <h1>Hello World!</h1>
+    <Hero />
+    <h2 id="for-developers">Grow as a developer</h2>
     <Tag>Hello</Tag>
     <Tag type="link" action="/docs/test-article">
       Link
     </Tag>
     <Tag type="toggle">Toggle</Tag>
+    <h2 id="for-managers">Work better with developers</h2>
     <Blurb>
       <b>TL;DR </b>
       Knowledgeable developers are like royalty that’s hard to please. But
@@ -62,6 +64,7 @@ const IndexPage = ({ data }) => (
       experienced team you have, consider working on what’s called the developer
       experience to keep them eager and comfortable.
     </Blurb>
+    <h2 id="for-researchers">Research developer experience</h2>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim

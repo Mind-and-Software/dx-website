@@ -13,6 +13,7 @@ $color-text-secondary: color.$black;
 $color-text-heading: $color-text-body;
 $color-text-heading--small: $color-text-heading;
 $color-text-field-bg: color.$snow;
+$color-hero-link: $color-text-body;
 $color-link: $color-secondary;
 $color-link--main-nav: color.$black;
 $color-link--with-arrow: color.$black;
@@ -49,6 +50,10 @@ $weak: 400;
 $space: 1.6rem;
 $space-half: 0.5 * $space;
 $space-double: 2 * $space;
+
+/* gutters */
+$margin-body: 10rem;
+$margin-body-mobile: 2rem;
 
 /* box-shadow */
 $box-shadow: 0px 4px 4px lighten(color.$black, 75%);
@@ -87,6 +92,10 @@ $blurb-bg-color: $color-primary;
 $blurb-font-color: $color-primary--dark;
 $blurb-padding: 2rem 4rem;
 
+/* hero */
+$hero-padding--left: $space-double;
+$hero-padding--top: $space-double;
+
 /* tags */
 $tag-font-color: color.$black;
 $tag-height: 3.2rem;
@@ -114,6 +123,9 @@ $article-preview-img-space: 1.4rem;
 $article-preview-space: 0.4rem;
 $article-preview-space-double: 2 * $article-preview-space;
 $article-preview-row-section-margin-bottom: 0.1rem;
+
+/* article preview list */
+$preview-list-height: 100rem;
 
 /* profile picture */
 $profile-image-background: $color-placeholder;

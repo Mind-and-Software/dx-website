@@ -20,7 +20,7 @@ export default function Article({ data }) {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
 
-  const featuredImg = frontmatter.featuredImage.childImageSharp.gatsbyImageData;
+  const featuredImg = getImage(frontmatter.featuredImage);
 
   return (
     <Layout>

@@ -136,7 +136,7 @@ const IndexPage = ({ data }) => (
     />
     <PreviewColumn
       header="Discussions"
-      columnPreviewData={previewData}
+      columnPreviewData={previewData.slice(0, 3)}
       previewImageEdges={data.previewImages.edges}
       authorImageEdges={data.authorImages.edges}
     />

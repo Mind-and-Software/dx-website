@@ -9,6 +9,7 @@ import {
   infoSection,
   imageLink,
   dot,
+  descriptionEllipsis,
 } from '../styles/articlePreview.module.scss';
 import Tag from './Tag';
 import ImageLink from './ImageLink';
@@ -84,14 +85,21 @@ const renderReadingTime = (readingTime) => {
   return '';
 };
 
+const getDescriptionClassName = (description) => {
+  if (description.length > 100) {
+    return descriptionEllipsis;
+  }
+  return '';
+};
+
 const ArticlePreview = ({
-  children,
   articleUrl,
   previewImage,
   tags,
   title,
   readingTime,
   date,
+  description,
   authorName,
   authorCredentials,
   authorImage,
@@ -118,7 +126,9 @@ const ArticlePreview = ({
         <Link to={articleUrl}>
           <h3>{title}</h3>
         </Link>
-        {children}
+        <div className={getDescriptionClassName(description)}>
+          {description}
+        </div>
         {authorName && (
           <AuthorSection
             name={authorName}
@@ -133,11 +143,11 @@ const ArticlePreview = ({
 );
 
 ArticlePreview.defaultProps = {
-  children: '',
   previewImage: '',
   tags: [],
   readingTime: '',
   date: '',
+  description: '',
   authorName: '',
   authorUrl: '/',
   authorImage: '',
@@ -145,13 +155,13 @@ ArticlePreview.defaultProps = {
 };
 
 ArticlePreview.propTypes = {
-  children: PropTypes.node,
   articleUrl: PropTypes.string.isRequired,
   previewImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   tags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   readingTime: PropTypes.string,
   date: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
+  description: PropTypes.node,
   authorName: PropTypes.string,
   authorUrl: PropTypes.string,
   authorImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

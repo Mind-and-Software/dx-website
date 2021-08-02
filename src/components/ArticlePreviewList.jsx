@@ -6,15 +6,21 @@ import ArticlePreview from './ArticlePreview';
 import {
   articlePreviewList,
   listItem,
+  columnFirst,
+  columnSecond,
+  columnThird,
 } from '../styles/articlePreviewList.module.scss';
 
 const ArticlePreviewList = ({
   previewData,
   previewImageEdges,
   authorImageEdges,
-}) => (
-  <ul className={articlePreviewList} aria-label="List of article previews">
-    {previewData.map(
+}) => {
+  const sortByDate = (object1, object2) => object2.date - object1.date;
+  const sortedData = previewData.sort(sortByDate);
+
+  const renderColumn = (columnData) =>
+    columnData.map(
       ({
         title,
         articleUrl,
@@ -26,7 +32,7 @@ const ArticlePreviewList = ({
         authorCredentials,
         authorUrl,
         authorImageName,
-        content,
+        description,
       }) => {
         const previewImage = previewImageEdges.find(
           (edge) => edge.node.base === previewImageName
@@ -41,21 +47,51 @@ const ArticlePreviewList = ({
               tags={tags}
               articleUrl={articleUrl}
               date={date}
+              description={description}
               readingTime={readingTime}
               previewImage={previewImage}
               authorName={authorName}
               authorCredentials={authorCredentials}
               authorUrl={authorUrl}
               authorImage={authorImage}
-            >
-              {content}
-            </ArticlePreview>
+            />
           </li>
         );
       }
-    )}
-  </ul>
-);
+    );
+
+  const firstColumn = sortedData.slice(0, 3);
+  const secondColumn = sortedData.slice(3, 6);
+  const thirdColumn = sortedData.slice(6, 9);
+  return (
+    <ul className={articlePreviewList} aria-label="List of article previews">
+      {firstColumn.length > 0 && (
+        <ul
+          className={columnFirst}
+          aria-label="First column of article previews"
+        >
+          {renderColumn(firstColumn)}
+        </ul>
+      )}
+      {secondColumn.length > 0 && (
+        <ul
+          className={columnSecond}
+          aria-label="Second column of article previews"
+        >
+          {renderColumn(secondColumn)}
+        </ul>
+      )}
+      {thirdColumn.length > 0 && (
+        <ul
+          className={columnThird}
+          aria-label="Third column of article previews"
+        >
+          {renderColumn(thirdColumn)}
+        </ul>
+      )}
+    </ul>
+  );
+};
 
 ArticlePreviewList.propTypes = {
   previewData: PropTypes.arrayOf(PropTypes.object).isRequired,

@@ -36,7 +36,7 @@ AuthorSection.propTypes = {
   credentials: PropTypes.string.isRequired,
 };
 
-const Dot = () => <div className={dot}>•</div>;
+const Dot = () => <span className={dot}>•</span>;
 
 const renderTags = (tags) => {
   if (tags.length > 0) {

@@ -10,6 +10,7 @@ $color-placeholder: color.$gothic;
 
 $color-text-body: color.$black;
 $color-text-secondary: color.$black;
+$color-text-article: color.$mine-shaft;
 $color-text-heading: $color-text-body;
 $color-text-heading--small: $color-text-heading;
 $color-text-field-bg: color.$snow;
@@ -87,14 +88,46 @@ $text-field-width: 62rem;
 
 /* COMPONENTS */
 
+/* article preview */
+$article-preview-width: 38.4rem;
+$article-preview-img-space: 1.4rem;
+$article-preview-space: 0.4rem;
+$article-preview-space-double: 2 * $article-preview-space;
+$article-preview-row-section-margin-bottom: 0.1rem;
+
+/* article preview list */
+$article-list-item-margin-top: 4.8rem;
+$article-list-column-margin-right: 5.1rem;
+
 /* blurb */
 $blurb-bg-color: $color-primary;
 $blurb-font-color: $color-primary--dark;
+$blurb-margin: 3rem 0;
 $blurb-padding: 2rem 4rem;
 
 /* hero */
 $hero-padding--left: $space-double;
 $hero-padding--top: $space-double;
+
+/* pager */
+$pager-fs: $fs-secondary;
+$pager-padding: $space $space $space 0;
+
+$pager-arrow-height: 1.2rem;
+
+$pager-item-padding: 0 $space;
+
+/* pages */
+$article-heading-margin: $space 0;
+$article-img-height: 30rem;
+$article-img-margin: $space-double 0;
+$article-max-width: 80rem;
+
+/* profile picture */
+$profile-image-background: $color-placeholder;
+$profile-image-border-radius: 20rem;
+$profile-image-height: 3.2rem;
+$profile-image-width: 3.2rem;
 
 /* tags */
 $tag-font-color: color.$black;
@@ -111,32 +144,3 @@ $toggle-tag-border-color--active: darken($color-secondary, 40%);
 $toggle-tag-border-radius: 3.2rem;
 $toggle-tag-font-color: lighten(color.$black, 50);
 $toggle-tag-font-color--active: color.$white;
-
-/* blurb */
-$blurb-bg-color: $color-primary;
-$blurb-font-color: $color-primary--dark;
-$blurb-padding: 2rem 4rem;
-
-/* article preview */
-$article-preview-width: 38.4rem;
-$article-preview-img-space: 1.4rem;
-$article-preview-space: 0.4rem;
-$article-preview-space-double: 2 * $article-preview-space;
-$article-preview-row-section-margin-bottom: 0.1rem;
-
-/* article preview list */
-$article-list-item-margin-top: 4.8rem;
-$article-list-column-margin-right: 5.1rem;
-
-/* profile picture */
-$profile-image-background: $color-placeholder;
-$profile-image-border-radius: 20rem;
-$profile-image-height: 3.2rem;
-$profile-image-width: 3.2rem;
-/* pager */
-$pager-fs: $fs-secondary;
-$pager-padding: $space $space $space 0;
-
-$pager-arrow-height: 1.2rem;
-
-$pager-item-padding: 0 $space;

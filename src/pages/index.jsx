@@ -10,6 +10,7 @@ import Pager from '../components/Pager';
 import Tag from '../components/Tag';
 import SearchBar from '../components/SearchBar';
 import ArticlePreviewList from '../components/ArticlePreviewList';
+import PreviewColumn from '../components/PreviewColumn';
 
 const previewData = [
   {
@@ -130,6 +131,12 @@ const IndexPage = ({ data }) => (
     <SearchBar placeholder="Search articles" />
     <ArticlePreviewList
       previewData={previewData}
+      previewImageEdges={data.previewImages.edges}
+      authorImageEdges={data.authorImages.edges}
+    />
+    <PreviewColumn
+      header="Discussions"
+      columnPreviewData={previewData}
       previewImageEdges={data.previewImages.edges}
       authorImageEdges={data.authorImages.edges}
     />

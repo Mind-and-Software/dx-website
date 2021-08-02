@@ -1,0 +1,26 @@
+.preview-column {
+  h2 {
+    font-size: var.$fs-body;
+    font-weight: normal;
+    letter-spacing: var.$preview-column-heading-letter-spacing;
+    margin-bottom: var.$preview-column-item-margin-top;
+  }
+}
+
+.link-arrow {
+  margin-top: var.$preview-column-item-margin-top;
+}
+
+.column-items {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    max-width: var.$preview-column-width;
+    margin-top: var.$preview-column-item-margin-top;
+  }
+
+  :first-child {
+    margin-top: 0;
+  }
+}

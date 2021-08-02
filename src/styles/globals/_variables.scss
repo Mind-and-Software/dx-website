@@ -128,11 +128,17 @@ $article-preview-row-section-margin-bottom: 0.1rem;
 $article-list-item-margin-top: 4.8rem;
 $article-list-column-margin-right: 5.1rem;
 
+/* preview column */
+$preview-column-item-margin-top: 3.2rem;
+$preview-column-width: 38.4rem;
+$preview-column-heading-letter-spacing: 0.1em;
+
 /* profile picture */
 $profile-image-background: $color-placeholder;
 $profile-image-border-radius: 20rem;
 $profile-image-height: 3.2rem;
 $profile-image-width: 3.2rem;
+
 /* pager */
 $pager-fs: $fs-secondary;
 $pager-padding: $space $space $space 0;

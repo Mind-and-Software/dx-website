@@ -66,13 +66,28 @@ const ArticlePreviewList = ({
   return (
     <ul className={articlePreviewList} aria-label="List of article previews">
       {firstColumn.length > 0 && (
-        <ul className={columnFirst}>{renderColumn(firstColumn)}</ul>
+        <ul
+          className={columnFirst}
+          aria-label="First column of article previews"
+        >
+          {renderColumn(firstColumn)}
+        </ul>
       )}
       {secondColumn.length > 0 && (
-        <ul className={columnSecond}>{renderColumn(secondColumn)}</ul>
+        <ul
+          className={columnSecond}
+          aria-label="Second column of article previews"
+        >
+          {renderColumn(secondColumn)}
+        </ul>
       )}
       {thirdColumn.length > 0 && (
-        <ul className={columnThird}>{renderColumn(thirdColumn)}</ul>
+        <ul
+          className={columnThird}
+          aria-label="Third column of article previews"
+        >
+          {renderColumn(thirdColumn)}
+        </ul>
       )}
     </ul>
   );

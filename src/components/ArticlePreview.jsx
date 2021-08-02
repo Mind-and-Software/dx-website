@@ -41,8 +41,8 @@ const Dot = () => <div className={dot}>•</div>;
 const renderTags = (tags) => {
   if (tags.length > 0) {
     return tags.map((tag) => (
-      <div>
-        <Tag key={tag}>{tag}</Tag>
+      <div key={tag}>
+        <Tag>{tag}</Tag>
         <Dot />
       </div>
     ));
@@ -66,7 +66,11 @@ const renderDate = (date) => {
     'Dec',
   ];
   if (date) {
-    return <div>{`${date.getDate()} ${monthNames[date.getMonth()]}, ${date.getFullYear()}`}</div>;
+    return (
+      <div>{`${date.getDate()} ${
+        monthNames[date.getMonth()]
+      }, ${date.getFullYear()}`}</div>
+    );
   }
   return '';
 };
@@ -105,7 +109,7 @@ const ArticlePreview = ({
       <div className={rowSection}>
         {renderTags(tags)}
         {renderReadingTime(readingTime)}
-        {date && <Dot />}
+        {readingTime && date && <Dot />}
         {renderDate(date)}
       </div>
       <div>

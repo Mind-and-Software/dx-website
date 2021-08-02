@@ -6,7 +6,7 @@ import Image from './Image';
 import { profilePicture } from '../styles/profilePicture.module.scss';
 
 const ProfilePicture = ({ url, imageData }) => (
-  <Link to={url} aria-label="Picture of the author of this article">
+  <Link to={url} aria-label="Picture of the author of this article" data-testid="profilepic">
     <Image
       className={profilePicture}
       imageData={imageData}

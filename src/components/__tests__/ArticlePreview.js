@@ -2,6 +2,37 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import ArticlePreview, { AuthorSection } from '../ArticlePreview';
 
+const mockImage = {
+  node: {
+    base: 'mock-image.png',
+    id: 'testid',
+    childImageSharp: {
+      gatsbyImageData: {
+        id: 'test',
+        backgroundColor: 'transparent',
+        layout: 'constrained',
+        images: {
+          fallback: {
+            sizes: '(min-width 383px) 383px, 100vw',
+            src: '/mock',
+            srcSet: '/mock',
+          },
+          sources: [
+            {
+              sizes: '(min-width 383px) 383px, 100vw',
+              srcSet: '/mock',
+              type: 'image/webp',
+            },
+          ],
+        },
+        placeholder: {
+          fallback: 'mock',
+        },
+      },
+    },
+  },
+};
+
 describe('ArticlePreview component', () => {
   it('Renders title', () => {
     const container = render(<ArticlePreview title="Title" articleUrl="url" />);
@@ -18,7 +49,7 @@ describe('ArticlePreview component', () => {
       />
     );
     expect(container.getByText('Title')).toBeInTheDocument();
-    expect(container.getByText('12/2020')).toBeInTheDocument();
+    expect(container.getByText('31 Dec, 2020')).toBeInTheDocument();
     expect(container.getByText('9 min read')).toBeInTheDocument();
   });
 
@@ -36,17 +67,16 @@ describe('ArticlePreview component', () => {
 
   it('Renders image', () => {
     const container = render(
-      <ArticlePreview title="Title" articleUrl="url" previewImageSrc="mock" />
+      <ArticlePreview title="Title" articleUrl="url" previewImage={mockImage} />
     );
     expect(container.getByAltText('Title')).toBeInTheDocument();
   });
 
   it('Renders authorSection', () => {
     const container = render(
-      <ArticlePreview title="Title" articleUrl="url" author="Author" />
+      <ArticlePreview title="Title" articleUrl="url" authorName="Author" />
     );
     expect(container.getByText('Author')).toBeInTheDocument();
-    expect(container.getByTestId('profilepic')).toBeInTheDocument();
   });
 });
 
@@ -54,25 +84,23 @@ describe('AuthorSection component', () => {
   it('Renders correctly without credentials', () => {
     const container = render(
       <AuthorSection
-        author="Author"
+        name="Author"
         url="url"
         credentials=""
-        imageSrc="mock"
-        vertical={false}
+        image={mockImage}
       />
     );
     expect(container.getByText('Author')).toBeInTheDocument();
     expect(container.getByTestId('profilepic')).toBeInTheDocument();
   });
 
-  it('Renders correctly with credentials', () => {
+  it('Renders correctly without image and credentials', () => {
     const container = render(
       <AuthorSection
-        author="Author"
+        name="Author"
         url="url"
         credentials="Researcher"
-        imageSrc="mock"
-        vertical
+        image=''
       />
     );
     expect(container.getByText('Author,')).toBeInTheDocument();

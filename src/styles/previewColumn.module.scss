@@ -1,4 +1,6 @@
 .preview-column {
+  max-width: var.$preview-column-width;
+
   h2 {
     font-size: var.$fs-body;
     font-weight: normal;
@@ -16,7 +18,6 @@
   flex-direction: column;
 
   li {
-    max-width: var.$preview-column-width;
     margin-top: var.$preview-column-item-margin-top;
   }
 

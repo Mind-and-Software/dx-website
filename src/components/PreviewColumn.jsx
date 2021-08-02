@@ -67,7 +67,7 @@ const PreviewColumn = ({
       {renderColumn()}
       {header && (
         <div className={linkArrow}>
-          <LinkWithArrow type="secondary">
+          <LinkWithArrow to="docs/test-article" type="secondary">
             {`More ${header.toLowerCase()}`}
           </LinkWithArrow>
         </div>

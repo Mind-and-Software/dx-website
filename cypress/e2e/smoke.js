@@ -1,7 +1,7 @@
 describe('Site', () => {
   it('Runs', () => {
     cy.visit('/');
-    cy.findByText(/hello world/i);
+    cy.findAllByText(/developer/i);
     cy.should('exist');
   });
 });

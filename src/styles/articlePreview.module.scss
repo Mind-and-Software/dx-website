@@ -53,3 +53,8 @@ h3 {
   margin-left: var.$article-preview-space;
   margin-right: var.$article-preview-space;
 }
+
+.description-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,11 +1,30 @@
 .article-preview-list {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-height: var.$preview-list-height;
 }
 
 .list-item {
   max-width: var.$article-preview-width;
-  margin-top: var.$space-double;
+  margin-top: var.$article-list-item-margin-top;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin-right: var.$article-list-column-margin-right;
+
+  &-first {
+    @extend .column;
+  }
+  &-second {
+    @extend .column;
+    @include mixin.breakpoint('md', max) {
+      visibility: hidden;
+    }
+  }
+  &-third {
+    @extend .column;
+    @include mixin.breakpoint('lg', max) {
+      visibility: hidden;
+    }
+  }
 }

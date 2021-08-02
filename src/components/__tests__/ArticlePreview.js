@@ -65,6 +65,17 @@ describe('ArticlePreview component', () => {
     expect(container.getByText('Development')).toBeInTheDocument();
   });
 
+  it('Renders description', () => {
+    const container = render(
+      <ArticlePreview
+        title="Title"
+        articleUrl="url"
+        description="Example description"
+      />
+    );
+    expect(container.getByText("Example description")).toBeInTheDocument();
+  });
+
   it('Renders image', () => {
     const container = render(
       <ArticlePreview title="Title" articleUrl="url" previewImage={mockImage} />

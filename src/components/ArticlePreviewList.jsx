@@ -1,11 +1,10 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import ArticlePreview from './ArticlePreview';
+import PreviewColumn from './PreviewColumn';
 
 import {
   articlePreviewList,
-  listItem,
   columnFirst,
   columnSecond,
   columnThird,
@@ -19,75 +18,34 @@ const ArticlePreviewList = ({
   const sortByDate = (object1, object2) => object2.date - object1.date;
   const sortedData = previewData.sort(sortByDate);
 
-  const renderColumn = (columnData) =>
-    columnData.map(
-      ({
-        title,
-        articleUrl,
-        tags,
-        date,
-        readingTime,
-        previewImageName,
-        authorName,
-        authorCredentials,
-        authorUrl,
-        authorImageName,
-        description,
-      }) => {
-        const previewImage = previewImageEdges.find(
-          (edge) => edge.node.base === previewImageName
-        );
-        const authorImage = authorImageEdges.find(
-          (edge) => edge.node.base === authorImageName
-        );
-        return (
-          <li key={title} className={listItem}>
-            <ArticlePreview
-              title={title}
-              tags={tags}
-              articleUrl={articleUrl}
-              date={date}
-              description={description}
-              readingTime={readingTime}
-              previewImage={previewImage}
-              authorName={authorName}
-              authorCredentials={authorCredentials}
-              authorUrl={authorUrl}
-              authorImage={authorImage}
-            />
-          </li>
-        );
-      }
-    );
-
   const firstColumn = sortedData.slice(0, 3);
   const secondColumn = sortedData.slice(3, 6);
   const thirdColumn = sortedData.slice(6, 9);
   return (
     <ul className={articlePreviewList} aria-label="List of article previews">
       {firstColumn.length > 0 && (
-        <ul
+        <PreviewColumn
+          columnPreviewData={firstColumn}
+          previewImageEdges={previewImageEdges}
+          authorImageEdges={authorImageEdges}
           className={columnFirst}
-          aria-label="First column of article previews"
-        >
-          {renderColumn(firstColumn)}
-        </ul>
+        />
       )}
       {secondColumn.length > 0 && (
-        <ul
+        <PreviewColumn
+          columnPreviewData={secondColumn}
+          previewImageEdges={previewImageEdges}
+          authorImageEdges={authorImageEdges}
           className={columnSecond}
-          aria-label="Second column of article previews"
-        >
-          {renderColumn(secondColumn)}
-        </ul>
+        />
       )}
       {thirdColumn.length > 0 && (
-        <ul
+        <PreviewColumn
+          columnPreviewData={thirdColumn}
+          previewImageEdges={previewImageEdges}
+          authorImageEdges={authorImageEdges}
           className={columnThird}
-          aria-label="Third column of article previews"
-        >
-          {renderColumn(thirdColumn)}
-        </ul>
+        />
       )}
     </ul>
   );

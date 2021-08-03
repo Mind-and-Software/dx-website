@@ -1,0 +1,32 @@
+.preview-column {
+  max-width: var.$preview-column-width;
+
+  h2 {
+    font-size: var.$fs-body;
+    font-weight: normal;
+    letter-spacing: var.$preview-column-heading-letter-spacing;
+    margin-bottom: var.$preview-column-item-margin-top;
+    text-transform: uppercase;
+  }
+}
+
+.link-arrow {
+  margin-top: var.$preview-column-item-margin-top;
+
+  span {
+    text-transform: lowercase;
+  }
+}
+
+.column-items {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    margin-top: var.$preview-column-item-margin-top;
+  }
+
+  :first-child {
+    margin-top: 0;
+  }
+}

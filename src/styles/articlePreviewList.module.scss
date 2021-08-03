@@ -2,11 +2,6 @@
   display: flex;
 }
 
-.list-item {
-  max-width: var.$article-preview-width;
-  margin-top: var.$article-list-item-margin-top;
-}
-
 .column {
   display: flex;
   flex-direction: column;
@@ -33,5 +28,9 @@
       visibility: hidden;
     }
     margin-right: 0;
+  }
+
+  li {
+    margin-top: var.$article-list-item-margin-top;
   }
 }

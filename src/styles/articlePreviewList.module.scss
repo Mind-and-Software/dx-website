@@ -16,7 +16,7 @@
   &-second {
     @extend .column;
     @include mixin.breakpoint('md', max) {
-      visibility: hidden;
+      display: none;
     }
     @include mixin.breakpoint('lg', max) {
       margin-right: 0;
@@ -25,7 +25,7 @@
   &-third {
     @extend .column;
     @include mixin.breakpoint('lg', max) {
-      visibility: hidden;
+      display: none;
     }
     margin-right: 0;
   }

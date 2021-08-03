@@ -5,17 +5,29 @@ import LinkArrow from '../assets/linkArrow.svg';
 
 import {
   linkWithArrow,
-  linkWithArrowBigger,
+  linkWithArrowSecondary,
+  linkWithArrowTertiary,
   linkText,
+  linkArrow,
 } from '../styles/linkWithArrow.module.scss';
+
+const getClassName = (type) => {
+  if (type === 'secondary') {
+    return linkWithArrowSecondary;
+  }
+  if (type === 'tertiary') {
+    return linkWithArrowTertiary;
+  }
+  return linkWithArrow;
+}
 
 const LinkWithArrow = ({ children, to, type }) => (
   <Link
     to={to}
-    className={type === 'secondary' ? linkWithArrowBigger : linkWithArrow}
+    className={getClassName(type)}
   >
     <div className={linkText}>{children}</div>
-    <LinkArrow />
+      <LinkArrow className={linkArrow}/>
   </Link>
 );
 

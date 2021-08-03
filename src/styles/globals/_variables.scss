@@ -122,12 +122,6 @@ $pager-arrow-height: 1.2rem;
 
 $pager-item-padding: 0 $space;
 
-/* pages */
-$article-heading-margin: $space 0;
-$article-img-height: 30rem;
-$article-img-margin: $space-double 0;
-$article-max-width: 80rem;
-
 /* profile picture */
 $profile-image-background: $color-placeholder;
 $profile-image-border-radius: 20rem;
@@ -149,3 +143,24 @@ $toggle-tag-border-color--active: darken($color-secondary, 40%);
 $toggle-tag-border-radius: 3.2rem;
 $toggle-tag-font-color: lighten(color.$black, 50);
 $toggle-tag-font-color--active: color.$white;
+
+/* header search area */
+$search-area-title-margin: 1.9rem;
+$search-area-description-margin: 4.6rem;
+$search-area-tag-list-margin: 2.7rem;
+$search-area-tag-margin: 1rem;
+
+/* link with arrow */
+$link-with-arrow-text-tertiary-margin: 0.5rem;
+$link-with-arrow-tertiary-size: 1rem;
+
+/* PAGES */
+
+/* articles page */
+$articles-page-margin: 10rem;
+
+/* article page */
+$article-heading-margin: $space 0;
+$article-img-height: 30rem;
+$article-img-margin: $space-double 0;
+$article-max-width: 80rem;

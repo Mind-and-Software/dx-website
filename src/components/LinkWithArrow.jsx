@@ -19,15 +19,12 @@ const getClassName = (type) => {
     return linkWithArrowTertiary;
   }
   return linkWithArrow;
-}
+};
 
 const LinkWithArrow = ({ children, to, type }) => (
-  <Link
-    to={to}
-    className={getClassName(type)}
-  >
+  <Link to={to} className={getClassName(type)}>
     <div className={linkText}>{children}</div>
-      <LinkArrow className={linkArrow}/>
+    <LinkArrow className={linkArrow} />
   </Link>
 );
 

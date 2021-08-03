@@ -7,9 +7,13 @@ import HeaderSearchArea from '../components/HeaderSearchArea';
 import ArticlePreviewList from '../components/ArticlePreviewList';
 import LinkWithArrow from '../components/LinkWithArrow';
 
-import { articlesPage, articleList, linkArrow } from '../styles/articlesPage.module.scss';
+import {
+  articlesPage,
+  articleList,
+  linkArrow,
+} from '../styles/articlesPage.module.scss';
 
-const previewData = [
+const previewDataTest = [
   {
     title: 'Your first DX survey',
     tags: ['Develop', 'Research'],
@@ -95,50 +99,83 @@ const previewData = [
   },
 ];
 
+const getDateObject = (dateString) => {
+  const parts = dateString.split('-');
+  const year = Number(parts[0]);
+  const month = Number(parts[1]) - 1;
+  const day = Number(parts[2]);
+  return new Date(year, month, day);
+}
 
-const ArticlesPage = ({data}) => (
-  <Layout>
-    <div className={articlesPage}>
-      <HeaderSearchArea
-        title="Articles on Developer Experience"
-        description="Thoughts and experiences from experienced practicioners in the field"
-        searchPlaceholder="Search Articles"
-      />
-      <div className={articleList}>
-        <ArticlePreviewList 
-          previewData={previewData}
-          previewImageEdges={data.previewImages.edges}
-          authorImageEdges={data.authorImages.edges}
+const ArticlesPage = ({ data }) => {
+  const { allMarkdownRemark, authorImages } = data;
+  const previewData = allMarkdownRemark.edges.map((edge) => {
+    const { frontmatter } = edge.node;
+    return (
+      {
+        title: frontmatter.title,
+        authorName: frontmatter.author,
+        articleUrl: frontmatter.slug,
+        date: getDateObject(frontmatter.date),
+        previewImageData: frontmatter.featuredImage.childImageSharp.gatsbyImageData,
+        imageAlt: frontmatter.imageAlt,
+        readingTime: frontmatter.image,
+        tags: frontmatter.tags,
+        description: frontmatter.blurb
+      }
+
+    )
+  })
+  return (
+    <Layout>
+      <div className={articlesPage}>
+        <HeaderSearchArea
+          title="Articles on Developer Experience"
+          description="Thoughts and experiences from experienced practicioners in the field"
+          searchPlaceholder="Search Articles"
         />
+        <div className={articleList}>
+          <ArticlePreviewList
+            previewData={previewData}
+            authorImageEdges={authorImages.edges}
+          />
+        </div>
+        <div className={linkArrow}>
+          <LinkWithArrow to="/" type="tertiary">
+            Older
+          </LinkWithArrow>
+        </div>
       </div>
-      <div className={linkArrow}>
-        <LinkWithArrow to="/" type="tertiary">Older</LinkWithArrow>
-      </div>
-    </div>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default ArticlesPage;
 
-// Returns all the images in the directory frontpage
 export const imageQuery = graphql`
   query {
-    previewImages: allFile(
-      filter: {
-        extension: { regex: "/jpg|png|jpeg/" }
-        relativeDirectory: { eq: "frontpage" }
-      }
-    ) {
+    allMarkdownRemark {
       edges {
         node {
-          id
-          base
-          childImageSharp {
-            gatsbyImageData(width: 384, height: 184)
+          frontmatter {
+            author
+            blurb
+            date
+            slug
+            tags
+            title
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            readingTime
+            imageAlt
           }
         }
       }
     }
+
     authorImages: allFile(
       filter: {
         extension: { regex: "/jpg|png|jpeg/" }

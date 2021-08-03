@@ -12,7 +12,6 @@ import {
 
 const ArticlePreviewList = ({
   previewData,
-  previewImageEdges,
   authorImageEdges,
 }) => {
   const sortByDate = (object1, object2) => object2.date - object1.date;
@@ -26,7 +25,6 @@ const ArticlePreviewList = ({
       {firstColumn.length > 0 && (
         <PreviewColumn
           columnPreviewData={firstColumn}
-          previewImageEdges={previewImageEdges}
           authorImageEdges={authorImageEdges}
           className={columnFirst}
         />
@@ -34,7 +32,6 @@ const ArticlePreviewList = ({
       {secondColumn.length > 0 && (
         <PreviewColumn
           columnPreviewData={secondColumn}
-          previewImageEdges={previewImageEdges}
           authorImageEdges={authorImageEdges}
           className={columnSecond}
         />
@@ -42,7 +39,6 @@ const ArticlePreviewList = ({
       {thirdColumn.length > 0 && (
         <PreviewColumn
           columnPreviewData={thirdColumn}
-          previewImageEdges={previewImageEdges}
           authorImageEdges={authorImageEdges}
           className={columnThird}
         />
@@ -53,7 +49,6 @@ const ArticlePreviewList = ({
 
 ArticlePreviewList.propTypes = {
   previewData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  previewImageEdges: PropTypes.arrayOf(PropTypes.object).isRequired,
   authorImageEdges: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

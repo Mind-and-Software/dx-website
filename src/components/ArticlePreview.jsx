@@ -10,6 +10,7 @@ import {
   imageLink,
   dot,
   descriptionEllipsis,
+  previewImage
 } from '../styles/articlePreview.module.scss';
 import Tag from './Tag';
 import ImageLink from './ImageLink';
@@ -94,7 +95,8 @@ const getDescriptionClassName = (description) => {
 
 const ArticlePreview = ({
   articleUrl,
-  previewImage,
+  previewImageData,
+  imageAlt,
   tags,
   title,
   readingTime,
@@ -106,12 +108,13 @@ const ArticlePreview = ({
   authorUrl,
 }) => (
   <div className={articlePreview} aria-label="Article preview">
-    {previewImage && (
+    {previewImageData && (
       <div className={imageLink}>
         <ImageLink
           to={articleUrl}
-          imageData={previewImage.node.childImageSharp.gatsbyImageData}
-          alt={title}
+          imageData={previewImageData}
+          alt={imageAlt}
+          className={previewImage}
         />
       </div>
     )}
@@ -143,7 +146,7 @@ const ArticlePreview = ({
 );
 
 ArticlePreview.defaultProps = {
-  previewImage: '',
+  previewImageData: '',
   tags: [],
   readingTime: '',
   date: '',
@@ -152,11 +155,13 @@ ArticlePreview.defaultProps = {
   authorUrl: '/',
   authorImage: '',
   authorCredentials: '',
+  imageAlt: '',
 };
 
 ArticlePreview.propTypes = {
   articleUrl: PropTypes.string.isRequired,
-  previewImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  previewImageData: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  imageAlt: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   readingTime: PropTypes.string,

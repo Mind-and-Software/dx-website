@@ -12,7 +12,6 @@ import {
 
 const PreviewColumn = ({
   columnPreviewData,
-  previewImageEdges,
   authorImageEdges,
   header,
   className,
@@ -26,18 +25,16 @@ const PreviewColumn = ({
           tags,
           date,
           readingTime,
-          previewImageName,
+          previewImageData,
+          imageAlt,
           authorName,
           authorCredentials,
           authorUrl,
           authorImageName,
           description,
         }) => {
-          const previewImage = previewImageEdges.find(
-            (edge) => edge.node.base === previewImageName
-          );
           const authorImage = authorImageEdges.find(
-            (edge) => edge.node.base === authorImageName
+            (edge) => edge.node.base === authorName
           );
           return (
             <li key={title}>
@@ -48,7 +45,8 @@ const PreviewColumn = ({
                 date={date}
                 description={description}
                 readingTime={readingTime}
-                previewImage={previewImage}
+                previewImageData={previewImageData}
+                imageAlt={imageAlt}
                 authorName={authorName}
                 authorCredentials={authorCredentials}
                 authorUrl={authorUrl}
@@ -83,7 +81,6 @@ PreviewColumn.defaultProps = {
 
 PreviewColumn.propTypes = {
   columnPreviewData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  previewImageEdges: PropTypes.arrayOf(PropTypes.object).isRequired,
   authorImageEdges: PropTypes.arrayOf(PropTypes.object).isRequired,
   className: PropTypes.string,
   header: PropTypes.string,

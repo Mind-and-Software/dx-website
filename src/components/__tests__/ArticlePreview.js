@@ -78,9 +78,14 @@ describe('ArticlePreview component', () => {
 
   it('Renders image', () => {
     const container = render(
-      <ArticlePreview title="Title" articleUrl="url" previewImage={mockImage} />
+      <ArticlePreview
+        title="Title"
+        articleUrl="url"
+        previewImage={mockImage.node.childImageSharp.gatsbyImageData}
+        imageAlt="mock"
+      />
     );
-    expect(container.getByAltText('Title')).toBeInTheDocument();
+    expect(container.getByAltText('mock')).toBeInTheDocument();
   });
 
   it('Renders authorSection', () => {

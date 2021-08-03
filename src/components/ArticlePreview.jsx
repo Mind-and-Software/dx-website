@@ -10,6 +10,7 @@ import {
   imageLink,
   dot,
   descriptionEllipsis,
+  typeSection,
 } from '../styles/articlePreview.module.scss';
 import Tag from './Tag';
 import ImageLink from './ImageLink';
@@ -95,8 +96,10 @@ const getDescriptionClassName = (description) => {
 const ArticlePreview = ({
   articleUrl,
   previewImage,
+  imageAlt,
   tags,
   title,
+  type,
   readingTime,
   date,
   description,
@@ -108,11 +111,7 @@ const ArticlePreview = ({
   <div className={articlePreview} aria-label="Article preview">
     {previewImage && (
       <div className={imageLink}>
-        <ImageLink
-          to={articleUrl}
-          imageData={previewImage.node.childImageSharp.gatsbyImageData}
-          alt={title}
-        />
+        <ImageLink to={articleUrl} imageData={previewImage} alt={imageAlt} />
       </div>
     )}
     <div className={infoSection}>
@@ -129,6 +128,7 @@ const ArticlePreview = ({
         <div className={getDescriptionClassName(description)}>
           {description}
         </div>
+        {type && <div className={typeSection}>{type}</div>}
         {authorName && (
           <AuthorSection
             name={authorName}
@@ -144,7 +144,9 @@ const ArticlePreview = ({
 
 ArticlePreview.defaultProps = {
   previewImage: '',
+  imageAlt: '',
   tags: [],
+  type: '',
   readingTime: '',
   date: '',
   description: '',
@@ -157,8 +159,10 @@ ArticlePreview.defaultProps = {
 ArticlePreview.propTypes = {
   articleUrl: PropTypes.string.isRequired,
   previewImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  imageAlt: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
+  type: PropTypes.string,
   readingTime: PropTypes.string,
   date: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   description: PropTypes.node,

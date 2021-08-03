@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { graphql } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import Blurb from '../components/Blurb';
 import Image from '../components/Image';
 import Layout from '../components/layout';
-import RelatedArticles from '../components/RelatedArticles';
+import RelatedContent from '../components/RelatedContent';
 import Tag from '../components/Tag';
 
 import {
@@ -18,8 +17,8 @@ import {
 } from '../styles/article.module.scss';
 
 export default function Article({ data }) {
-  const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
+  const { frontmatter, html } = data.post;
+  const relatedContent = data.relatedContent.edges;
 
   return (
     <Layout>
@@ -29,7 +28,7 @@ export default function Article({ data }) {
             {frontmatter.tags &&
               frontmatter.tags.map((tag) => (
                 <span key={tag}>
-                  <Tag type="link" action="/">
+                  <Tag type="link" action={`/tags/${tag}`}>
                     {tag}
                   </Tag>
                   <span className={tagSeparator}>•</span>
@@ -58,13 +57,14 @@ export default function Article({ data }) {
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>
-      <RelatedArticles />
+      <RelatedContent contentList={relatedContent} />
     </Layout>
   );
 }
-export const pageQuery = graphql`
-  query ($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+
+export const query = graphql`
+  query ($slug: String!, $tags: [String!]) {
+    post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         date(formatString: "DD MMMM, YYYY")
@@ -80,6 +80,29 @@ export const pageQuery = graphql`
           }
         }
         imageAlt
+      }
+    }
+    relatedContent: allMarkdownRemark(
+      filter: { frontmatter: { tags: { in: $tags } } }
+      limit: 3
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(width: 200, height: 120)
+              }
+            }
+            imageAlt
+            type
+          }
+        }
       }
     }
   }

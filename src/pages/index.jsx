@@ -10,6 +10,7 @@ import Pager from '../components/Pager';
 import Tag from '../components/Tag';
 import SearchBar from '../components/SearchBar';
 import ArticlePreviewList from '../components/ArticlePreviewList';
+import RelatedContent from '../components/RelatedContent';
 
 const previewData = [
   {
@@ -118,6 +119,7 @@ const IndexPage = ({ data }) => (
       experience to keep them eager and comfortable.
     </Blurb>
     <h2 id="for-researchers">Research developer experience</h2>
+    <RelatedContent />
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim

@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { graphql } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import Blurb from '../components/Blurb';
 import Image from '../components/Image';
 import Layout from '../components/layout';
-import RelatedArticles from '../components/RelatedArticles';
+import RelatedContent from '../components/RelatedContent';
 import Tag from '../components/Tag';
 
 import {
@@ -58,13 +57,14 @@ export default function Article({ data }) {
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>
-      <RelatedArticles />
+      <RelatedContent />
     </Layout>
   );
 }
-export const pageQuery = graphql`
-  query ($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+
+export const query = graphql`
+  query ($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         date(formatString: "DD MMMM, YYYY")

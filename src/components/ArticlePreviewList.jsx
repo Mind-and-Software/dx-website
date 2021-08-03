@@ -37,6 +37,7 @@ const ArticlePreviewList = ({
         const previewImage = previewImageEdges.find(
           (edge) => edge.node.base === previewImageName
         );
+        console.log('prev:', previewImageEdges);
         const authorImage = authorImageEdges.find(
           (edge) => edge.node.base === authorImageName
         );

@@ -1,0 +1,24 @@
+.content-previews {
+  @include mixin.breakpoint('md', max) {
+    flex-direction: column;
+  }
+
+  display: flex;
+}
+
+.content-item {
+  list-style-type: none;
+  margin: var.$related-content-item-margins;
+}
+
+.related-content {
+  margin: var.$related-content-margins;
+
+  h2 {
+    color: var.$color-sub-heading;
+    font-size: var.$fs-body;
+    font-weight: normal;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-templates-single-tag-jsx","path":"/tags/dummy/","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/articles/dummypost/"},"frontmatter":{"title":"Dummy Article"}}}]}},"pageContext":{"tag":"dummy"}},"staticQueryHashes":["3159585216"]}

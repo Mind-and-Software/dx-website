@@ -1,5 +1,5 @@
 ---
-slug: '/docs/test-article'
+slug: 'test-article'
 date: '2021-06-15'
 title: 'Why should you care about Developer Experience (DX)'
 featuredImage: ../../../images/placeholder.png
@@ -8,6 +8,7 @@ author: 'Marek Gajda CTO - The Software House'
 tags: ['develop', 'manage']
 readingTime: '6'
 blurb: 'TL;DR Knowledgeable developers are like royalty that’s hard to please. But they’re irreplaceable. Yes, you can substitute employees, but if they’re less skilled, you might end up with costly refactoring. If you value the experienced team you have, consider working on what’s called the developer experience to keep them eager and comfortable.'
+description: 'Dummy description'
 ---
 
 What Is a Good Developer Experience

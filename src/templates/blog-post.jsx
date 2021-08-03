@@ -96,10 +96,11 @@ export const query = graphql`
             title
             featuredImage {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(width: 200)
               }
             }
             imageAlt
+            description
           }
         }
       }

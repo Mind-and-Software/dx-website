@@ -1,5 +1,5 @@
 ---
-slug: '/docs/testi1'
+slug: 'testi1'
 date: '2021-07-30'
 title: 'Testi1'
 author: 'Testaaja'
@@ -8,6 +8,7 @@ imageAlt: 'Cute bunny'
 tags: ['develop', 'research']
 readingTime: '1'
 blurb: 'Testi'
+description: 'Dummy description'
 ---
 
 This post exists to display all content features.

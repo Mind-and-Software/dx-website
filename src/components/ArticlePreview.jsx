@@ -108,11 +108,7 @@ const ArticlePreview = ({
   <div className={articlePreview} aria-label="Article preview">
     {previewImage && (
       <div className={imageLink}>
-        <ImageLink
-          to={articleUrl}
-          imageData={previewImage.node.childImageSharp.gatsbyImageData}
-          alt={title}
-        />
+        <ImageLink to={articleUrl} imageData={previewImage} alt={title} />
       </div>
     )}
     <div className={infoSection}>

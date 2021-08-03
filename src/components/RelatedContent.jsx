@@ -75,10 +75,10 @@ const RelatedContent = ({ contentList }) => {
           return (
             <li className={contentItem} key={content.title}>
               <ArticlePreview
-                articleUrl={`docs${slug}`}
+                articleUrl={slug}
                 description={content.description}
                 imageAlt={content.imageAlt}
-                // previewImage={content.featuredImage}
+                previewImage={content.featuredImage}
                 title={content.title}
               />
             </li>

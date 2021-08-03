@@ -119,7 +119,6 @@ const IndexPage = ({ data }) => (
       experience to keep them eager and comfortable.
     </Blurb>
     <h2 id="for-researchers">Research developer experience</h2>
-    <RelatedContent />
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim

@@ -144,6 +144,7 @@ const ArticlePreview = ({
 
 ArticlePreview.defaultProps = {
   previewImage: '',
+  imageAlt: '',
   tags: [],
   type: '',
   readingTime: '',
@@ -158,6 +159,7 @@ ArticlePreview.defaultProps = {
 ArticlePreview.propTypes = {
   articleUrl: PropTypes.string.isRequired,
   previewImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  imageAlt: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
   type: PropTypes.string,

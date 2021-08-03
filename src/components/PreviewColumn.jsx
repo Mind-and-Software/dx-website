@@ -18,44 +18,30 @@ const PreviewColumn = ({
 }) => {
   const renderColumn = () => (
     <ul className={className ? `${columnItems} ${className}` : columnItems}>
-      {columnPreviewData.map(
-        ({
-          title,
-          articleUrl,
-          tags,
-          date,
-          readingTime,
-          previewImageData,
-          imageAlt,
-          authorName,
-          authorCredentials,
-          authorUrl,
-          authorImageName,
-          description,
-        }) => {
-          const authorImage = authorImageEdges.find(
-            (edge) => edge.node.base === authorName
-          );
-          return (
-            <li key={title}>
-              <ArticlePreview
-                title={title}
-                tags={tags}
-                articleUrl={articleUrl}
-                date={date}
-                description={description}
-                readingTime={readingTime}
-                previewImageData={previewImageData}
-                imageAlt={imageAlt}
-                authorName={authorName}
-                authorCredentials={authorCredentials}
-                authorUrl={authorUrl}
-                authorImage={authorImage}
-              />
-            </li>
-          );
-        }
-      )}
+      {columnPreviewData.map((previewEdge) => {
+        const content = previewEdge.node.frontmatter;
+        const authorImage = authorImageEdges.find(
+          (authorEdge) => authorEdge.node.base === content.author
+        );
+        return (
+          <li key={content.title}>
+            <ArticlePreview
+              title={content.title}
+              tags={content.tags}
+              articleUrl={content.slug}
+              date={content.date}
+              description={content.description}
+              readingTime={content.readingTime}
+              previewImage={content.featuredImage}
+              imageAlt={content.imageAlt}
+              authorName={content.author}
+              authorCredentials={content.authorCredentials}
+              authorUrl={content.authorUrl}
+              authorImage={authorImage}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 

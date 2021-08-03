@@ -9,8 +9,8 @@ import {
   infoSection,
   imageLink,
   dot,
-  descriptionEllipsis,
-  previewImage
+  descriptionSection,
+  typeSection,
 } from '../styles/articlePreview.module.scss';
 import Tag from './Tag';
 import ImageLink from './ImageLink';
@@ -68,10 +68,14 @@ const renderDate = (date) => {
     'Dec',
   ];
   if (date) {
+    const parts = date.split('-');
+    const year = parts[0];
+    const month = parts[1];
+    const day = parts[2];
     return (
-      <div aria-label="Release date of the article">{`${date.getDate()} ${
-        monthNames[date.getMonth()]
-      }, ${date.getFullYear()}`}</div>
+      <div aria-label="Release date of the article">{`${day} ${
+        monthNames[Number(month) - 1]
+      }, ${year}`}</div>
     );
   }
   return '';
@@ -80,25 +84,19 @@ const renderDate = (date) => {
 const renderReadingTime = (readingTime) => {
   if (readingTime) {
     return (
-      <div aria-label="Reading time of the article">{`${readingTime} read`}</div>
+      <div aria-label="Reading time of the article">{`${readingTime} min read`}</div>
     );
-  }
-  return '';
-};
-
-const getDescriptionClassName = (description) => {
-  if (description.length > 100) {
-    return descriptionEllipsis;
   }
   return '';
 };
 
 const ArticlePreview = ({
   articleUrl,
-  previewImageData,
+  previewImage,
   imageAlt,
   tags,
   title,
+  type,
   readingTime,
   date,
   description,
@@ -108,13 +106,12 @@ const ArticlePreview = ({
   authorUrl,
 }) => (
   <div className={articlePreview} aria-label="Article preview">
-    {previewImageData && (
+    {previewImage && (
       <div className={imageLink}>
         <ImageLink
           to={articleUrl}
-          imageData={previewImageData}
+          imageData={previewImage.childImageSharp.gatsbyImageData}
           alt={imageAlt}
-          className={previewImage}
         />
       </div>
     )}
@@ -129,9 +126,8 @@ const ArticlePreview = ({
         <Link to={articleUrl}>
           <h3>{title}</h3>
         </Link>
-        <div className={getDescriptionClassName(description)}>
-          {description}
-        </div>
+        <div className={descriptionSection}>{description}</div>
+        {type && <div className={typeSection}>{type}</div>}
         {authorName && (
           <AuthorSection
             name={authorName}
@@ -146,8 +142,9 @@ const ArticlePreview = ({
 );
 
 ArticlePreview.defaultProps = {
-  previewImageData: '',
+  previewImage: '',
   tags: [],
+  type: '',
   readingTime: '',
   date: '',
   description: '',
@@ -160,12 +157,13 @@ ArticlePreview.defaultProps = {
 
 ArticlePreview.propTypes = {
   articleUrl: PropTypes.string.isRequired,
-  previewImageData: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  previewImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   imageAlt: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
+  type: PropTypes.string,
   readingTime: PropTypes.string,
-  date: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
+  date: PropTypes.string,
   description: PropTypes.node,
   authorName: PropTypes.string,
   authorUrl: PropTypes.string,

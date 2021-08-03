@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import * as React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
@@ -13,119 +13,46 @@ import {
   linkArrow,
 } from '../styles/articlesPage.module.scss';
 
-const previewDataTest = [
-  {
-    title: 'Your first DX survey',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2020, 5, 30),
-    readingTime: '5 min',
-    previewImageName: 'workstation.png',
-    authorName: 'Test Author',
-    authorCredentials: 'Researcher',
-    authorImageName: 'linuxoid.png',
-    description: `Learn how to design your first Developer Experience survey and start
-    measuring your own or your team’s DX right now!`,
-  },
-  {
-    title: 'Your first DX survey 2',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2020, 5, 30),
-    readingTime: '5 min',
-    previewImageName: 'workstation.png',
-    authorName: 'Test Author',
-    authorCredentials: 'Researcher',
-    authorImageName: 'linuxoid.png',
-    description: `Learn how to design your first Developer Experience survey and start
-    measuring your own or your team’s DX right now!`,
-  },
-  {
-    title: 'Your first DX survey 3',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2020, 5, 30),
-    readingTime: '5 min',
-    previewImageName: 'workstation.png',
-    authorName: 'Test Author',
-    authorCredentials: 'Researcher',
-    authorImageName: 'linuxoid.png',
-    description: `Learn how to design your first Developer Experience survey and start
-    measuring your own or your team’s DX right nowwwsadffffffffdsfdsaffffffffffffsdasdasadsdasadsafsfa`,
-  },
-  {
-    title: 'Your first DX survey 4',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2020, 5, 30),
-    readingTime: '5 min',
-    authorName: 'Test Author',
-    authorCredentials: 'Researcher',
-    authorImageName: 'linuxoid.png',
-    description: `Learn how to design your first Developer Experience survey and start
-    measuring your own or your team’s DX right now!`,
-  },
-  {
-    title: 'Your first DX survey 5',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2020, 5, 30),
-    readingTime: '5 min',
-    previewImageName: 'workstation.png',
-    authorName: 'Test Author',
-    authorCredentials: 'Researcher',
-    authorImageName: 'linuxoid.png',
-    description: `Learn how to design your first Developer Experience survey and start
-    measuring your own or your team’s DX right now!`,
-  },
-  {
-    title: 'Why should we care about developer experience (DX)',
-    tags: ['Develop'],
-    articleUrl: '/docs/test-article',
-    date: new Date(),
-    readingTime: '5 min',
-    previewImageName: 'laptop-code.png',
-    authorName: 'Test Author',
-    authorCredentials: 'Manager',
-  },
-  {
-    title: 'How developers around the world experience their work',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2018, 5, 21),
-    authorName: 'Test Author',
-    authorCredentials: 'Developer',
-    authorImageName: 'woman-phone.png',
-  },
-];
-
-const getDateObject = (dateString) => {
-  const parts = dateString.split('-');
-  const year = Number(parts[0]);
-  const month = Number(parts[1]) - 1;
-  const day = Number(parts[2]);
-  return new Date(year, month, day);
-}
-
 const ArticlesPage = ({ data }) => {
-  const { allMarkdownRemark, authorImages } = data;
-  const previewData = allMarkdownRemark.edges.map((edge) => {
-    const { frontmatter } = edge.node;
-    return (
-      {
-        title: frontmatter.title,
-        authorName: frontmatter.author,
-        articleUrl: frontmatter.slug,
-        date: getDateObject(frontmatter.date),
-        previewImageData: frontmatter.featuredImage.childImageSharp.gatsbyImageData,
-        imageAlt: frontmatter.imageAlt,
-        readingTime: frontmatter.image,
-        tags: frontmatter.tags,
-        description: frontmatter.blurb
-      }
+  const articleEdges = data.allMarkdownRemark.edges;
 
-    )
-  })
+  const [searchFilter, setSearchFilter] = useState('');
+  const [selectedTags, setSelectedTags] = useState(['ALL']);
+
+  const handleSearchFilter = (searchValue) => setSearchFilter(searchValue);
+
+  const handleTagFilter = (tagValue) => {
+    const newSelectedTags = selectedTags;
+    const indexOfTag = newSelectedTags.indexOf(tagValue);
+    if (indexOfTag > -1) {
+      newSelectedTags.splice(indexOfTag, 1);
+    } else {
+      newSelectedTags.push(tagValue);
+    }
+    setSelectedTags([...newSelectedTags]);
+  };
+
+  const filterBySearch = (article) =>
+    article.node.frontmatter.title
+      .toLowerCase()
+      .includes(searchFilter.toLowerCase());
+
+  const filterByTags = (article) => {
+    if (selectedTags.includes('ALL')) {
+      return true;
+    }
+    return article.node.frontmatter.tags.some((tag) =>
+      selectedTags.includes(tag.toUpperCase())
+    );
+  };
+
+  const getFilteredArticles = () => {
+    const filteredArticles = articleEdges.filter(
+      (article) => filterBySearch(article) && filterByTags(article)
+    );
+    return filteredArticles;
+  };
+
   return (
     <Layout>
       <div className={articlesPage}>
@@ -133,11 +60,13 @@ const ArticlesPage = ({ data }) => {
           title="Articles on Developer Experience"
           description="Thoughts and experiences from experienced practicioners in the field"
           searchPlaceholder="Search Articles"
+          handleSearchChange={handleSearchFilter}
+          handleTagToggle={handleTagFilter}
         />
         <div className={articleList}>
           <ArticlePreviewList
-            previewData={previewData}
-            authorImageEdges={authorImages.edges}
+            previewData={getFilteredArticles()}
+            authorImageEdges={data.authorImages.edges}
           />
         </div>
         <div className={linkArrow}>
@@ -154,7 +83,10 @@ export default ArticlesPage;
 
 export const imageQuery = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { frontmatter: { type: { eq: "Article" } } }
+    ) {
       edges {
         node {
           frontmatter {
@@ -166,7 +98,7 @@ export const imageQuery = graphql`
             title
             featuredImage {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(width: 384, height: 184)
               }
             }
             readingTime

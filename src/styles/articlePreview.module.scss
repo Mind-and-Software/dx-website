@@ -54,7 +54,15 @@ h3 {
   margin-right: var.$article-preview-space;
 }
 
-.description-ellipsis {
+.description-section {
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  margin-top: var.$article-preview-space;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.typeSection {
+  font-size: var.$article-preview-type-fs;
 }

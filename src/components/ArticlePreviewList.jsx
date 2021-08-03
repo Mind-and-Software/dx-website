@@ -10,16 +10,10 @@ import {
   columnThird,
 } from '../styles/articlePreviewList.module.scss';
 
-const ArticlePreviewList = ({
-  previewData,
-  authorImageEdges,
-}) => {
-  const sortByDate = (object1, object2) => object2.date - object1.date;
-  const sortedData = previewData.sort(sortByDate);
-
-  const firstColumn = sortedData.slice(0, 3);
-  const secondColumn = sortedData.slice(3, 6);
-  const thirdColumn = sortedData.slice(6, 9);
+const ArticlePreviewList = ({ previewData, authorImageEdges }) => {
+  const firstColumn = previewData.slice(0, 3);
+  const secondColumn = previewData.slice(3, 6);
+  const thirdColumn = previewData.slice(6, 9);
   return (
     <ul className={articlePreviewList} aria-label="List of article previews">
       {firstColumn.length > 0 && (

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const SearchBar = ({ placeholder }) => {
+const SearchBar = ({ placeholder, handleChange }) => {
   const [currentValue, setCurrentValue] = useState('');
 
-  const handleChange = (event) => {
+  const handleInputChange = (event) => {
+    event.preventDefault();
     setCurrentValue(event.target.value);
+    handleChange(event.target.value);
   };
 
   return (
@@ -14,7 +16,7 @@ const SearchBar = ({ placeholder }) => {
         type="search"
         name="search-bar"
         value={currentValue}
-        onChange={handleChange}
+        onChange={handleInputChange}
         placeholder={placeholder}
       />
     </div>
@@ -27,6 +29,7 @@ SearchBar.defaultProps = {
 
 SearchBar.propTypes = {
   placeholder: PropTypes.string,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

@@ -4,10 +4,13 @@ import { Link } from 'gatsby';
 
 import { tag, toggleTag, toggleTagActive } from '../styles/tag.module.scss';
 
-const Tag = ({ children, type, action }) => {
-  const [isActive, toggleActive] = useState(false);
+const Tag = ({ children, type, action, handleToggle, isActiveAtStart }) => {
+  const [isActive, setIsActive] = useState(isActiveAtStart)
 
-  const toggle = () => toggleActive(!isActive);
+  const toggle = () => {
+    handleToggle(children)
+    setIsActive(!isActive)
+  }
 
   if (type === 'link') {
     return (
@@ -34,12 +37,16 @@ const Tag = ({ children, type, action }) => {
 Tag.defaultProps = {
   action: '',
   type: '',
+  handleToggle: null,
+  isActiveAtStart: false,
 };
 
 Tag.propTypes = {
   action: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   children: PropTypes.string.isRequired,
   type: PropTypes.string,
+  handleToggle: PropTypes.func,
+  isActiveAtStart: PropTypes.bool,
 };
 
 export default Tag;

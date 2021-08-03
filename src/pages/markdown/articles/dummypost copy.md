@@ -1,13 +1,15 @@
 ---
-slug: '/docs/dummypost'
-date: '2021-07-30'
-title: 'Dummy Article'
+slug: 'dummypost'
+date: '2021-05-30'
+title: 'Dummy Article 9'
 author: 'Dummy Dumdum - Dummy Inc'
-featuredImage: ../../../images/placeholder.png
+featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
 tags: ['dummy', 'test', 'article']
 readingTime: '1'
 blurb: 'Dummy blurb'
+description: 'Dummy description'
+type: 'Article'
 ---
 
 This post exists to display all content features.

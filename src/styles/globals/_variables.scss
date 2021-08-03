@@ -18,6 +18,7 @@ $color-hero-link: $color-text-body;
 $color-link: $color-secondary;
 $color-link--main-nav: color.$black;
 $color-link--with-arrow: color.$black;
+$color-sub-heading: lighten(#222222, 50);
 
 /* typography */
 $font-body: 'Rubik', sans-serif;
@@ -94,6 +95,7 @@ $article-preview-img-space: 1.4rem;
 $article-preview-space: 0.4rem;
 $article-preview-space-double: 2 * $article-preview-space;
 $article-preview-row-section-margin-bottom: 0.1rem;
+$article-preview-type-fs: $fs-secondary;
 
 /* article preview list */
 $article-list-item-margin-top: 4.8rem;
@@ -127,6 +129,14 @@ $profile-image-background: $color-placeholder;
 $profile-image-border-radius: 20rem;
 $profile-image-height: 3.2rem;
 $profile-image-width: 3.2rem;
+
+/* related content listing */
+$related-content-ls: 0.2rem;
+$related-content-margins: 6rem 0;
+$related-content-item-fs: $fs-secondary;
+$related-content-item-lh: $fs-secondary;
+$related-content-item-margins: 0 3rem 3rem 0;
+$related-content-item-width: 20rem;
 
 /* tags */
 $tag-font-color: color.$black;

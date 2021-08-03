@@ -17,8 +17,8 @@ import {
 } from '../styles/article.module.scss';
 
 export default function Article({ data }) {
-  const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
+  const { frontmatter, html } = data.post;
+  const relatedContent = data.relatedContent.edges;
 
   return (
     <Layout>
@@ -28,7 +28,7 @@ export default function Article({ data }) {
             {frontmatter.tags &&
               frontmatter.tags.map((tag) => (
                 <span key={tag}>
-                  <Tag type="link" action="/">
+                  <Tag type="link" action={`/tags/${tag}`}>
                     {tag}
                   </Tag>
                   <span className={tagSeparator}>•</span>
@@ -57,14 +57,14 @@ export default function Article({ data }) {
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>
-      <RelatedContent />
+      <RelatedContent contentList={relatedContent} />
     </Layout>
   );
 }
 
 export const query = graphql`
-  query ($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query ($slug: String!, $tags: [String!]) {
+    post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         date(formatString: "DD MMMM, YYYY")
@@ -80,6 +80,28 @@ export const query = graphql`
           }
         }
         imageAlt
+      }
+    }
+    relatedContent: allMarkdownRemark(
+      filter: { frontmatter: { tags: { in: $tags } } }
+      limit: 3
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            imageAlt
+          }
+        }
       }
     }
   }

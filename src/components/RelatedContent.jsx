@@ -63,29 +63,34 @@ const previewData = [
   },
 ];
 
-const RelatedContent = ({ contentList = previewData }) => {
-  console.log('hh:', contentList);
+const RelatedContent = ({ contentList }) => {
+  console.log('content:', contentList);
   return (
     <div className={relatedContent}>
       <h2>Related content</h2>
       <ul className={contentPreviews}>
-        {contentList.slice(0, 3).map((content) => (
-          <li className={contentItem} key={content.title}>
-            <ArticlePreview
-              articleUrl={content.articleUrl}
-              description={content.description}
-              previewImage={content.previewImage}
-              title={content.title}
-            />
-          </li>
-        ))}
+        {contentList.map((edge) => {
+          const content = edge.node.frontmatter;
+          const slug = edge.node.fields.slug;
+          return (
+            <li className={contentItem} key={content.title}>
+              <ArticlePreview
+                articleUrl={`docs${slug}`}
+                description={content.description}
+                imageAlt={content.imageAlt}
+                // previewImage={content.featuredImage}
+                title={content.title}
+              />
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
 };
 
 RelatedContent.propTypes = {
-  content: PropTypes.arrayOf(PropTypes.object).isRequired,
+  contentList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default RelatedContent;

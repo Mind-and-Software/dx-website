@@ -15,7 +15,7 @@ const LinkWithArrow = ({ children, to, type }) => (
     className={type === 'secondary' ? linkWithArrowBigger : linkWithArrow}
   >
     <div className={linkText}>{children}</div>
-    <LinkArrow/>
+    <LinkArrow />
   </Link>
 );
 

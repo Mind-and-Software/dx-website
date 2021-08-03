@@ -6,11 +6,16 @@
     font-weight: normal;
     letter-spacing: var.$preview-column-heading-letter-spacing;
     margin-bottom: var.$preview-column-item-margin-top;
+    text-transform: uppercase;
   }
 }
 
 .link-arrow {
   margin-top: var.$preview-column-item-margin-top;
+
+  span {
+    text-transform: lowercase;
+  }
 }
 
 .column-items {

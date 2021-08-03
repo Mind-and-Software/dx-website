@@ -9,14 +9,14 @@ const Tags = ({ pageContext, data }) => {
   const { edges, totalCount } = data.allMarkdownRemark;
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? '' : 's'
-  } tagged with "${tag}"`;
+  } tagged "${tag}"`;
 
   return (
     <Layout>
       <h1>{tagHeader}</h1>
       <ul>
         {edges.map(({ node }) => {
-          const slug = `/docs${node.fields.slug}`;
+          const slug = node.fields.slug;
           const { title } = node.frontmatter;
           return (
             <li key={slug}>

@@ -1,15 +1,15 @@
 ---
-slug: 'testi2'
+slug: 'testi3'
 date: '2021-07-30'
-title: 'Testi2'
+title: 'Testi3'
 author: 'Testaaja'
-featuredImage: ../../../images/placeholder.png
+featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
-tags: ['research', 'manage']
+tags: ['develop', 'manage']
 readingTime: '1'
 blurb: 'Testi'
 description: 'Dummy description'
-type: 'Article'
+type: 'Tutorial'
 ---
 
 This post exists to display all content features.

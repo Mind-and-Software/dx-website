@@ -10,7 +10,7 @@ import {
 
 const RelatedContent = ({ contentList }) => {
   return (
-    <div className={relatedContent}>
+    <aside className={relatedContent} role="complementary">
       <h2>Related content</h2>
       <ul className={contentPreviews}>
         {contentList &&
@@ -30,7 +30,7 @@ const RelatedContent = ({ contentList }) => {
             );
           })}
       </ul>
-    </div>
+    </aside>
   );
 };
 

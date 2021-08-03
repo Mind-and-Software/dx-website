@@ -1,15 +1,15 @@
 ---
-slug: 'dummypost'
+slug: 'testi2'
 date: '2021-07-30'
-title: 'Dummy Article'
-author: 'Dummy Dumdum - Dummy Inc'
-featuredImage: ../../../images/placeholder.png
+title: 'Testi2'
+author: 'Testaaja'
+featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
-tags: ['dummy', 'test', 'article']
+tags: ['research']
 readingTime: '1'
-blurb: 'Dummy blurb'
+blurb: 'Testi'
 description: 'Dummy description'
-type: 'Article'
+type: 'Tutorial'
 ---
 
 This post exists to display all content features.

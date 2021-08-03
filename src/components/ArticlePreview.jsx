@@ -96,6 +96,7 @@ const getDescriptionClassName = (description) => {
 const ArticlePreview = ({
   articleUrl,
   previewImage,
+  imageAlt,
   tags,
   title,
   type,
@@ -110,7 +111,7 @@ const ArticlePreview = ({
   <div className={articlePreview} aria-label="Article preview">
     {previewImage && (
       <div className={imageLink}>
-        <ImageLink to={articleUrl} imageData={previewImage} alt={title} />
+        <ImageLink to={articleUrl} imageData={previewImage} alt={imageAlt} />
       </div>
     )}
     <div className={infoSection}>

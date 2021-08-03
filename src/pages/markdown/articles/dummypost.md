@@ -1,13 +1,13 @@
 ---
-slug: 'testi3'
+slug: 'dummypost'
 date: '2021-07-30'
-title: 'Testi3'
-author: 'Testaaja'
-featuredImage: ../../../images/placeholder.png
+title: 'Dummy Article'
+author: 'Dummy Dumdum - Dummy Inc'
+featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
-tags: ['develop', 'manage']
+tags: ['dummy', 'test', 'article']
 readingTime: '1'
-blurb: 'Testi'
+blurb: 'Dummy blurb'
 description: 'Dummy description'
 type: 'Article'
 ---

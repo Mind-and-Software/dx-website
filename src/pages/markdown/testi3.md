@@ -9,6 +9,7 @@ tags: ['develop', 'manage']
 readingTime: '1'
 blurb: 'Testi'
 description: 'Dummy description'
+type: 'Article'
 ---
 
 This post exists to display all content features.

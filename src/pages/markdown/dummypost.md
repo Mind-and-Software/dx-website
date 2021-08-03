@@ -9,6 +9,7 @@ tags: ['dummy', 'test', 'article']
 readingTime: '1'
 blurb: 'Dummy blurb'
 description: 'Dummy description'
+type: 'Article'
 ---
 
 This post exists to display all content features.

@@ -1,14 +1,18 @@
 .content-previews {
-  @include mixin.breakpoint('md', max) {
-    flex-direction: column;
-  }
-
   display: flex;
+  flex-wrap: wrap;
 }
 
 .content-item {
+  line-height: var.$related-content-item-lh;
   list-style-type: none;
   margin: var.$related-content-item-margins;
+  width: var.$related-content-item-width;
+
+  h3 {
+    font-size: var.$related-content-item-fs;
+    font-weight: var.$bold;
+  }
 }
 
 .related-content {

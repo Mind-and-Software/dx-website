@@ -10,6 +10,7 @@ import {
   imageLink,
   dot,
   descriptionEllipsis,
+  typeSection,
 } from '../styles/articlePreview.module.scss';
 import Tag from './Tag';
 import ImageLink from './ImageLink';
@@ -97,6 +98,7 @@ const ArticlePreview = ({
   previewImage,
   tags,
   title,
+  type,
   readingTime,
   date,
   description,
@@ -125,6 +127,7 @@ const ArticlePreview = ({
         <div className={getDescriptionClassName(description)}>
           {description}
         </div>
+        {type && <div className={typeSection}>{type}</div>}
         {authorName && (
           <AuthorSection
             name={authorName}
@@ -141,6 +144,7 @@ const ArticlePreview = ({
 ArticlePreview.defaultProps = {
   previewImage: '',
   tags: [],
+  type: '',
   readingTime: '',
   date: '',
   description: '',
@@ -155,6 +159,7 @@ ArticlePreview.propTypes = {
   previewImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   tags: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
+  type: PropTypes.string,
   readingTime: PropTypes.string,
   date: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
   description: PropTypes.node,

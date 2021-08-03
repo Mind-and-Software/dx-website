@@ -95,6 +95,7 @@ $article-preview-img-space: 1.4rem;
 $article-preview-space: 0.4rem;
 $article-preview-space-double: 2 * $article-preview-space;
 $article-preview-row-section-margin-bottom: 0.1rem;
+$article-preview-type-fs: $fs-secondary;
 
 /* article preview list */
 $article-list-item-margin-top: 4.8rem;
@@ -132,7 +133,10 @@ $profile-image-width: 3.2rem;
 
 /* related content listing */
 $related-content-margins: 6rem 0;
-$related-content-item-margins: 3rem;
+$related-content-item-fs: $fs-secondary;
+$related-content-item-lh: $fs-secondary;
+$related-content-item-margins: 3rem 3rem 3rem 0;
+$related-content-item-width: 20rem;
 
 /* tags */
 $tag-font-color: color.$black;

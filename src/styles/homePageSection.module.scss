@@ -1,6 +1,6 @@
 section {
   @include mixin.content-paddings();
-  @include mixin.homepage-section-margins();
+  @include mixin.no-content-margins();
 
   padding-bottom: var.$homepage-section-padding;
   padding-top: var.$homepage-section-padding;

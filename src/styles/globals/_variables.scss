@@ -23,6 +23,9 @@ $color-link: $color-secondary;
 $color-link--main-nav: color.$mine-shaft;
 $color-link--with-arrow: color.$black;
 $color-sub-heading: lighten(color.$mine-shaft, 30);
+$color-mobile-menu-icon: color.$mine-shaft;
+$color-mobile-menu-icon-bg: color.$white;
+$color-mobile-menu-separator: color.$dusty-gray;
 
 /* typography */
 $font-body: 'Rubik', sans-serif;
@@ -116,9 +119,6 @@ $blurb-padding: 2rem 4rem;
 $hero-padding--left: $space-double;
 $hero-padding--top: $space-double;
 
-/* navbar */
-$navbar-margins: $space-double 0;
-$navbar-link-padding: 0 $space;
 /* homepage section */
 $homepage-section-padding: $space-double;
 $homepage-section-icon-padding: $space-double;
@@ -126,6 +126,15 @@ $homepage-section-icon-width: 4rem;
 $homepage-section-item-margin: 4rem;
 $homepage-section-item-width: 30rem;
 $homepage-section-title-fs: $fs24;
+
+/* mobile menu */
+$mobile-menu-separator: 1px solid $color-mobile-menu-separator;
+$mobile-menu-item-padding: $space 0;
+$mobile-menu-icon-size: 4rem;
+
+/* navbar */
+$navbar-margins: $space-double 0;
+$navbar-link-padding: 0 $space;
 
 /* pager */
 $pager-fs: $fs-secondary;

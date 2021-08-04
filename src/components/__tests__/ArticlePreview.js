@@ -3,30 +3,30 @@ import { render } from '@testing-library/react';
 import ArticlePreview, { AuthorSection } from '../ArticlePreview';
 
 const mockImage = {
-    childImageSharp: {
-      gatsbyImageData: {
-        id: 'test',
-        backgroundColor: 'transparent',
-        layout: 'constrained',
-        images: {
-          fallback: {
+  childImageSharp: {
+    gatsbyImageData: {
+      id: 'test',
+      backgroundColor: 'transparent',
+      layout: 'constrained',
+      images: {
+        fallback: {
+          sizes: '(min-width 383px) 383px, 100vw',
+          src: '/mock',
+          srcSet: '/mock',
+        },
+        sources: [
+          {
             sizes: '(min-width 383px) 383px, 100vw',
-            src: '/mock',
             srcSet: '/mock',
+            type: 'image/webp',
           },
-          sources: [
-            {
-              sizes: '(min-width 383px) 383px, 100vw',
-              srcSet: '/mock',
-              type: 'image/webp',
-            },
-          ],
-        },
-        placeholder: {
-          fallback: 'mock',
-        },
+        ],
+      },
+      placeholder: {
+        fallback: 'mock',
       },
     },
+  },
 };
 
 describe('ArticlePreview component', () => {
@@ -95,7 +95,7 @@ describe('ArticlePreview component', () => {
 describe('AuthorSection component', () => {
   it('Renders correctly without credentials', () => {
     const container = render(
-      <AuthorSection name="Author" url="url" credentials="" image=""/>
+      <AuthorSection name="Author" url="url" credentials="" image="" />
     );
     expect(container.getByText('Author')).toBeInTheDocument();
   });

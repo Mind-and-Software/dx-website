@@ -1,11 +1,11 @@
 ---
-slug: 'dummypost'
-date: '2021-02-04'
-title: 'Dummy Article 4'
+slug: 'dummypost1'
+date: '2021-07-30'
+title: 'Dummy Article 1'
 author: 'Dummy Dumdum - Dummy Inc'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
-tags: ['dummy', 'test', 'research', 'manage']
+tags: ['dummy', 'test', 'research']
 readingTime: '1'
 blurb: 'Dummy blurb'
 description: 'Dummy description'

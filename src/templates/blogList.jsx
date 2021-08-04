@@ -13,17 +13,13 @@ import {
   linkArrow,
 } from '../styles/articlesPage.module.scss';
 
-const ArticlesPage = ({ data, location }) => {
+const ArticlesPage = ({ data }) => {
   const articleEdges = data.allMarkdownRemark.edges;
-  console.log(data, location)
-  
-  const params = new URLSearchParams(location.search.slice(1));
-  const searchValue = params.get('q') || ''
 
   const [searchFilter, setSearchFilter] = useState('');
   const [selectedTags, setSelectedTags] = useState(['ALL']);
 
-  const handleSearchFilter = (searchValues) => setSearchFilter(searchValues);
+  const handleSearchFilter = (searchValue) => setSearchFilter(searchValue);
 
   const handleTagFilter = (tagValue) => {
     const newSelectedTags = selectedTags;
@@ -88,7 +84,6 @@ export default ArticlesPage;
 
 export const imageQuery = graphql`
   query {
-    LunrIndex
     allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
       filter: { frontmatter: { type: { eq: "Article" } } }

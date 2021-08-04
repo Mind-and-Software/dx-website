@@ -1,11 +1,14 @@
 ---
-slug: 'testi3'
-date: '2021-07-30'
-title: 'Testi3'
-author: 'Testaaja'
+slug: 'testi1'
+date: '2021-01-30'
+title: 'Test1'
+author: 'Tester'
+authorCredentials: 'Developer'
+authorImage: ../../../../images/profilepics/meer98.png
+authorUrl: '/'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
-tags: ['develop', 'manage']
+tags: ['develop', 'research']
 readingTime: '1'
 blurb: 'Testi'
 description: 'Dummy description'

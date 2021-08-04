@@ -9,5 +9,5 @@
 footer,
 header,
 main {
-  @include mixin.content-margins();
+  @include mixin.content-paddings();
 }

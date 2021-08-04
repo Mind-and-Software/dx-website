@@ -2,9 +2,10 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
+import Layout from '../components/layout';
+
 import Hero from '../components/Hero';
 import HomePageSection from '../components/HomePageSection';
-import Layout from '../components/layout';
 
 const IndexPage = ({ data }) => {
   const { develop, manage, research } = data;

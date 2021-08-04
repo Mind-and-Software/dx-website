@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
+import ImageLink from './ImageLink';
+import ProfilePicture from './ProfilePicture';
+import Tag from './Tag';
+
 import {
   articlePreview,
   rowSection,
@@ -12,9 +16,6 @@ import {
   descriptionEllipsis,
   typeSection,
 } from '../styles/articlePreview.module.scss';
-import Tag from './Tag';
-import ImageLink from './ImageLink';
-import ProfilePicture from './ProfilePicture';
 
 export const AuthorSection = ({ name, url, credentials, image }) => (
   <div className={authorSection}>

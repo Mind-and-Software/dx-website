@@ -2,6 +2,7 @@ import React from 'react';
 import AaltoLogo from '../assets/aaltoLogo.svg';
 
 import LinkButton from './LinkButton';
+
 import {
   contactParagraph,
   headerArea,

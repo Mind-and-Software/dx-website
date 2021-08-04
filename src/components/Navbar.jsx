@@ -19,7 +19,7 @@ const Navbar = () => {
   const [hamburgerMenuOpen, toggleHamburgerMenu] = useState(false);
   const [windowWidth, setWindowWidth] = useState(undefined);
 
-  const showLinks = hamburgerMenuOpen || windowWidth > 1280;
+  const showLinks = hamburgerMenuOpen || windowWidth >= 1280;
 
   useEffect(() => {
     if (!window) return;

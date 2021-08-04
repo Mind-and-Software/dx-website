@@ -60,9 +60,9 @@ const HomePageSection = ({
 };
 
 HomePageSection.propTypes = {
-  featuredArticles: PropTypes.arrayOf(PropTypes.node).isRequired,
-  featuredDiscussions: PropTypes.arrayOf(PropTypes.node).isRequired,
-  featuredTutorials: PropTypes.arrayOf(PropTypes.node).isRequired,
+  featuredArticles: PropTypes.array.isRequired,
+  featuredDiscussions: PropTypes.array.isRequired,
+  featuredTutorials: PropTypes.array.isRequired,
   sectionId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };

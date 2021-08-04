@@ -18,8 +18,8 @@ const PreviewColumn = ({
 }) => {
   const renderColumn = () => (
     <ul className={className ? `${columnItems} ${className}` : columnItems}>
-      {columnPreviewData.map(({ frontmatter }) => (
-        <li key={frontmatter.title}>
+      {columnPreviewData.map(({ frontmatter }, index) => (
+        <li key={`${index}+${frontmatter.title}`}>
           <ArticlePreview
             title={frontmatter.title}
             tags={frontmatter.tags}

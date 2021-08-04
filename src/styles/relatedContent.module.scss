@@ -1,0 +1,31 @@
+.content {
+  &-item {
+    line-height: var.$related-content-item-lh;
+    list-style-type: none;
+    margin: var.$related-content-item-margins;
+    width: var.$related-content-item-width;
+
+    h3 {
+      font-size: var.$related-content-item-fs;
+      font-weight: var.$bold;
+    }
+  }
+
+  &-previews {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
+}
+
+.related-content {
+  margin: var.$related-content-margins;
+
+  h2 {
+    color: var.$color-sub-heading;
+    font-size: var.$fs-body;
+    font-weight: var.$weak;
+    letter-spacing: var.$related-content-ls;
+    text-transform: uppercase;
+  }
+}

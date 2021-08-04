@@ -1,0 +1,76 @@
+.pager {
+  @include mixin.breakpoint('md', max) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  display: flex;
+  flex-wrap: nowrap;
+  font-size: var.$pager-fs;
+  padding: var.$pager-padding;
+
+  &-item {
+    color: var.$color-text-secondary;
+    padding: var.$pager-item-padding;
+
+    &--current {
+      @extend .pager-item;
+      color: var.$color-secondary;
+    }
+
+    &--hide-on-small {
+      @extend .pager-item;
+      display: none;
+    }
+  }
+}
+
+.pager-items {
+  @include mixin.breakpoint('md', max) {
+    justify-content: center;
+    width: 100%;
+    order: 1;
+  }
+
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  order: 2;
+  list-style: none;
+}
+
+.arrow-link {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  font-weight: var.$bold;
+  padding: var.$space;
+
+  &--left {
+    @extend .arrow-link;
+    order: 1;
+
+    @include mixin.breakpoint('md', max) {
+      order: 2;
+    }
+  }
+
+  &--right {
+    @extend .arrow-link;
+    order: 3;
+  }
+}
+
+.arrow {
+  height: var.$pager-arrow-height;
+
+  &-right {
+    @extend .arrow;
+  }
+
+  &-left {
+    @extend .arrow;
+    transform: rotate(180deg);
+  }
+}

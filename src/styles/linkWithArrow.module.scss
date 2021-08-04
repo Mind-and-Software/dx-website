@@ -1,9 +1,9 @@
 .link-with-arrow {
   align-items: center;
-  color: var.$color-primary--dark;
+  color: var.$color-link--with-arrow;
   display: flex;
   flex-direction: row;
-  font-size: var.$fs-base;
+  font-size: var.$fs-secondary;
 
   &--bigger {
     @extend .link-with-arrow;

@@ -1,39 +1,54 @@
-.tag {
-  background-color: var.$tag-bg-color;
-  border-color: var.$tag-border-color;
-  border-radius: var.$tag-border-radius;
+@charset "utf-8";
+
+.toggleTag {
+  background-color: var.$toggle-tag-bg-color;
+  border-color: var.$toggle-tag-border-color;
+  border-radius: var.$toggle-tag-border-radius;
   border-style: solid;
   border-width: 1px;
-  color: var.$tag-font-color;
+  color: var.$toggle-tag-font-color;
   display: inline-block;
   font-size: var.$tag-font-size;
   height: var.$tag-height;
   line-height: var.$tag-height;
   text-align: center;
+  text-transform: uppercase;
+
   width: var.$tag-width;
 
   &:focus {
-    background-color: var.$tag-bg-color;
+    background-color: var.$toggle-tag-bg-color;
   }
 
   &:hover {
-    background-color: lighten(var.$tag-bg-color, 5%);
+    background-color: lighten(var.$toggle-tag-bg-color, 5%);
   }
 
   &--active {
-    background-color: var.$tag-bg-color--active;
-    border-color: var.$tag-border-color--active;
-    color: var.$tag-font-color--active;
+    background-color: var.$toggle-tag-bg-color--active;
+    border-color: var.$toggle-tag-border-color--active;
+    color: var.$toggle-tag-font-color--active;
 
     &:focus {
-      background-color: var.$tag-bg-color--active;
+      background-color: var.$toggle-tag-bg-color--active;
     }
 
     &:hover {
-      background-color: lighten(var.$tag-bg-color--active, 15%);
+      background-color: lighten(var.$toggle-tag-bg-color--active, 15%);
       text-decoration: none;
     }
   }
+}
+
+.tag {
+  color: var.$tag-font-color;
+  font-size: var.$tag-font-size;
+  font-weight: var.$bold;
+  text-transform: uppercase;
+}
+
+a.tag {
+  color: var.$color-link;
 }
 
 button {
@@ -49,7 +64,7 @@ button {
   }
 
   &:hover {
-    background-color: lighten(var.$tag-bg-color, 15%);
+    background-color: lighten(var.$toggle-tag-bg-color, 15%);
     text-decoration: none;
   }
 }

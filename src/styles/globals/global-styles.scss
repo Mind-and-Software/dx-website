@@ -24,6 +24,10 @@ a {
   }
 }
 
+ul {
+  list-style-type: none;
+}
+
 button {
   background-color: var.$button-bg-color--secondary;
   border-radius: var.$button-border-radius;
@@ -43,17 +47,39 @@ button {
   }
 }
 
-h1 {
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  background: var.$text-field-background;
+  border: var.$text-field-border;
+  border-radius: var.$text-field-radius;
+  box-sizing: border-box;
+  font-size: var.$font-body;
+  height: var.$text-field-height;
+  max-width: var.$text-field-width;
+  outline: none;
+  padding: var.$text-field-padding;
+
+  &:hover,
+  &:focus {
+    border-color: var.$color-secondary;
+  }
+}
+
+h1,
+h2 {
   font-family: var.$font-heading;
   font-size: var.$fs-heading--large;
-  font-weight: normal;
-}
-h2 {
-  font-size: var.$fs-heading--large;
-  font-weight: normal;
+  font-weight: var.$bold;
+  line-height: var.$lh-heading--large;
 }
 h3 {
-  font-size: var.$fs-heading;
+  font-size: var.$fs-heading--medium;
+  font-weight: bold;
+  line-height: var.$lh-heading;
 }
 h4 {
   font-size: var.$fs-heading;

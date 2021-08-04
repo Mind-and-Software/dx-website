@@ -1,0 +1,54 @@
+ul {
+  padding: 0;
+}
+
+li {
+  align-items: center;
+  display: flex;
+  list-style-type: none;
+  width: max-content;
+
+  svg {
+    height: 1.6rem;
+    padding-left: 0.5rem;
+  }
+}
+
+.anchor-link {
+  color: var.$color-hero-link;
+  font-size: var.$fs-body;
+}
+
+.hero {
+  @include mixin.breakpoint('md', max) {
+    flex-direction: column-reverse;
+  }
+  display: flex;
+  flex-direction: row;
+  padding-top: var.$hero-padding--top;
+
+  &--left {
+    @include mixin.breakpoint('md', max) {
+      padding-right: 0;
+    }
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: var.$hero-padding--left;
+  }
+
+  &--right {
+    align-items: center;
+    display: flex;
+    flex: 2;
+    justify-content: center;
+  }
+}
+
+.heroImage {
+  @include mixin.breakpoint('md', max) {
+    width: 100%;
+  }
+  width: 80%;
+}

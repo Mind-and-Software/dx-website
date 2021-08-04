@@ -1,5 +1,6 @@
 // add helper mixins here
 @use 'breakpoints.scss' as br;
+@use 'variables.scss' as var;
 
 /* breakpoints */
 @mixin breakpoint($breakpoint, $direction) {
@@ -37,4 +38,15 @@
       }
     }
   }
+}
+
+@mixin content-margins() {
+  @include breakpoint('sm', max) {
+    padding: 0 var.$margin-body-mobile;
+  }
+  @include breakpoint('xl', min) {
+    padding: 0 calc((100vw - 1700px) / 2);
+  }
+
+  padding: 0 var.$margin-body;
 }

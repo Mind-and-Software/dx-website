@@ -44,17 +44,17 @@
     display: none;
   }
   background-color: var.$color-mobile-menu-icon-bg;
-  width: var.$mobile-menu-icon-size;
   height: var.$mobile-menu-icon-size;
+  width: var.$mobile-menu-icon-size;
 
   &:focus {
     background-color: var.$color-mobile-menu-icon-bg;
   }
 
   svg {
-    width: var.$mobile-menu-icon-size;
-    height: var.$mobile-menu-icon-size;
     fill: var.$color-mobile-menu-icon;
+    height: var.$mobile-menu-icon-size;
+    width: var.$mobile-menu-icon-size;
 
     path {
       stroke: var.$color-mobile-menu-icon;

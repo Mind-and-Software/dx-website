@@ -6,6 +6,7 @@ import Layout from '../components/layout';
 import HeaderSearchArea from '../components/HeaderSearchArea';
 import ArticlePreviewList from '../components/ArticlePreviewList';
 import LinkWithArrow from '../components/LinkWithArrow';
+import Pager from '../components/Pager';
 
 import {
   articlesPage,
@@ -46,12 +47,15 @@ const ArticlesPage = ({ data }) => {
     );
   };
 
-  const getFilteredArticles = () => {
-    const filteredArticles = articleEdges.filter(
-      (article) => filterBySearch(article) && filterByTags(article)
-    );
-    return filteredArticles;
-  };
+  const filteredArticles = articleEdges.filter(
+    (article) => filterBySearch(article) && filterByTags(article)
+  );
+
+  // Forms an array of the page numbers required for the pager component
+  const getPages = () => {
+    const pageAmount = Math.ceil(filteredArticles.length / 9);
+    return Array.from({ length: pageAmount }, (x, i) => i);
+  }
 
   return (
     <Layout>
@@ -65,14 +69,12 @@ const ArticlesPage = ({ data }) => {
         />
         <div className={articleList}>
           <ArticlePreviewList
-            previewData={getFilteredArticles()}
+            previewData={filteredArticles}
             authorImageEdges={data.authorImages.edges}
           />
         </div>
         <div className={linkArrow}>
-          <LinkWithArrow to="/" type="tertiary">
-            Older
-          </LinkWithArrow>
+          <Pager pages={getPages()} currentPage={1} />
         </div>
       </div>
     </Layout>

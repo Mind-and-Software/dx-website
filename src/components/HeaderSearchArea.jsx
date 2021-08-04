@@ -11,7 +11,7 @@ const HeaderSearchArea = ({
   description,
   searchPlaceholder,
   handleSearchChange,
-  handleTagToggle
+  handleTagToggle,
 }) => (
   <div className={headerSearchArea}>
     <h1>{title}</h1>

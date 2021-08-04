@@ -3,9 +3,6 @@ import { render } from '@testing-library/react';
 import ArticlePreview, { AuthorSection } from '../ArticlePreview';
 
 const mockImage = {
-  node: {
-    base: 'mock-image.png',
-    id: 'testid',
     childImageSharp: {
       gatsbyImageData: {
         id: 'test',
@@ -30,7 +27,6 @@ const mockImage = {
         },
       },
     },
-  },
 };
 
 describe('ArticlePreview component', () => {
@@ -44,8 +40,8 @@ describe('ArticlePreview component', () => {
       <ArticlePreview
         title="Title"
         articleUrl="url"
-        date={new Date(2020, 11, 31)}
-        readingTime="9 min"
+        date="2020-12-31"
+        readingTime="9"
       />
     );
     expect(container.getByText('Title')).toBeInTheDocument();
@@ -81,7 +77,7 @@ describe('ArticlePreview component', () => {
       <ArticlePreview
         title="Title"
         articleUrl="url"
-        previewImage={mockImage.node.childImageSharp.gatsbyImageData}
+        previewImage={mockImage}
         imageAlt="mock"
       />
     );
@@ -99,10 +95,9 @@ describe('ArticlePreview component', () => {
 describe('AuthorSection component', () => {
   it('Renders correctly without credentials', () => {
     const container = render(
-      <AuthorSection name="Author" url="url" credentials="" image={mockImage} />
+      <AuthorSection name="Author" url="url" credentials="" image=""/>
     );
     expect(container.getByText('Author')).toBeInTheDocument();
-    expect(container.getByTestId('profilepic')).toBeInTheDocument();
   });
 
   it('Renders correctly without image and credentials', () => {

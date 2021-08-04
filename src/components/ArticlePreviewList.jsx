@@ -5,9 +5,7 @@ import PreviewColumn from './PreviewColumn';
 
 import {
   articlePreviewList,
-  columnFirst,
-  columnSecond,
-  columnThird,
+  column,
 } from '../styles/articlePreviewList.module.scss';
 
 const ArticlePreviewList = ({ previewData, authorImageEdges }) => {
@@ -20,21 +18,21 @@ const ArticlePreviewList = ({ previewData, authorImageEdges }) => {
         <PreviewColumn
           columnPreviewData={firstColumn}
           authorImageEdges={authorImageEdges}
-          className={columnFirst}
+          className={column}
         />
       )}
       {secondColumn.length > 0 && (
         <PreviewColumn
           columnPreviewData={secondColumn}
           authorImageEdges={authorImageEdges}
-          className={columnSecond}
+          className={column}
         />
       )}
       {thirdColumn.length > 0 && (
         <PreviewColumn
           columnPreviewData={thirdColumn}
           authorImageEdges={authorImageEdges}
-          className={columnThird}
+          className={column}
         />
       )}
     </ul>

@@ -5,12 +5,12 @@ import { Link } from 'gatsby';
 import { tag, toggleTag, toggleTagActive } from '../styles/tag.module.scss';
 
 const Tag = ({ children, type, action, handleToggle, isActiveAtStart }) => {
-  const [isActive, setIsActive] = useState(isActiveAtStart)
+  const [isActive, setIsActive] = useState(isActiveAtStart);
 
   const toggle = () => {
-    handleToggle(children)
-    setIsActive(!isActive)
-  }
+    handleToggle(children);
+    setIsActive(!isActive);
+  };
 
   if (type === 'link') {
     return (

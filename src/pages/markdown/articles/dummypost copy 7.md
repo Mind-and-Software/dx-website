@@ -5,7 +5,7 @@ title: 'Dummy Article 6'
 author: 'Dummy Dumdum - Dummy Inc'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
-tags: ['dummy', 'test', 'article']
+tags: ['dummy', 'test', 'research', 'manage']
 readingTime: '1'
 blurb: 'Dummy blurb'
 description: 'Dummy description'

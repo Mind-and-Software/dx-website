@@ -2,184 +2,152 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
-import Blurb from '../components/Blurb';
-import Hero from '../components/Hero';
 import Layout from '../components/layout';
-import ContactParagraph from '../components/ContactParagraph';
-import Pager from '../components/Pager';
-import Tag from '../components/Tag';
-import SearchBar from '../components/SearchBar';
-import ArticlePreviewList from '../components/ArticlePreviewList';
-import PreviewColumn from '../components/PreviewColumn';
 
-const previewData = [
-  {
-    title: 'Your first DX survey',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2020, 5, 30),
-    readingTime: '5 min',
-    previewImageName: 'workstation.png',
-    authorName: 'Test Author',
-    authorCredentials: 'Researcher',
-    authorImageName: 'linuxoid.png',
-    description: `Learn how to design your first Developer Experience survey and start
-    measuring your own or your team’s DX right now!`,
-  },
-  {
-    title: 'Your first DX survey 2',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2020, 5, 30),
-    readingTime: '5 min',
-    previewImageName: 'workstation.png',
-    authorName: 'Test Author',
-    authorCredentials: 'Researcher',
-    authorImageName: 'linuxoid.png',
-    description: `Learn how to design your first Developer Experience survey and start
-    measuring your own or your team’s DX right now!`,
-  },
-  {
-    title: 'Your first DX survey 3',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2020, 5, 30),
-    readingTime: '5 min',
-    previewImageName: 'workstation.png',
-    authorName: 'Test Author',
-    authorCredentials: 'Researcher',
-    authorImageName: 'linuxoid.png',
-    description: `Learn how to design your first Developer Experience survey and start
-    measuring your own or your team’s DX right nowwwsadffffffffdsfdsaffffffffffffsdasdasadsdasadsafsfa`,
-  },
-  {
-    title: 'Your first DX survey 4',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2020, 5, 30),
-    readingTime: '5 min',
-    previewImageName: 'workstation.png',
-    authorName: 'Test Author',
-    authorCredentials: 'Researcher',
-    authorImageName: 'linuxoid.png',
-    description: `Learn how to design your first Developer Experience survey and start
-    measuring your own or your team’s DX right now!`,
-  },
-  {
-    title: 'Your first DX survey 5',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2020, 5, 30),
-    readingTime: '5 min',
-    previewImageName: 'workstation.png',
-    authorName: 'Test Author',
-    authorCredentials: 'Researcher',
-    authorImageName: 'linuxoid.png',
-    description: `Learn how to design your first Developer Experience survey and start
-    measuring your own or your team’s DX right now!`,
-  },
-  {
-    title: 'Why should we care about developer experience (DX)',
-    tags: ['Develop'],
-    articleUrl: '/docs/test-article',
-    date: new Date(),
-    readingTime: '5 min',
-    previewImageName: 'laptop-code.png',
-    authorName: 'Test Author',
-    authorCredentials: 'Manager',
-  },
-  {
-    title: 'How developers around the world experience their work',
-    tags: ['Develop', 'Research'],
-    articleUrl: '/docs/test-article',
-    date: new Date(2018, 5, 21),
-    authorName: 'Test Author',
-    authorCredentials: 'Developer',
-    authorImageName: 'woman-phone.png',
-  },
-];
+import Hero from '../components/Hero';
+import HomePageSection from '../components/HomePageSection';
 
-// markup
-const IndexPage = ({ data }) => (
-  <Layout>
-    <Hero />
-    <h2 id="for-developers">Grow as a developer</h2>
-    <Tag>Hello</Tag>
-    <Tag type="link" action="/docs/test-article">
-      Link
-    </Tag>
-    <Tag type="toggle">Toggle</Tag>
-    <h2 id="for-managers">Work better with developers</h2>
-    <Blurb>
-      <b>TL;DR </b>
-      Knowledgeable developers are like royalty that’s hard to please. But
-      they’re irreplaceable. Yes, you can substitute employees, but if they’re
-      less skilled, you might end up with costly refactoring. If you value the
-      experienced team you have, consider working on what’s called the developer
-      experience to keep them eager and comfortable.
-    </Blurb>
-    <h2 id="for-researchers">Research developer experience</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
-    </p>
-    <SearchBar placeholder="Search articles" />
-    <ArticlePreviewList
-      previewData={previewData}
-      previewImageEdges={data.previewImages.edges}
-      authorImageEdges={data.authorImages.edges}
-    />
-    <PreviewColumn
-      header="Discussions"
-      columnPreviewData={previewData.slice(0, 3)}
-      previewImageEdges={data.previewImages.edges}
-      authorImageEdges={data.authorImages.edges}
-    />
-    <Pager pages={['a', 'b', 'c', 'd', 'e']} currentPage={2} />
-    <ContactParagraph />
-  </Layout>
-);
-export default IndexPage;
+const IndexPage = ({ data }) => {
+  const { develop, manage, research } = data;
 
-// Returns all the images in the directory frontpage
-export const imageQuery = graphql`
-  query {
-    previewImages: allFile(
-      filter: {
-        extension: { regex: "/jpg|png|jpeg/" }
-        relativeDirectory: { eq: "frontpage" }
-      }
+  const filterGroup = (grp, fltr) => {
+    const filtered = grp.group.filter((edge) =>
+      edge.nodes[0] ? edge.nodes[0].frontmatter.type === fltr : []
+    );
+    if (filtered.length > 0) return filtered[0].nodes;
+    return filtered;
+  };
+
+  return (
+    <Layout>
+      <Hero />
+      <HomePageSection
+        sectionId="for-developers"
+        featuredArticles={filterGroup(develop, 'Article')}
+        featuredTutorials={filterGroup(develop, 'Tutorial')}
+        featuredDiscussions={filterGroup(develop, 'Discussion')}
+        title="Grow as a developer"
+        targetGroup="develop"
+      />
+      <HomePageSection
+        sectionId="for-managers"
+        featuredArticles={filterGroup(manage, 'Article')}
+        featuredTutorials={filterGroup(manage, 'Tutorial')}
+        featuredDiscussions={filterGroup(manage, 'Discussion')}
+        title="Work better with developers"
+        targetGroup="manage"
+      />
+      <HomePageSection
+        sectionId="for-researchers"
+        featuredArticles={filterGroup(research, 'Article')}
+        featuredTutorials={filterGroup(research, 'Tutorial')}
+        featuredDiscussions={filterGroup(research, 'Discussion')}
+        title="Research developer experience"
+        targetGroup="research"
+      />
+    </Layout>
+  );
+};
+
+export const query = graphql`
+  query MyQuery {
+    develop: allMarkdownRemark(
+      filter: { frontmatter: { tags: { in: "develop" } } }
+      sort: { fields: frontmatter___date, order: DESC }
     ) {
-      edges {
-        node {
-          id
-          base
-          childImageSharp {
-            gatsbyImageData(width: 384, height: 184)
+      group(field: frontmatter___type, limit: 10) {
+        nodes {
+          frontmatter {
+            author
+            authorCredentials
+            authorImage {
+              childImageSharp {
+                gatsbyImageData(width: 32, height: 32)
+              }
+            }
+            authorUrl
+            date(formatString: "DD MMM, YY")
+            description
+            imageAlt
+            readingTime
+            slug
+            tags
+            title
+            type
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(width: 300, height: 130)
+              }
+            }
           }
         }
       }
     }
-    authorImages: allFile(
-      filter: {
-        extension: { regex: "/jpg|png|jpeg/" }
-        relativeDirectory: { eq: "profilepics" }
-      }
+    manage: allMarkdownRemark(
+      filter: { frontmatter: { tags: { in: "manage" } } }
+      sort: { fields: frontmatter___date, order: DESC }
     ) {
-      edges {
-        node {
-          id
-          base
-          childImageSharp {
-            gatsbyImageData(width: 40, height: 40)
+      group(field: frontmatter___type, limit: 3) {
+        nodes {
+          frontmatter {
+            author
+            authorCredentials
+            authorImage {
+              childImageSharp {
+                gatsbyImageData(width: 32, height: 32)
+              }
+            }
+            authorUrl
+            date(formatString: "DD MMM, YY")
+            description
+            imageAlt
+            readingTime
+            slug
+            tags
+            title
+            type
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(width: 300, height: 130)
+              }
+            }
+          }
+        }
+      }
+    }
+    research: allMarkdownRemark(
+      filter: { frontmatter: { tags: { in: "research" } } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      group(field: frontmatter___type, limit: 3) {
+        nodes {
+          frontmatter {
+            author
+            authorCredentials
+            authorImage {
+              childImageSharp {
+                gatsbyImageData(width: 32, height: 32)
+              }
+            }
+            authorUrl
+            date(formatString: "DD MMM, YY")
+            description
+            imageAlt
+            readingTime
+            slug
+            tags
+            title
+            type
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(width: 300, height: 130)
+              }
+            }
           }
         }
       }
     }
   }
 `;
+
+export default IndexPage;

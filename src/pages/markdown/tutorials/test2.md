@@ -1,8 +1,11 @@
 ---
 slug: 'testi2'
-date: '2021-07-30'
-title: 'Testi2'
-author: 'Testaaja'
+date: '2021-02-28'
+title: 'Test2'
+author: 'Tester'
+authorCredentials: 'Developer'
+authorImage: ../../../../images/profilepics/meer98.png
+authorUrl: '/'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
 tags: ['research']

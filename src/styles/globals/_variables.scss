@@ -15,10 +15,14 @@ $color-text-heading: $color-text-body;
 $color-text-heading--small: $color-text-heading;
 $color-text-field-bg: color.$snow;
 $color-hero-link: $color-text-body;
+$color-homepage-section-bg--developers: color.$polar;
+$color-homepage-section-bg--managers: color.$white;
+$color-homepage-section-bg--researchers: color.$linen;
+$color-homepage-section-title: color.$black;
 $color-link: $color-secondary;
 $color-link--main-nav: color.$mine-shaft;
 $color-link--with-arrow: color.$black;
-$color-sub-heading: lighten(#222222, 50);
+$color-sub-heading: lighten(color.$mine-shaft, 30);
 
 /* typography */
 $font-body: 'Rubik', sans-serif;
@@ -46,6 +50,7 @@ $lh-small: 2.4rem;
 $lh-heading--large: 4.8rem;
 
 $bold: 700;
+$medium: 500;
 $weak: 400;
 
 /* spacing */
@@ -114,6 +119,13 @@ $hero-padding--top: $space-double;
 /* navbar */
 $navbar-margins: $space-double 0;
 $navbar-link-padding: 0 $space;
+/* homepage section */
+$homepage-section-padding: $space-double;
+$homepage-section-icon-padding: $space-double;
+$homepage-section-icon-width: 4rem;
+$homepage-section-item-margin: 4rem;
+$homepage-section-item-width: 30rem;
+$homepage-section-title-fs: $fs24;
 
 /* pager */
 $pager-fs: $fs-secondary;

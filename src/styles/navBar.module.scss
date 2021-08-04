@@ -1,29 +1,22 @@
-.nav-bar-style {
-  //position: absolute;
-  width: 100%;
-  height: 52px;
-  /*left: 100px;
-  top: 33px;*/
-
+.navbar {
   align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
+  margin: var.$navbar-margins;
 
-.nav-bar-links {
-  font-family: Rubik;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 24px;
+  &-link {
+    color: var.$color-link--main-nav;
+    padding: var.$navbar-link-padding;
 
-  color: #222222;
-}
+    &--active {
+      color: var.$color-secondary;
+    }
+  }
 
-.nav-bar-links-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 600px;
+  &-links-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

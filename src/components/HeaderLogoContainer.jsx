@@ -10,7 +10,9 @@ import {
 const HeaderLogoContainer = () => (
   <Link to="/" className={headerContainer}>
     <Logo />
-    <div className={headerText}>DXP</div>
+    <span className={headerText} aria-label="Goto home page">
+      DXP
+    </span>
   </Link>
 );
 

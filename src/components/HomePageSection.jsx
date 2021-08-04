@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import PreviewColumn from '../components/PreviewColumn';
-import Lightbulb from '../assets/Lightbulb.svg';
+import Lightbulb from '../assets/lightbulb.svg';
 
 import {
   developers,

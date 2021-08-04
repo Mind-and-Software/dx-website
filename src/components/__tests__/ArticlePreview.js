@@ -44,7 +44,7 @@ describe('ArticlePreview component', () => {
       <ArticlePreview
         title="Title"
         articleUrl="url"
-        date={'31 Dec, 2020'}
+        date="31 Dec, 2020"
         readingTime="9 min"
       />
     );

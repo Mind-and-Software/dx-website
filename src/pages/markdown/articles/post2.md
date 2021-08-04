@@ -8,7 +8,6 @@ author: 'Marek Gajda CTO - The Software House'
 authorCredentials: 'Manager'
 authorImage: ../../../../images/profilepics/meer98.png
 authorUrl: '/'
-featuredImage: ../../../../images/placeholder.png
 tags: ['develop', 'manage', 'research']
 readingTime: '6'
 blurb: 'TL;DR Knowledgeable developers are like royalty that’s hard to please. But they’re irreplaceable. Yes, you can substitute employees, but if they’re less skilled, you might end up with costly refactoring. If you value the experienced team you have, consider working on what’s called the developer experience to keep them eager and comfortable.'

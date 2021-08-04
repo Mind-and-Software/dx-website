@@ -8,7 +8,7 @@ authorImage: ../../../../images/profilepics/meer98.png
 authorUrl: '/'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
-tags: ['research', 'manage']
+tags: ['develop', 'research', 'manage']
 readingTime: '1'
 blurb: 'Dummy blurb'
 description: 'Dummy description'

@@ -44,35 +44,12 @@ const renderTags = (tags) => {
   if (tags.length > 0) {
     return tags.map((tag) => (
       <div key={tag}>
-        <Tag>{tag}</Tag>
+        <Tag type="link" action={`tags/${tag}`}>
+          {tag}
+        </Tag>
         <Dot />
       </div>
     ));
-  }
-  return '';
-};
-
-const renderDate = (date) => {
-  const monthNames = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  if (date) {
-    return (
-      <div aria-label="Release date of the article">{`${date.getDate()} ${
-        monthNames[date.getMonth()]
-      }, ${date.getFullYear()}`}</div>
-    );
   }
   return '';
 };
@@ -119,7 +96,7 @@ const ArticlePreview = ({
         {renderTags(tags)}
         {renderReadingTime(readingTime)}
         {readingTime && date && <Dot />}
-        {renderDate(date)}
+        {date}
       </div>
       <div>
         <Link to={articleUrl}>

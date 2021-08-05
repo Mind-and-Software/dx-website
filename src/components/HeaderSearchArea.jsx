@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import Tag from './Tag';
 
-import {
-  headerSearchArea,
-} from '../styles/headerSearchArea.module.scss';
+import { headerSearchArea } from '../styles/headerSearchArea.module.scss';
 
 const HeaderSearchArea = ({
   title,

@@ -16,7 +16,6 @@ import {
 
 const ArticleListContainer = ({
   articleEdges,
-  authorImageEdges,
   initSearchValue,
   initTags,
   initCurrentPage,
@@ -28,9 +27,7 @@ const ArticleListContainer = ({
   const handleSubmit = (event, nextPageNum) => {
     if (event) event.preventDefault();
     navigate(
-      `/articles?page=${
-        nextPageNum || currentPage
-      }${selectedTags
+      `/articles?page=${nextPageNum || currentPage}${selectedTags
         .map((tag) => `&${tag}=true`)
         .join('')}`
     );
@@ -110,10 +107,7 @@ const ArticleListContainer = ({
         handleSubmit={handleSubmit}
       />
       <div className={articleList}>
-        <ArticlePreviewList
-          previewData={getPageArticles(currentPage, false)}
-          authorImageEdges={authorImageEdges}
-        />
+        <ArticlePreviewList previewData={getPageArticles(currentPage, false)} />
       </div>
       <div className={pager}>
         <Pager
@@ -128,7 +122,6 @@ const ArticleListContainer = ({
 
 const ArticlesPage = ({ data, location }) => {
   const articleEdges = data.allMarkdownRemark.edges;
-  const authorImageEdges = data.authorImages.edges;
 
   const params = new URLSearchParams(location.search.slice(1));
 
@@ -143,18 +136,16 @@ const ArticlesPage = ({ data, location }) => {
         result.push(tag);
       }
     });
-    if (result.length === 0) result.push('ALL')
+    if (result.length === 0) result.push('ALL');
     return result;
   };
 
-  
   const getCurrentPage = () => Number(params.get('page')) || 1;
 
   return (
     <Layout>
       <ArticleListContainer
         articleEdges={articleEdges}
-        authorImageEdges={authorImageEdges}
         initSearchValue={getSearchValue()}
         initTags={getSelectedTags()}
         initCurrentPage={getCurrentPage()}
@@ -176,7 +167,7 @@ export const imageQuery = graphql`
           frontmatter {
             author
             blurb
-            date
+            date(formatString: "DD MMM, YY")
             slug
             tags
             title
@@ -187,23 +178,6 @@ export const imageQuery = graphql`
             }
             readingTime
             imageAlt
-          }
-        }
-      }
-    }
-
-    authorImages: allFile(
-      filter: {
-        extension: { regex: "/jpg|png|jpeg/" }
-        relativeDirectory: { eq: "profilepics" }
-      }
-    ) {
-      edges {
-        node {
-          id
-          base
-          childImageSharp {
-            gatsbyImageData(width: 40, height: 40)
           }
         }
       }

@@ -1,6 +1,6 @@
 ---
 slug: 'dummypost7'
-date: '2021-02-30'
+date: '2021-02-25'
 title: 'Dummy Article 7'
 author: 'Dummy Dumdum - Dummy Inc'
 featuredImage: ../../../../images/placeholder.png

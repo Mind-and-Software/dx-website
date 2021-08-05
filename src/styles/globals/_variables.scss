@@ -144,12 +144,6 @@ $pager-arrow-height: 1.2rem;
 
 $pager-item-padding: 0 $space;
 
-/* pages */
-$article-heading-margin: $space 0;
-$article-img-height: 30rem;
-$article-img-margin: $space-double 0;
-$article-max-width: 80rem;
-
 /* preview column */
 $preview-column-item-margin-top: 3.2rem;
 $preview-column-width: 38.4rem;
@@ -164,10 +158,10 @@ $profile-image-width: 3.2rem;
 /* related content listing */
 $related-content-ls: 0.2rem;
 $related-content-margins: 6rem 0;
-$related-content-item-fs: $fs-secondary;
-$related-content-item-lh: $fs-secondary;
+$related-content-item-fs: $fs24;
+$related-content-item-lh: $lh-body;
 $related-content-item-margins: 0 3rem 3rem 0;
-$related-content-item-width: 20rem;
+$related-content-item-width: 30rem;
 
 /* tags */
 $tag-font-color: color.$black;
@@ -184,3 +178,13 @@ $toggle-tag-border-color--active: darken($color-secondary, 40%);
 $toggle-tag-border-radius: 3.2rem;
 $toggle-tag-font-color: lighten(color.$black, 50);
 $toggle-tag-font-color--active: color.$white;
+
+/* pages */
+
+$notFound-page-margin: 5rem 0 3rem;
+$notFound-page--articles-margin: 4rem;
+
+$article-heading-margin: $space 0;
+$article-img-height: 30rem;
+$article-img-margin: $space-double 0;
+$article-max-width: 80rem;

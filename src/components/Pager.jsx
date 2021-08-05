@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import { navigate } from '@reach/router';
 
 import LinkArrow from '../assets/linkArrow.svg';
 
@@ -15,12 +16,12 @@ import {
   pagerItemCurrent,
 } from '../styles/pager.module.scss';
 
-const Pager = ({ pages, currentPage }) => {
+const Pager = ({ pages, currentPage, baseUrl }) => {
   const lastPage = pages.length;
 
   const previousLink = (
     <Link
-      to={`/pages/${currentPage - 1}`} // TODO: Fix link later
+      to={`/${baseUrl}/${currentPage - 1}`} // TODO: Fix link later
       key="prev"
       aria-label="Goto previous page"
       className={arrowLinkLeft}

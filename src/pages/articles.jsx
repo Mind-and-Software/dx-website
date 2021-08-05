@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
@@ -15,31 +15,29 @@ import {
 
 const ArticlesPage = ({ data, location }) => {
   const articleEdges = data.allMarkdownRemark.edges;
-  console.log(data, location)
-  
+  console.log(data, location);
+
+  const allTags = ['ALL', 'DEVELOP', 'MANAGE', 'RESEARCH'];
+
   const params = new URLSearchParams(location.search.slice(1));
-  const searchValue = params.get('q') || ''
-
-  const [searchFilter, setSearchFilter] = useState('');
-  const [selectedTags, setSelectedTags] = useState(['ALL']);
-
-  const handleSearchFilter = (searchValues) => setSearchFilter(searchValues);
-
-  const handleTagFilter = (tagValue) => {
-    const newSelectedTags = selectedTags;
-    const indexOfTag = newSelectedTags.indexOf(tagValue);
-    if (indexOfTag > -1) {
-      newSelectedTags.splice(indexOfTag, 1);
-    } else {
-      newSelectedTags.push(tagValue);
-    }
-    setSelectedTags([...newSelectedTags]);
+  const getSearchValue = () => params.get('search') || '';
+  const getSelectedTags = () => {
+    const result = [];
+    allTags.forEach((tag) => {
+      if (params.get(tag)) {
+        result.push(tag);
+      }
+    });
+    return result;
   };
+
+  const searchValue = getSearchValue()
+  const selectedTags = getSelectedTags()
 
   const filterBySearch = (article) =>
     article.node.frontmatter.title
       .toLowerCase()
-      .includes(searchFilter.toLowerCase());
+      .includes(searchValue.toLowerCase());
 
   const filterByTags = (article) => {
     if (selectedTags.includes('ALL')) {
@@ -67,8 +65,9 @@ const ArticlesPage = ({ data, location }) => {
           title="Articles on Developer Experience"
           description="Thoughts and experiences from experienced practicioners in the field"
           searchPlaceholder="Search Articles"
-          handleSearchChange={handleSearchFilter}
-          handleTagToggle={handleTagFilter}
+          initialSearchValue={getSearchValue()}
+          initialTags={getSelectedTags()}
+          baseUrl="articles"
         />
         <div className={articleList}>
           <ArticlePreviewList
@@ -88,7 +87,6 @@ export default ArticlesPage;
 
 export const imageQuery = graphql`
   query {
-    LunrIndex
     allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
       filter: { frontmatter: { type: { eq: "Article" } } }

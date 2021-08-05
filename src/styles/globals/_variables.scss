@@ -63,7 +63,8 @@ $space-double: 2 * $space;
 
 /* gutters */
 $margin-body: 10rem;
-$margin-body-mobile: 2rem;
+$margin-body--tablet: 5rem;
+$margin-body--mobile: 2rem;
 
 /* box-shadow */
 $box-shadow: 0px 4px 4px lighten(color.$black, 75%);
@@ -123,7 +124,7 @@ $hero-padding--top: $space-double;
 $homepage-section-padding: $space-double;
 $homepage-section-icon-padding: $space-double;
 $homepage-section-icon-width: 4rem;
-$homepage-section-item-margin: 4rem;
+$homepage-section-item-margin: $space;
 $homepage-section-item-width: 30rem;
 $homepage-section-title-fs: $fs24;
 

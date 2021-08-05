@@ -1,5 +1,9 @@
 .content {
   &-item {
+    @include mixin.breakpoint('sm', max) {
+      margin-right: 0;
+    }
+
     line-height: var.$related-content-item-lh;
     list-style-type: none;
     margin: var.$related-content-item-margins;
@@ -12,6 +16,10 @@
   }
 
   &-previews {
+    @include mixin.breakpoint('sm', max) {
+      justify-content: center;
+    }
+
     display: flex;
     flex-wrap: wrap;
     margin-top: 0;

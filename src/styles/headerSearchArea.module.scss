@@ -22,24 +22,18 @@
   }
 }
 
-.search-section {
+.search-bar-section {
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
 
-  .search-bar-section {
-    display: flex;
-    flex-wrap: wrap;
+  div {
+    margin-right: var.$space;
+    max-width: var.$text-field-width;
+    flex-grow: 2;
+  }
 
-    div {
-      margin-right: var.$space;
-      max-width: var.$text-field-width;
-      flex-grow: 2;
-    }
-
-    button {
-      height: var.$search-area-button-height;
-      width: var.$search-area-button-width;
-    }
+  button {
+    height: var.$search-area-button-height;
+    width: var.$search-area-button-width;
   }
 }

@@ -28,7 +28,7 @@ const Header = () => {
       </Helmet>
       <nav className={nav} aria-label="Main Navigation" role="navigation">
         <Link to="/">Index</Link>
-        <Link to="/articles?ALL=true">Articles</Link>
+        <Link to="/articles?ALL=true&page=1">Articles</Link>
         <LinkWithArrow to="/docs/test-article">Markdown test</LinkWithArrow>
         <LinkWithArrow to="/docs/test-article" type="secondary">
           Markdown test

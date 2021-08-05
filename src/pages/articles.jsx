@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql } from 'gatsby';
+import { navigate } from '@reach/router';
 
 import Layout from '../components/layout';
 import HeaderSearchArea from '../components/HeaderSearchArea';
@@ -10,29 +11,53 @@ import Pager from '../components/Pager';
 import {
   articlesPage,
   articleList,
-  linkArrow,
+  pager,
 } from '../styles/articlesPage.module.scss';
 
-const ArticlesPage = ({ data, location }) => {
-  const articleEdges = data.allMarkdownRemark.edges;
-  console.log(data, location);
+const ArticleListContainer = ({
+  articleEdges,
+  authorImageEdges,
+  initSearchValue,
+  initTags,
+  initCurrentPage,
+}) => {
+  const [searchValue, setSearchValue] = useState(initSearchValue);
+  const [selectedTags, setSelectedTags] = useState([...initTags]);
+  const [currentPage, setCurrentPage] = useState(initCurrentPage);
 
-  const allTags = ['ALL', 'DEVELOP', 'MANAGE', 'RESEARCH'];
-
-  const params = new URLSearchParams(location.search.slice(1));
-  const getSearchValue = () => params.get('search') || '';
-  const getSelectedTags = () => {
-    const result = [];
-    allTags.forEach((tag) => {
-      if (params.get(tag)) {
-        result.push(tag);
-      }
-    });
-    return result;
+  const handleSubmit = (event, nextPageNum) => {
+    if (event) event.preventDefault();
+    navigate(
+      `/articles?page=${
+        nextPageNum || currentPage
+      }${selectedTags
+        .map((tag) => `&${tag}=true`)
+        .join('')}`
+    );
   };
 
-  const searchValue = getSearchValue()
-  const selectedTags = getSelectedTags()
+  const handleSearchValueChange = (event) => setSearchValue(event.target.value);
+
+  const handleTagToggle = (tagValue) => {
+    const newSelectedTags = selectedTags;
+    const indexOfTag = newSelectedTags.indexOf(tagValue);
+    if (indexOfTag > -1) {
+      newSelectedTags.splice(indexOfTag, 1);
+    } else {
+      newSelectedTags.push(tagValue);
+    }
+    setSelectedTags([...newSelectedTags]);
+    navigate(
+      `/articles?page=${currentPage}${selectedTags
+        .map((tag) => `&${tag}=true`)
+        .join('')}`
+    );
+  };
+
+  const handlePageChange = (nextPageNum) => {
+    setCurrentPage(nextPageNum);
+    handleSubmit(null, nextPageNum);
+  };
 
   const filterBySearch = (article) =>
     article.node.frontmatter.title
@@ -52,33 +77,88 @@ const ArticlesPage = ({ data, location }) => {
     (article) => filterBySearch(article) && filterByTags(article)
   );
 
+  const getPageArticles = (pageNumber, move) => {
+    const start = (pageNumber - 1) * 9;
+    const end = start + 9;
+    const articles = filteredArticles.slice(start, end);
+    if (articles.length === 0 && pageNumber !== 1) {
+      getPageArticles(pageNumber - 1, true);
+    }
+    if (move) {
+      handlePageChange(pageNumber);
+    }
+    return articles;
+  };
+
   // Forms an array of the page numbers required for the pager component
   const getPages = () => {
     const pageAmount = Math.ceil(filteredArticles.length / 9);
+    if (pageAmount === 0) return [0];
     return Array.from({ length: pageAmount }, (x, i) => i);
   };
 
   return (
-    <Layout>
-      <div className={articlesPage}>
-        <HeaderSearchArea
-          title="Articles on Developer Experience"
-          description="Thoughts and experiences from experienced practicioners in the field"
-          searchPlaceholder="Search Articles"
-          initialSearchValue={getSearchValue()}
-          initialTags={getSelectedTags()}
-          baseUrl="articles"
+    <div className={articlesPage}>
+      <HeaderSearchArea
+        title="Articles on Developer Experience"
+        description="Thoughts and experiences from experienced practicioners in the field"
+        searchPlaceholder="Search Articles"
+        searchValue={searchValue}
+        selectedTags={selectedTags}
+        handleTagToggle={handleTagToggle}
+        handleSearchChange={handleSearchValueChange}
+        handleSubmit={handleSubmit}
+      />
+      <div className={articleList}>
+        <ArticlePreviewList
+          previewData={getPageArticles(currentPage, false)}
+          authorImageEdges={authorImageEdges}
         />
-        <div className={articleList}>
-          <ArticlePreviewList
-            previewData={filteredArticles}
-            authorImageEdges={data.authorImages.edges}
-          />
-        </div>
-        <div className={linkArrow}>
-          <Pager pages={getPages()} currentPage={1} />
-        </div>
       </div>
+      <div className={pager}>
+        <Pager
+          pages={getPages()}
+          currentPage={currentPage}
+          handleClick={handlePageChange}
+        />
+      </div>
+    </div>
+  );
+};
+
+const ArticlesPage = ({ data, location }) => {
+  const articleEdges = data.allMarkdownRemark.edges;
+  const authorImageEdges = data.authorImages.edges;
+
+  const params = new URLSearchParams(location.search.slice(1));
+
+  const getSearchValue = () => params.get('search') || '';
+
+  const allTags = ['ALL', 'DEVELOP', 'MANAGE', 'RESEARCH'];
+
+  const getSelectedTags = () => {
+    const result = [];
+    allTags.forEach((tag) => {
+      if (params.get(tag)) {
+        result.push(tag);
+      }
+    });
+    return result;
+  };
+
+  console.log(getSelectedTags())
+
+  const getCurrentPage = () => Number(params.get('page')) || 1;
+
+  return (
+    <Layout>
+      <ArticleListContainer
+        articleEdges={articleEdges}
+        authorImageEdges={authorImageEdges}
+        initSearchValue={getSearchValue()}
+        initTags={getSelectedTags()}
+        initCurrentPage={getCurrentPage()}
+      />
     </Layout>
   );
 };

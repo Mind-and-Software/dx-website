@@ -5,7 +5,6 @@ import Blurb from '../components/Blurb';
 import Hero from '../components/Hero';
 import Layout from '../components/layout';
 import ContactParagraph from '../components/ContactParagraph';
-import Pager from '../components/Pager';
 import Tag from '../components/Tag';
 
 // markup
@@ -37,7 +36,6 @@ const IndexPage = () => (
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.
     </p>
-    <Pager pages={['a', 'b', 'c', 'd', 'e']} currentPage={2} />
     <ContactParagraph />
   </Layout>
 );

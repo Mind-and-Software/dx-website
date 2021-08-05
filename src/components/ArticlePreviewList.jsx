@@ -8,7 +8,7 @@ import {
   column,
 } from '../styles/articlePreviewList.module.scss';
 
-const ArticlePreviewList = ({ previewData, authorImageEdges }) => {
+const ArticlePreviewList = ({ previewData }) => {
   const firstColumn = previewData.slice(0, 3);
   const secondColumn = previewData.slice(3, 6);
   const thirdColumn = previewData.slice(6, 9);
@@ -17,22 +17,22 @@ const ArticlePreviewList = ({ previewData, authorImageEdges }) => {
       {firstColumn.length > 0 && (
         <PreviewColumn
           columnPreviewData={firstColumn}
-          authorImageEdges={authorImageEdges}
           className={column}
+          pathPrefix="/articles"
         />
       )}
       {secondColumn.length > 0 && (
         <PreviewColumn
           columnPreviewData={secondColumn}
-          authorImageEdges={authorImageEdges}
           className={column}
+          pathPrefix="/articles"
         />
       )}
       {thirdColumn.length > 0 && (
         <PreviewColumn
           columnPreviewData={thirdColumn}
-          authorImageEdges={authorImageEdges}
           className={column}
+          pathPrefix="/articles"
         />
       )}
     </ul>
@@ -41,7 +41,6 @@ const ArticlePreviewList = ({ previewData, authorImageEdges }) => {
 
 ArticlePreviewList.propTypes = {
   previewData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  authorImageEdges: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ArticlePreviewList;

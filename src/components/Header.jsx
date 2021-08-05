@@ -1,11 +1,9 @@
 import React from 'react';
 
 import { Helmet } from 'react-helmet';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import LinkWithArrow from './LinkWithArrow';
-
-import { nav } from '../styles/header.module.scss';
+import Navbar from '../components/Navbar';
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -26,15 +24,7 @@ const Header = () => {
         <title>{data.site.siteMetadata.title}</title>
         <meta name="description" content="Website about developer experience" />
       </Helmet>
-      <nav className={nav} aria-label="Main Navigation" role="navigation">
-        <Link to="/">Index</Link>
-        <Link to="/articles?ALL=true&page=1">Articles</Link>
-        <LinkWithArrow to="/docs/test-article">Markdown test</LinkWithArrow>
-        <LinkWithArrow to="/docs/test-article" type="secondary">
-          Markdown test
-        </LinkWithArrow>
-        <Link to="/docs/test-article">Markdown Test</Link>
-      </nav>
+      <Navbar />
     </header>
   );
 };

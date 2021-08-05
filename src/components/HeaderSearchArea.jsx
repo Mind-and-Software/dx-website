@@ -6,8 +6,6 @@ import Tag from './Tag';
 
 import {
   headerSearchArea,
-  searchSection,
-  searchBarSection,
 } from '../styles/headerSearchArea.module.scss';
 
 const HeaderSearchArea = ({
@@ -18,7 +16,6 @@ const HeaderSearchArea = ({
   selectedTags,
   handleTagToggle,
   handleSearchChange,
-  handleSubmit,
 }) => {
   const isTagSelected = (tag) => selectedTags.includes(tag);
 
@@ -26,19 +23,11 @@ const HeaderSearchArea = ({
     <div className={headerSearchArea}>
       <h1>{title}</h1>
       <span aria-label="Description of the page">{description}</span>
-      <form
-        className={searchBarSection}
-        aria-label="Search the page"
-        role="search"
-        onSubmit={handleSubmit}
-      >
-        <SearchBar
-          placeholder={searchPlaceholder}
-          handleChange={handleSearchChange}
-          currentValue={searchValue}
-        />
-        <button type="submit">Go</button>
-      </form>
+      <SearchBar
+        placeholder={searchPlaceholder}
+        handleChange={handleSearchChange}
+        currentValue={searchValue}
+      />
       <ul>
         <li>
           <Tag
@@ -89,7 +78,6 @@ HeaderSearchArea.propTypes = {
   selectedTags: PropTypes.arrayOf(PropTypes.string).isRequired,
   handleSearchChange: PropTypes.func.isRequired,
   handleTagToggle: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default HeaderSearchArea;

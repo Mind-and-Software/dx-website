@@ -12,36 +12,39 @@ import {
 
 const PreviewColumn = ({
   columnPreviewData,
-  authorImageEdges,
   header,
   className,
+  pathPrefix,
 }) => {
   const renderColumn = () => (
     <ul className={className ? `${columnItems} ${className}` : columnItems}>
-      {columnPreviewData.map((previewEdge) => {
-        const content = previewEdge.node.frontmatter;
-        const authorImage = authorImageEdges.find(
-          (authorEdge) => authorEdge.node.base === content.author
-        );
+      {columnPreviewData.map((dataObject, index) => {
+        let frontmatter
+        if (dataObject.frontmatter) {
+          frontmatter = dataObject.frontmatter
+        }
+        if (dataObject.node && dataObject.node.frontmatter) {
+          frontmatter = dataObject.node.frontmatter
+        }
         return (
-          <li key={content.title}>
-            <ArticlePreview
-              title={content.title}
-              tags={content.tags}
-              articleUrl={content.slug}
-              date={content.date}
-              description={content.description}
-              readingTime={content.readingTime}
-              previewImage={content.featuredImage}
-              imageAlt={content.imageAlt}
-              authorName={content.author}
-              authorCredentials={content.authorCredentials}
-              authorUrl={content.authorUrl}
-              authorImage={authorImage}
-            />
-          </li>
-        );
-      })}
+        <li key={`${index}+${frontmatter.title}`}>
+          <ArticlePreview
+            title={frontmatter.title}
+            tags={frontmatter.tags}
+            articleUrl={`${pathPrefix}/${frontmatter.slug}`}
+            date={frontmatter.date}
+            description={frontmatter.description}
+            readingTime={frontmatter.readingTime}
+            previewImage={frontmatter.featuredImage}
+            authorName={frontmatter.authorName}
+            authorCredentials={frontmatter.authorCredentials}
+            authorUrl={frontmatter.authorUrl}
+            authorImage={frontmatter.authorImage}
+          />
+        </li>
+        )
+      }
+      )}
     </ul>
   );
 
@@ -51,7 +54,7 @@ const PreviewColumn = ({
       {renderColumn()}
       {header && (
         <div className={linkArrow}>
-          <LinkWithArrow to="docs/test-article" type="secondary">
+          <LinkWithArrow to={pathPrefix} type="secondary">
             More <span>{header}</span>
           </LinkWithArrow>
         </div>
@@ -63,13 +66,14 @@ const PreviewColumn = ({
 PreviewColumn.defaultProps = {
   className: '',
   header: '',
+  pathPrefix: '',
 };
 
 PreviewColumn.propTypes = {
   columnPreviewData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  authorImageEdges: PropTypes.arrayOf(PropTypes.object).isRequired,
   className: PropTypes.string,
   header: PropTypes.string,
+  pathPrefix: PropTypes.string,
 };
 
 export default PreviewColumn;

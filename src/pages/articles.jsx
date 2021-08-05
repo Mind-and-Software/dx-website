@@ -143,11 +143,11 @@ const ArticlesPage = ({ data, location }) => {
         result.push(tag);
       }
     });
+    if (result.length === 0) result.push('ALL')
     return result;
   };
 
-  console.log(getSelectedTags())
-
+  
   const getCurrentPage = () => Number(params.get('page')) || 1;
 
   return (

@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
+import ImageLink from './ImageLink';
+import ProfilePicture from './ProfilePicture';
+import Tag from './Tag';
+
 import {
   articlePreview,
   rowSection,
@@ -12,9 +16,6 @@ import {
   descriptionSection,
   typeSection,
 } from '../styles/articlePreview.module.scss';
-import Tag from './Tag';
-import ImageLink from './ImageLink';
-import ProfilePicture from './ProfilePicture';
 
 export const AuthorSection = ({ name, url, credentials, image }) => (
   <div className={authorSection}>
@@ -44,39 +45,12 @@ const renderTags = (tags) => {
   if (tags.length > 0) {
     return tags.map((tag) => (
       <div key={tag}>
-        <Tag>{tag}</Tag>
+        <Tag type="link" action={`/tags/${tag}`}>
+          {tag}
+        </Tag>
         <Dot />
       </div>
     ));
-  }
-  return '';
-};
-
-const renderDate = (date) => {
-  const monthNames = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  if (date) {
-    const parts = date.split('-');
-    const year = parts[0];
-    const month = parts[1];
-    const day = parts[2];
-    return (
-      <div aria-label="Release date of the article">{`${day} ${
-        monthNames[Number(month) - 1]
-      }, ${year}`}</div>
-    );
   }
   return '';
 };
@@ -120,7 +94,7 @@ const ArticlePreview = ({
         {renderTags(tags)}
         {renderReadingTime(readingTime)}
         {readingTime && date && <Dot />}
-        {renderDate(date)}
+        {date}
       </div>
       <div>
         <Link to={articleUrl}>

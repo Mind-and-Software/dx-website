@@ -15,10 +15,17 @@ $color-text-heading: $color-text-body;
 $color-text-heading--small: $color-text-heading;
 $color-text-field-bg: color.$snow;
 $color-hero-link: $color-text-body;
+$color-homepage-section-bg--developers: color.$polar;
+$color-homepage-section-bg--managers: color.$white;
+$color-homepage-section-bg--researchers: color.$linen;
+$color-homepage-section-title: color.$black;
 $color-link: $color-secondary;
-$color-link--main-nav: color.$black;
+$color-link--main-nav: color.$mine-shaft;
 $color-link--with-arrow: color.$black;
-$color-sub-heading: lighten(#222222, 50);
+$color-sub-heading: lighten(color.$mine-shaft, 30);
+$color-mobile-menu-icon: color.$mine-shaft;
+$color-mobile-menu-icon-bg: color.$white;
+$color-mobile-menu-separator: color.$dusty-gray;
 
 /* typography */
 $font-body: 'Rubik', sans-serif;
@@ -46,6 +53,7 @@ $lh-small: 2.4rem;
 $lh-heading--large: 4.8rem;
 
 $bold: 700;
+$medium: 500;
 $weak: 400;
 
 /* spacing */
@@ -101,11 +109,6 @@ $article-preview-type-fs: $fs-secondary;
 $article-list-item-margin-top: 4.8rem;
 $article-list-column-margin-right: 5.1rem;
 
-/* preview column */
-$preview-column-item-margin-top: 3.2rem;
-$preview-column-width: 38.4rem;
-$preview-column-heading-letter-spacing: 0.1em;
-
 /* blurb */
 $blurb-bg-color: $color-primary;
 $blurb-font-color: $color-primary--dark;
@@ -115,6 +118,23 @@ $blurb-padding: 2rem 4rem;
 /* hero */
 $hero-padding--left: $space-double;
 $hero-padding--top: $space-double;
+
+/* homepage section */
+$homepage-section-padding: $space-double;
+$homepage-section-icon-padding: $space-double;
+$homepage-section-icon-width: 4rem;
+$homepage-section-item-margin: 4rem;
+$homepage-section-item-width: 30rem;
+$homepage-section-title-fs: $fs24;
+
+/* mobile menu */
+$mobile-menu-separator: 1px solid $color-mobile-menu-separator;
+$mobile-menu-item-padding: $space 0;
+$mobile-menu-icon-size: 4rem;
+
+/* navbar */
+$navbar-margins: $space-double 0;
+$navbar-link-padding: 0 $space;
 
 /* pager */
 $pager-fs: $fs-secondary;
@@ -126,6 +146,11 @@ $pager-item-padding: 0 $space;
 
 $pager-arrow-margin: 2rem;
 $pager-arrow-left-width: 8rem;
+
+/* preview column */
+$preview-column-item-margin-top: 3.2rem;
+$preview-column-width: 38.4rem;
+$preview-column-heading-letter-spacing: 0.1em;
 
 /* profile picture */
 $profile-image-background: $color-placeholder;

@@ -1,18 +1,18 @@
 ---
-slug: 'dummypost3'
-date: '2021-07-30'
-title: 'Dummy Article 3'
-author: 'Dummy Dumdum - Dummy Inc'
-authorCredentials: 'Researcher'
+slug: 'test4'
+date: '2021-08-30'
+title: 'Test4'
+author: 'Tester'
+authorCredentials: 'Developer'
 authorImage: ../../../../images/profilepics/meer98.png
 authorUrl: '/'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
-tags: ['research', 'manage']
+tags: ['develop', 'research']
 readingTime: '1'
-blurb: 'Dummy blurb'
+blurb: 'Testi'
 description: 'Dummy description'
-type: 'Article'
+type: 'Tutorial'
 ---
 
 This post exists to display all content features.

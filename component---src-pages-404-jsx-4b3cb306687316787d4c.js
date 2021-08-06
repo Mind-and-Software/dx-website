@@ -1,2 +1,0 @@
-(self.webpackChunkdx_website=self.webpackChunkdx_website||[]).push([[256],{1657:function(e,t,n){"use strict";n.r(t);var l=n(7294);t.default=function(){return l.createElement("main",null,l.createElement("title",null,"404 Not found - DX Website"),l.createElement("h1",null,"404 Page not found"))}}}]);
-//# sourceMappingURL=component---src-pages-404-jsx-4b3cb306687316787d4c.js.map

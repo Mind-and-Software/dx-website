@@ -98,7 +98,7 @@ const ArticlePreview = ({
       </div>
       <div>
         <Link to={articleUrl}>
-          <h3>{title}</h3>
+          <h4>{title}</h4>
         </Link>
         <div className={descriptionSection}>{description}</div>
         {type && <div className={typeSection}>{type}</div>}

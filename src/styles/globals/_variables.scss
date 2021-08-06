@@ -173,6 +173,7 @@ $tag-font-size: $fs-tertiary;
 $tag-separator-color: color.$black;
 $tag-separator-margin: $space-half;
 $tag-width: 8rem;
+$tag-wide-width: 20rem;
 
 $toggle-tag-bg-color: color.$alabaster;
 $toggle-tag-bg-color--active: $color-secondary;
@@ -187,6 +188,7 @@ $search-area-title-margin: 1.9rem;
 $search-area-description-margin: 4.6rem;
 $search-area-tag-list-margin: 2.7rem;
 $search-area-tag-margin: 1rem;
+$search-area-tag-wide-margin: 2rem;
 $search-area-button-height: $text-field-height;
 $search-area-button-width: $text-field-height * 2;
 
@@ -196,8 +198,8 @@ $link-with-arrow-tertiary-size: 1rem;
 
 /* PAGES */
 
-/* articles page */
-$articles-page-margin: 10rem;
+/* content page */
+$content-page-margin: 10rem;
 
 /* article page */
 $article-heading-margin: $space 0;

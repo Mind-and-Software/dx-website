@@ -1,18 +1,10 @@
 ---
 slug: 'dummypost'
-date: '2021-07-30'
-title: 'Dummy Article'
-author: 'Dummy Dumdum - Dummy Inc'
-authorCredentials: 'Researcher'
-authorImage: ../../../../images/profilepics/meer98.png
-authorUrl: '/'
+title: 'Scale of Positive and Negative Experience'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
-tags: ['develop', 'research', 'manage']
-readingTime: '1'
-blurb: 'Dummy blurb'
-description: 'Dummy description'
-type: 'Article'
+description: 'Scale of Positive and Negative Experience'
+type: 'Research'
 ---
 
 This post exists to display all content features.

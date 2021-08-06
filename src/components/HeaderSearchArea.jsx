@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import Tag from './Tag';
 
-import { headerSearchArea } from '../styles/headerSearchArea.module.scss';
+import {
+  headerSearchArea,
+  wideTagSpace,
+} from '../styles/headerSearchArea.module.scss';
 
 const HeaderSearchArea = ({
   title,
@@ -12,6 +15,7 @@ const HeaderSearchArea = ({
   searchPlaceholder,
   searchValue,
   tags,
+  wideTags,
   selectedTags,
   handleTagToggle,
   handleSearchChange,
@@ -29,11 +33,12 @@ const HeaderSearchArea = ({
       />
       <ul>
         {tags.map((tag) => (
-          <li>
+          <li key={tag} className={wideTags ? wideTagSpace : ''}>
             <Tag
               type="toggle"
               handleToggle={handleTagToggle}
               isActiveAtStart={isTagSelected(tag)}
+              wide={wideTags}
             >
               {tag}
             </Tag>
@@ -42,6 +47,10 @@ const HeaderSearchArea = ({
       </ul>
     </div>
   );
+};
+
+HeaderSearchArea.defaultProps = {
+  wideTags: false,
 };
 
 HeaderSearchArea.propTypes = {
@@ -53,6 +62,7 @@ HeaderSearchArea.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   handleSearchChange: PropTypes.func.isRequired,
   handleTagToggle: PropTypes.func.isRequired,
+  wideTags: PropTypes.bool,
 };
 
 export default HeaderSearchArea;

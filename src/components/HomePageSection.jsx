@@ -40,18 +40,21 @@ const HomePageSection = ({
           header="Tutorials"
           className={contentItem}
           pathPrefix="tutorials"
+          bottomLink="tutorials"
         />
         <PreviewColumn
           columnPreviewData={featuredArticles}
           header="Articles"
           className={contentItem}
           pathPrefix="articles"
+          bottomLink="articles"
         />
         <PreviewColumn
           columnPreviewData={featuredTutorials}
           header="Tutorials again"
           className={contentItem}
           pathPrefix="tutorials"
+          bottomLink="tutorials"
         />
       </div>
     </section>

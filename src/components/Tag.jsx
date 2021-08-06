@@ -2,9 +2,21 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
-import { tag, toggleTag, toggleTagActive } from '../styles/tag.module.scss';
+import {
+  tag,
+  toggleTag,
+  toggleTagActive,
+  wideTag,
+} from '../styles/tag.module.scss';
 
-const Tag = ({ children, type, action, handleToggle, isActiveAtStart }) => {
+const Tag = ({
+  children,
+  type,
+  action,
+  handleToggle,
+  isActiveAtStart,
+  wide,
+}) => {
   const [isActive, setIsActive] = useState(isActiveAtStart);
 
   const toggle = () => {
@@ -23,7 +35,9 @@ const Tag = ({ children, type, action, handleToggle, isActiveAtStart }) => {
     return (
       <button
         type="button"
-        className={`${toggleTag} ${isActive ? toggleTagActive : ''} `}
+        className={`${toggleTag} ${isActive ? toggleTagActive : ''} ${
+          wide ? wideTag : ''
+        }`}
         onClick={() => toggle()}
         aria-label={`Toggle ${isActive ? 'off' : 'on'} filter for ${children} `}
       >
@@ -39,6 +53,7 @@ Tag.defaultProps = {
   type: '',
   handleToggle: null,
   isActiveAtStart: false,
+  wide: false,
 };
 
 Tag.propTypes = {
@@ -47,6 +62,7 @@ Tag.propTypes = {
   type: PropTypes.string,
   handleToggle: PropTypes.func,
   isActiveAtStart: PropTypes.bool,
+  wide: PropTypes.bool,
 };
 
 export default Tag;

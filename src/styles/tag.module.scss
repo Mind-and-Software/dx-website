@@ -68,3 +68,7 @@ button {
     text-decoration: none;
   }
 }
+
+.wide-tag {
+  width: var.$tag-wide-width;
+}

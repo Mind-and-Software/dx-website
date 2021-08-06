@@ -5,21 +5,31 @@ import { navigate } from '@reach/router';
 
 import Layout from '../components/layout';
 import HeaderSearchArea from '../components/HeaderSearchArea';
-import ArticlePreviewList from '../components/ArticlePreviewList';
 import Pager from '../components/Pager';
+import PreviewColumn from '../components/PreviewColumn';
 
 import {
   contentPage,
-  contentSection,
   pager,
 } from '../styles/contentPage.module.scss';
 
-const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
+import {
+  researchTopics,
+  contentSection,
+  middleColumn,
+} from '../styles/researchPage.module.scss';
+
+
+const ResearchItemsContainer = ({
+  articleEdges,
+  researchEdges,
+  initCurrentPage,
+}) => {
   const [searchValue, setSearchValue] = useState('');
   const [selectedTags, setSelectedTags] = useState(['ALL']);
   const [currentPage, setCurrentPage] = useState(initCurrentPage);
 
-  const itemsPerPage = 9;
+  const itemsPerPage = 6;
 
   const handleSearchValueChange = (event) => setSearchValue(event.target.value);
 
@@ -37,7 +47,7 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
 
   const handlePageChange = (nextPageNum) => {
     setCurrentPage(nextPageNum);
-    navigate(`/articles?page=${nextPageNum || currentPage}`);
+    navigate(`/research?page=${nextPageNum || currentPage}`);
   };
 
   const filterBySearch = (article) =>
@@ -58,7 +68,7 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
     (article) => filterBySearch(article) && filterByTags(article)
   );
 
-  // Gets articles for the current page, maximum 9 articles per page.
+  // Gets articles for the current page, maximum 6 articles per page.
   const getPageArticles = (pageNumber, move) => {
     const start = (pageNumber - 1) * itemsPerPage;
     const end = start + itemsPerPage;
@@ -85,24 +95,44 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
 
   const currentPageArticles = getPageArticles(currentPage, false);
 
+  const firstColumnData = currentPageArticles.slice(0, 3);
+  const secondColumnData = currentPageArticles.slice(3, 6);
+
   return (
     <div className={contentPage}>
       <HeaderSearchArea
-        title="Articles on Developer Experience"
-        description="Thoughts and experiences from experienced practicioners in the field"
-        searchPlaceholder="Search Articles"
+        title="Research in Developer Experience"
+        description="Stay up to date on the latest research in Developer Experience"
+        searchPlaceholder="Search research topics"
         searchValue={searchValue}
         selectedTags={selectedTags}
-        tags={['ALL', 'DEVELOP', 'MANAGE', 'RESEARCH']}
+        tags={['SYNOPSIS', 'OPEN QUESTION', 'CASE STUDY']}
+        wideTags
         handleTagToggle={handleTagToggle}
         handleSearchChange={handleSearchValueChange}
       />
       <div className={contentSection}>
         {currentPageArticles.length > 0 ? (
-          <ArticlePreviewList previewData={currentPageArticles} />
+          <div className={researchTopics}>
+            {firstColumnData.length > 0 && (
+              <PreviewColumn
+                columnPreviewData={firstColumnData}
+                header="Research topics"
+              />
+            )}
+            {secondColumnData.length > 0 && (
+              // Middle column header won't be shown, but is included so the columns are aligned properly
+              <PreviewColumn columnPreviewData={secondColumnData} header="Hidden" className={middleColumn}/>
+            )}
+          </div>
         ) : (
           <p>No articles found</p>
         )}
+        <PreviewColumn
+          columnPreviewData={researchEdges.slice(0, 3)}
+          header="Research instruments"
+          disableLinkArrow
+        />
       </div>
       <div className={pager}>
         <Pager
@@ -115,8 +145,9 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
   );
 };
 
-const ArticlesPage = ({ data, location }) => {
-  const articleEdges = data.allMarkdownRemark.edges;
+const ResearchPage = ({ data, location }) => {
+  const articleEdges = data.articles.edges;
+  const researchEdges = data.research.edges;
 
   const params = new URLSearchParams(location.search.slice(1));
 
@@ -124,19 +155,20 @@ const ArticlesPage = ({ data, location }) => {
 
   return (
     <Layout>
-      <ArticleListContainer
+      <ResearchItemsContainer
         articleEdges={articleEdges}
+        researchEdges={researchEdges}
         initCurrentPage={getCurrentPage()}
       />
     </Layout>
   );
 };
 
-export default ArticlesPage;
+export default ResearchPage;
 
 export const imageQuery = graphql`
   query {
-    allMarkdownRemark(
+    articles: allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
       filter: { frontmatter: { type: { eq: "Article" } } }
     ) {
@@ -155,6 +187,24 @@ export const imageQuery = graphql`
               }
             }
             readingTime
+            imageAlt
+          }
+        }
+      }
+    }
+    research: allMarkdownRemark(
+      filter: { frontmatter: { type: { eq: "Research" } } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            slug
+            title
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(width: 384, height: 184)
+              }
+            }
             imageAlt
           }
         }

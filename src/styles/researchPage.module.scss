@@ -1,0 +1,27 @@
+.content-section {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-top: var.$content-page-margin;
+
+  ul {
+    margin-right: var.$article-list-column-margin-right;
+  }
+
+  p {
+    flex: 2;
+    white-space: nowrap;
+    margin-right: var.$article-list-column-margin-right;
+  }
+}
+
+.research-topics {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.middleColumn {
+  h2 {
+    visibility: hidden;
+  }
+}

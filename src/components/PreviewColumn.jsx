@@ -18,23 +18,32 @@ const PreviewColumn = ({
 }) => {
   const renderColumn = () => (
     <ul className={className ? `${columnItems} ${className}` : columnItems}>
-      {columnPreviewData.map(({ frontmatter }, index) => (
-        <li key={`${index}+${frontmatter.title}`}>
-          <ArticlePreview
-            title={frontmatter.title}
-            tags={frontmatter.tags}
-            articleUrl={`${pathPrefix}/${frontmatter.slug}`}
-            date={frontmatter.date}
-            description={frontmatter.description}
-            readingTime={frontmatter.readingTime}
-            previewImage={frontmatter.featuredImage}
-            authorName={frontmatter.authorName}
-            authorCredentials={frontmatter.authorCredentials}
-            authorUrl={frontmatter.authorUrl}
-            authorImage={frontmatter.authorImage}
-          />
-        </li>
-      ))}
+      {columnPreviewData.map((dataObject, index) => {
+        let frontmatter;
+        if (dataObject.frontmatter) {
+          frontmatter = dataObject.frontmatter;
+        }
+        if (dataObject.node && dataObject.node.frontmatter) {
+          frontmatter = dataObject.node.frontmatter;
+        }
+        return (
+          <li key={`${index}+${frontmatter.title}`}>
+            <ArticlePreview
+              title={frontmatter.title}
+              tags={frontmatter.tags}
+              articleUrl={`${pathPrefix}/${frontmatter.slug}`}
+              date={frontmatter.date}
+              description={frontmatter.description}
+              readingTime={frontmatter.readingTime}
+              previewImage={frontmatter.featuredImage}
+              authorName={frontmatter.authorName}
+              authorCredentials={frontmatter.authorCredentials}
+              authorUrl={frontmatter.authorUrl}
+              authorImage={frontmatter.authorImage}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 
@@ -56,12 +65,14 @@ const PreviewColumn = ({
 PreviewColumn.defaultProps = {
   className: '',
   header: '',
+  pathPrefix: '',
 };
 
 PreviewColumn.propTypes = {
   columnPreviewData: PropTypes.arrayOf(PropTypes.object).isRequired,
   className: PropTypes.string,
   header: PropTypes.string,
+  pathPrefix: PropTypes.string,
 };
 
 export default PreviewColumn;

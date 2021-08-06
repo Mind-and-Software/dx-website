@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
 
 import LinkArrow from '../assets/linkArrow.svg';
 
@@ -15,31 +14,33 @@ import {
   pagerItemCurrent,
 } from '../styles/pager.module.scss';
 
-const Pager = ({ pages, currentPage }) => {
+const Pager = ({ pages, currentPage, handleClick }) => {
   const lastPage = pages.length;
 
   const previousLink = (
-    <Link
-      to={`/pages/${currentPage - 1}`} // TODO: Fix link later
+    <button
+      onClick={() => handleClick(currentPage - 1)}
+      type="button"
       key="prev"
       aria-label="Goto previous page"
       className={arrowLinkLeft}
     >
       <LinkArrow className={arrowLeft} />
       Previous
-    </Link>
+    </button>
   );
 
   const nextLink = (
-    <Link
-      to={`/pages/${currentPage + 1}`} // TODO: Fix link later
+    <button
+      onClick={() => handleClick(currentPage + 1)}
+      type="button"
       key="next"
       aria-label="Goto next page"
       className={arrowLinkRight}
     >
       Next
       <LinkArrow className={arrowRight} />
-    </Link>
+    </button>
   );
 
   return (
@@ -50,26 +51,27 @@ const Pager = ({ pages, currentPage }) => {
           const pageNo = pages.indexOf(page) + 1;
           if (pageNo === currentPage) {
             return (
-              <Link
-                to="/"
+              <button
+                onClick={() => handleClick(currentPage)}
+                type="button"
                 key={pageNo}
                 className={pagerItemCurrent}
                 aria-label={`Page ${pageNo}, Current page`}
-                aria-selected
               >
                 {pages.indexOf(page) + 1}
-              </Link>
+              </button>
             );
           }
           return (
-            <Link
-              to={`/pages/${pageNo}`} // TODO: fix link once we know what the route is
+            <button
+              onClick={() => handleClick(pageNo)}
+              type="button"
               key={pageNo}
               className={pagerItem}
               aria-label={`Goto page ${pageNo} `}
             >
               {pages.indexOf(page) + 1}
-            </Link>
+            </button>
           );
         })}
       </div>
@@ -81,6 +83,7 @@ const Pager = ({ pages, currentPage }) => {
 Pager.propTypes = {
   currentPage: PropTypes.number.isRequired,
   pages: PropTypes.arrayOf(PropTypes.node).isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default Pager;

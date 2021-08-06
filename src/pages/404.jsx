@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
+import Layout from '../components/layout';
 import RelatedContent from '../components/RelatedContent';
 
-import Layout from '../components/layout';
 import { notFoundContainer } from '../styles/404.module.scss';
 
 const NotFoundPage = ({ data }) => (

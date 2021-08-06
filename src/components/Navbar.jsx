@@ -50,7 +50,7 @@ const Navbar = () => {
             <Link
               className={navbarLink}
               activeClassName={navbarLinkActive}
-              to="/tags"
+              to="/articles"
             >
               Articles
             </Link>

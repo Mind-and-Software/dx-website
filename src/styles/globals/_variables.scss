@@ -145,6 +145,9 @@ $pager-arrow-height: 1.2rem;
 
 $pager-item-padding: 0 $space;
 
+$pager-arrow-margin: 2rem;
+$pager-arrow-left-width: 8rem;
+
 /* preview column */
 $preview-column-item-margin-top: 3.2rem;
 $preview-column-width: 38.4rem;
@@ -185,6 +188,24 @@ $toggle-tag-font-color--active: color.$white;
 $notFound-page-margin: 5rem 0 3rem;
 $notFound-page--articles-margin: 4rem;
 
+/* header search area */
+$search-area-title-margin: 1.9rem;
+$search-area-description-margin: 4.6rem;
+$search-area-tag-list-margin: 2.7rem;
+$search-area-tag-margin: 1rem;
+$search-area-button-height: $text-field-height;
+$search-area-button-width: $text-field-height * 2;
+
+/* link with arrow */
+$link-with-arrow-text-tertiary-margin: 0.5rem;
+$link-with-arrow-tertiary-size: 1rem;
+
+/* PAGES */
+
+/* articles page */
+$articles-page-margin: 10rem;
+
+/* article page */
 $article-heading-margin: $space 0;
 $article-img-height: 30rem;
 $article-img-margin: $space-double 0;

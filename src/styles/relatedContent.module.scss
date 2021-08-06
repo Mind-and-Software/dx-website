@@ -1,18 +1,25 @@
 .content {
   &-item {
+    @include mixin.breakpoint('sm', max) {
+      margin-right: 0;
+    }
+
     line-height: var.$related-content-item-lh;
     list-style-type: none;
     margin: var.$related-content-item-margins;
     width: var.$related-content-item-width;
 
     h3 {
-      color: var.$color-text-body;
       font-size: var.$related-content-item-fs;
       font-weight: var.$bold;
     }
   }
 
   &-previews {
+    @include mixin.breakpoint('sm', max) {
+      justify-content: center;
+    }
+
     display: flex;
     flex-wrap: wrap;
     margin-top: 0;

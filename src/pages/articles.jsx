@@ -4,8 +4,8 @@ import { graphql } from 'gatsby';
 import { navigate } from '@reach/router';
 
 import Layout from '../components/layout';
-import HeaderSearchArea from '../components/HeaderSearchArea';
 import ArticlePreviewList from '../components/ArticlePreviewList';
+import HeaderSearchArea from '../components/HeaderSearchArea';
 import Pager from '../components/Pager';
 
 import {

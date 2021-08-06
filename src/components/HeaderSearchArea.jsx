@@ -11,6 +11,7 @@ const HeaderSearchArea = ({
   description,
   searchPlaceholder,
   searchValue,
+  tags,
   selectedTags,
   handleTagToggle,
   handleSearchChange,
@@ -27,42 +28,17 @@ const HeaderSearchArea = ({
         currentValue={searchValue}
       />
       <ul>
-        <li>
-          <Tag
-            type="toggle"
-            handleToggle={handleTagToggle}
-            isActiveAtStart={isTagSelected('ALL')}
-          >
-            ALL
-          </Tag>
-        </li>
-        <li>
-          <Tag
-            type="toggle"
-            handleToggle={handleTagToggle}
-            isActiveAtStart={isTagSelected('DEVELOP')}
-          >
-            DEVELOP
-          </Tag>
-        </li>
-        <li>
-          <Tag
-            type="toggle"
-            handleToggle={handleTagToggle}
-            isActiveAtStart={isTagSelected('MANAGE')}
-          >
-            MANAGE
-          </Tag>
-        </li>
-        <li>
-          <Tag
-            type="toggle"
-            handleToggle={handleTagToggle}
-            isActiveAtStart={isTagSelected('RESEARCH')}
-          >
-            RESEARCH
-          </Tag>
-        </li>
+        {tags.map((tag) => (
+          <li>
+            <Tag
+              type="toggle"
+              handleToggle={handleTagToggle}
+              isActiveAtStart={isTagSelected(tag)}
+            >
+              {tag}
+            </Tag>
+          </li>
+        ))}
       </ul>
     </div>
   );
@@ -74,6 +50,7 @@ HeaderSearchArea.propTypes = {
   searchPlaceholder: PropTypes.string.isRequired,
   searchValue: PropTypes.string.isRequired,
   selectedTags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   handleSearchChange: PropTypes.func.isRequired,
   handleTagToggle: PropTypes.func.isRequired,
 };

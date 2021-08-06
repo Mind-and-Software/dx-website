@@ -14,46 +14,28 @@ import {
   pager,
 } from '../styles/articlesPage.module.scss';
 
-const ArticleListContainer = ({
-  articleEdges,
-  initSearchValue,
-  initTags,
-  initCurrentPage,
-}) => {
-  const [searchValue, setSearchValue] = useState(initSearchValue);
-  const [selectedTags, setSelectedTags] = useState([...initTags]);
+const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
+  const [searchValue, setSearchValue] = useState('');
+  const [selectedTags, setSelectedTags] = useState(['ALL']);
   const [currentPage, setCurrentPage] = useState(initCurrentPage);
-
-  const handleSubmit = (event, nextPageNum) => {
-    if (event) event.preventDefault();
-    navigate(
-      `/articles?page=${nextPageNum || currentPage}${selectedTags
-        .map((tag) => `&${tag}=true`)
-        .join('')}`
-    );
-  };
 
   const handleSearchValueChange = (event) => setSearchValue(event.target.value);
 
   const handleTagToggle = (tagValue) => {
     const newSelectedTags = selectedTags;
     const indexOfTag = newSelectedTags.indexOf(tagValue);
+    // If the toggled tag is found in the selected tags, remove it from the state, otherwise add it to the state
     if (indexOfTag > -1) {
       newSelectedTags.splice(indexOfTag, 1);
     } else {
       newSelectedTags.push(tagValue);
     }
     setSelectedTags([...newSelectedTags]);
-    navigate(
-      `/articles?page=${currentPage}${selectedTags
-        .map((tag) => `&${tag}=true`)
-        .join('')}`
-    );
   };
 
   const handlePageChange = (nextPageNum) => {
     setCurrentPage(nextPageNum);
-    handleSubmit(null, nextPageNum);
+    navigate(`/articles?page=${nextPageNum || currentPage}`);
   };
 
   const filterBySearch = (article) =>
@@ -74,10 +56,15 @@ const ArticleListContainer = ({
     (article) => filterBySearch(article) && filterByTags(article)
   );
 
+  // Gets articles for the current page, maximum 9 articles per page.
   const getPageArticles = (pageNumber, move) => {
     const start = (pageNumber - 1) * 9;
     const end = start + 9;
     const articles = filteredArticles.slice(start, end);
+    /* 
+      If we are not at the first page and the page has no articles, try moving to the previous page,
+      until we find a page that has articles or reach the first page.
+    */
     if (articles.length === 0 && pageNumber !== 1) {
       getPageArticles(pageNumber - 1, true);
     }
@@ -94,6 +81,8 @@ const ArticleListContainer = ({
     return Array.from({ length: pageAmount }, (x, i) => i);
   };
 
+  const currentPageArticles = getPageArticles(currentPage, false);
+
   return (
     <div className={articlesPage}>
       <HeaderSearchArea
@@ -102,12 +91,16 @@ const ArticleListContainer = ({
         searchPlaceholder="Search Articles"
         searchValue={searchValue}
         selectedTags={selectedTags}
+        tags={['ALL', 'DEVELOP', 'MANAGE', 'RESEARCH']}
         handleTagToggle={handleTagToggle}
         handleSearchChange={handleSearchValueChange}
-        handleSubmit={handleSubmit}
       />
       <div className={articleList}>
-        <ArticlePreviewList previewData={getPageArticles(currentPage, false)} />
+        {currentPageArticles.length > 0 ? (
+          <ArticlePreviewList previewData={currentPageArticles} />
+        ) : (
+          <p>No articles found</p>
+        )}
       </div>
       <div className={pager}>
         <Pager
@@ -125,29 +118,12 @@ const ArticlesPage = ({ data, location }) => {
 
   const params = new URLSearchParams(location.search.slice(1));
 
-  const getSearchValue = () => params.get('search') || '';
-
-  const allTags = ['ALL', 'DEVELOP', 'MANAGE', 'RESEARCH'];
-
-  const getSelectedTags = () => {
-    const result = [];
-    allTags.forEach((tag) => {
-      if (params.get(tag)) {
-        result.push(tag);
-      }
-    });
-    if (result.length === 0) result.push('ALL');
-    return result;
-  };
-
   const getCurrentPage = () => Number(params.get('page')) || 1;
 
   return (
     <Layout>
       <ArticleListContainer
         articleEdges={articleEdges}
-        initSearchValue={getSearchValue()}
-        initTags={getSelectedTags()}
         initCurrentPage={getCurrentPage()}
       />
     </Layout>

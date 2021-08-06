@@ -12,7 +12,7 @@ const NotFoundPage = ({ data }) => (
       <h1>404 Page not found</h1>
       <p>
         Well that's not a very great developer experience <br />
-        Want to see what is? Check out out latest content instead:
+        Want to see what is? Check out latest content instead:
       </p>
       <RelatedContent contentList={data.allMarkdownRemark.edges} />
     </div>

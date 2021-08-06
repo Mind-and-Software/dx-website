@@ -4,7 +4,7 @@
 
   margin-top: var.$content-page-margin;
 
-  ul {
+  .column {
     margin-right: var.$article-list-column-margin-right;
   }
 
@@ -20,6 +20,7 @@
 }
 
 .middleColumn {
+  @extend .column;
   h2 {
     visibility: hidden;
   }

@@ -13,6 +13,7 @@ import { contentPage, pager } from '../styles/contentPage.module.scss';
 import {
   researchTopics,
   contentSection,
+  column,
   middleColumn,
   hiddenColumn,
 } from '../styles/researchPage.module.scss';
@@ -118,7 +119,7 @@ const ResearchItemsContainer = ({
               <PreviewColumn
                 columnPreviewData={firstColumnData}
                 header="Research topics"
-                className={firstColumnData.length === 0 ? hiddenColumn : ''}
+                className={firstColumnData.length === 0 ? hiddenColumn : column}
               />
               <PreviewColumn
                 columnPreviewData={secondColumnData}

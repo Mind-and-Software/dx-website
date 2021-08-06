@@ -69,6 +69,10 @@
   padding: var.$space;
   color: var.$color-secondary;
 
+  @include mixin.breakpoint('md', max) {
+    width: var.$space;
+  }
+
   &--left {
     @extend .arrow-link;
     order: 1;
@@ -84,6 +88,12 @@
     @extend .arrow-link;
     order: 3;
     margin-left: var.$pager-arrow-margin;
+  }
+
+  .link-text {
+    @include mixin.breakpoint('md', max) {
+      display: none;
+    }
   }
 }
 

@@ -9,7 +9,6 @@
   }
 
   p {
-    flex: 2;
     white-space: nowrap;
     margin-right: var.$article-list-column-margin-right;
   }
@@ -24,4 +23,8 @@
   h2 {
     visibility: hidden;
   }
+}
+
+.hidden-column {
+  visibility: hidden;
 }

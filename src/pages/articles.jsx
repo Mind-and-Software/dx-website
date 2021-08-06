@@ -20,9 +20,9 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
   const [currentPage, setCurrentPage] = useState(initCurrentPage);
 
   useEffect(() => {
-    setCurrentPage(initCurrentPage)
-  }, [initCurrentPage])
-  
+    setCurrentPage(initCurrentPage);
+  }, [initCurrentPage]);
+
   const itemsPerPage = 9;
 
   const handleSearchValueChange = (event) => setSearchValue(event.target.value);
@@ -124,8 +124,7 @@ const ArticlesPage = ({ data, location }) => {
 
   const params = new URLSearchParams(location.search.slice(1));
   let currentPage = Number(params.get('page')) || 1;
-  
-  
+
   if (!currentPage) {
     currentPage = 1;
     navigate(`/articles?page=${currentPage}`);

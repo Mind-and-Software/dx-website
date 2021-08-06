@@ -12,6 +12,7 @@ import {
   pagerItem,
   pagerItems,
   pagerItemCurrent,
+  linkText
 } from '../styles/pager.module.scss';
 
 const Pager = ({ pages, currentPage, handleClick }) => {
@@ -26,7 +27,7 @@ const Pager = ({ pages, currentPage, handleClick }) => {
       className={arrowLinkLeft}
     >
       <LinkArrow className={arrowLeft} />
-      Previous
+      <span className={linkText}>Previous</span>
     </button>
   );
 
@@ -38,7 +39,7 @@ const Pager = ({ pages, currentPage, handleClick }) => {
       aria-label="Goto next page"
       className={arrowLinkRight}
     >
-      Next
+      <span className={linkText}>Next</span>
       <LinkArrow className={arrowRight} />
     </button>
   );

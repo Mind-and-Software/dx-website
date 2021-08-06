@@ -32,7 +32,11 @@ const PreviewColumn = ({
             <ArticlePreview
               title={frontmatter.title}
               tags={frontmatter.tags}
-              articleUrl={dataObject.node ? dataObject.node.fields.slug : `${pathPrefix}/${frontmatter.slug}`}
+              articleUrl={
+                dataObject.node
+                  ? dataObject.node.fields.slug
+                  : `${pathPrefix}/${frontmatter.slug}`
+              }
               date={frontmatter.date}
               description={frontmatter.description}
               readingTime={frontmatter.readingTime}
@@ -49,7 +53,9 @@ const PreviewColumn = ({
   );
 
   return (
-    <div className={className ? `${previewColumn} ${className}` : previewColumn}>
+    <div
+      className={className ? `${previewColumn} ${className}` : previewColumn}
+    >
       {header && <h2>{header}</h2>}
       {renderColumn()}
       {bottomLink && (

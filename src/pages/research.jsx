@@ -8,17 +8,14 @@ import HeaderSearchArea from '../components/HeaderSearchArea';
 import Pager from '../components/Pager';
 import PreviewColumn from '../components/PreviewColumn';
 
-import {
-  contentPage,
-  pager,
-} from '../styles/contentPage.module.scss';
+import { contentPage, pager } from '../styles/contentPage.module.scss';
 
 import {
   researchTopics,
   contentSection,
   middleColumn,
+  hiddenColumn,
 } from '../styles/researchPage.module.scss';
-
 
 const ResearchItemsContainer = ({
   articleEdges,
@@ -30,8 +27,8 @@ const ResearchItemsContainer = ({
   const [currentPage, setCurrentPage] = useState(initCurrentPage);
 
   useEffect(() => {
-    setCurrentPage(initCurrentPage)
-  }, [initCurrentPage])
+    setCurrentPage(initCurrentPage);
+  }, [initCurrentPage]);
 
   const itemsPerPage = 6;
 
@@ -116,26 +113,24 @@ const ResearchItemsContainer = ({
         handleSearchChange={handleSearchValueChange}
       />
       <div className={contentSection}>
-        {currentPageArticles.length > 0 ? (
-          <div className={researchTopics}>
-            {firstColumnData.length > 0 && (
+        <div>
+            <div className={researchTopics}>
               <PreviewColumn
                 columnPreviewData={firstColumnData}
                 header="Research topics"
+                className={firstColumnData.length === 0 ? hiddenColumn : ''}
               />
-            )}
-            {secondColumnData.length > 0 && (
-              // Middle column header won't be shown, but is included so the columns are aligned properly
-              <PreviewColumn columnPreviewData={secondColumnData} header="Hidden" className={middleColumn}/>
-            )}
-          </div>
-        ) : (
-          <p>No articles found</p>
-        )}
+              <PreviewColumn
+                columnPreviewData={secondColumnData}
+                header="Hidden"
+                className={secondColumnData.length === 0 ? `${hiddenColumn} ${middleColumn}` : middleColumn}
+              />
+            </div>
+            { currentPageArticles.length === 0 && <p>No articles found</p>}
+        </div>
         <PreviewColumn
           columnPreviewData={researchEdges.slice(0, 3)}
           header="Research instruments"
-          disableLinkArrow
         />
       </div>
       <div className={pager}>

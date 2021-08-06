@@ -1,4 +1,24 @@
 .pager {
+  button {
+    background: none;
+    padding: 0;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    text-decoration: none;
+    border: none;
+    background-color: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      outline-color: var.$color-secondary;
+    }
+  }
+
   @include mixin.breakpoint('md', max) {
     flex-wrap: wrap;
     justify-content: center;
@@ -12,6 +32,7 @@
   &-item {
     color: var.$color-text-secondary;
     padding: var.$pager-item-padding;
+    width: var.$space-double;
 
     &--current {
       @extend .pager-item;
@@ -46,10 +67,13 @@
   flex-wrap: nowrap;
   font-weight: var.$bold;
   padding: var.$space;
+  color: var.$color-secondary;
 
   &--left {
     @extend .arrow-link;
     order: 1;
+    margin-right: var.$pager-arrow-margin;
+    max-width: var.$pager-arrow-left-width;
 
     @include mixin.breakpoint('md', max) {
       order: 2;
@@ -59,6 +83,7 @@
   &--right {
     @extend .arrow-link;
     order: 3;
+    margin-left: var.$pager-arrow-margin;
   }
 }
 

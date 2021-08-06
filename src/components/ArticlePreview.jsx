@@ -13,7 +13,7 @@ import {
   infoSection,
   imageLink,
   dot,
-  descriptionEllipsis,
+  descriptionSection,
   typeSection,
 } from '../styles/articlePreview.module.scss';
 
@@ -45,7 +45,7 @@ const renderTags = (tags) => {
   if (tags.length > 0) {
     return tags.map((tag) => (
       <div key={tag}>
-        <Tag type="link" action={`tags/${tag}`}>
+        <Tag type="link" action={`/tags/${tag}`}>
           {tag}
         </Tag>
         <Dot />
@@ -58,15 +58,8 @@ const renderTags = (tags) => {
 const renderReadingTime = (readingTime) => {
   if (readingTime) {
     return (
-      <div aria-label="Reading time of the article">{`${readingTime} read`}</div>
+      <div aria-label="Reading time of the article">{`${readingTime} min read`}</div>
     );
-  }
-  return '';
-};
-
-const getDescriptionClassName = (description) => {
-  if (description.length > 100) {
-    return descriptionEllipsis;
   }
   return '';
 };
@@ -89,7 +82,11 @@ const ArticlePreview = ({
   <div className={articlePreview} aria-label="Article preview">
     {previewImage && (
       <div className={imageLink}>
-        <ImageLink to={articleUrl} imageData={previewImage} alt={imageAlt} />
+        <ImageLink
+          to={articleUrl}
+          imageData={previewImage.childImageSharp.gatsbyImageData}
+          alt={imageAlt}
+        />
       </div>
     )}
     <div className={infoSection}>
@@ -103,9 +100,7 @@ const ArticlePreview = ({
         <Link to={articleUrl}>
           <h3>{title}</h3>
         </Link>
-        <div className={getDescriptionClassName(description)}>
-          {description}
-        </div>
+        <div className={descriptionSection}>{description}</div>
         {type && <div className={typeSection}>{type}</div>}
         {authorName && (
           <AuthorSection
@@ -122,7 +117,6 @@ const ArticlePreview = ({
 
 ArticlePreview.defaultProps = {
   previewImage: '',
-  imageAlt: '',
   tags: [],
   type: '',
   readingTime: '',
@@ -132,6 +126,7 @@ ArticlePreview.defaultProps = {
   authorUrl: '/',
   authorImage: '',
   authorCredentials: '',
+  imageAlt: '',
 };
 
 ArticlePreview.propTypes = {
@@ -142,7 +137,7 @@ ArticlePreview.propTypes = {
   title: PropTypes.string.isRequired,
   type: PropTypes.string,
   readingTime: PropTypes.string,
-  date: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string]),
+  date: PropTypes.string,
   description: PropTypes.node,
   authorName: PropTypes.string,
   authorUrl: PropTypes.string,

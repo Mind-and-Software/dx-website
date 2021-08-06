@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import { navigate } from '@reach/router';
 
@@ -19,6 +19,10 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
   const [selectedTags, setSelectedTags] = useState(['ALL']);
   const [currentPage, setCurrentPage] = useState(initCurrentPage);
 
+  useEffect(() => {
+    setCurrentPage(initCurrentPage)
+  }, [initCurrentPage])
+  
   const itemsPerPage = 9;
 
   const handleSearchValueChange = (event) => setSearchValue(event.target.value);
@@ -37,7 +41,7 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
 
   const handlePageChange = (nextPageNum) => {
     setCurrentPage(nextPageNum);
-    navigate(`/articles?page=${nextPageNum || currentPage}`);
+    navigate(`/articles?page=${nextPageNum}`);
   };
 
   const filterBySearch = (article) =>
@@ -119,14 +123,19 @@ const ArticlesPage = ({ data, location }) => {
   const articleEdges = data.allMarkdownRemark.edges;
 
   const params = new URLSearchParams(location.search.slice(1));
-
-  const getCurrentPage = () => Number(params.get('page')) || 1;
+  let currentPage = Number(params.get('page')) || 1;
+  
+  
+  if (!currentPage) {
+    currentPage = 1;
+    navigate(`/articles?page=${currentPage}`);
+  }
 
   return (
     <Layout>
       <ArticleListContainer
         articleEdges={articleEdges}
-        initCurrentPage={getCurrentPage()}
+        initCurrentPage={currentPage}
       />
     </Layout>
   );
@@ -142,11 +151,13 @@ export const imageQuery = graphql`
     ) {
       edges {
         node {
+          fields {
+            slug
+          }
           frontmatter {
             author
             blurb
             date(formatString: "DD MMM, YY")
-            slug
             tags
             title
             featuredImage {

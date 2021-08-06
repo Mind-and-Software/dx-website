@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import { navigate } from '@reach/router';
 
@@ -26,8 +26,12 @@ const ResearchItemsContainer = ({
   initCurrentPage,
 }) => {
   const [searchValue, setSearchValue] = useState('');
-  const [selectedTags, setSelectedTags] = useState(['ALL']);
+  const [selectedTags, setSelectedTags] = useState([]);
   const [currentPage, setCurrentPage] = useState(initCurrentPage);
+
+  useEffect(() => {
+    setCurrentPage(initCurrentPage)
+  }, [initCurrentPage])
 
   const itemsPerPage = 6;
 
@@ -56,7 +60,7 @@ const ResearchItemsContainer = ({
       .includes(searchValue.toLowerCase());
 
   const filterByTags = (article) => {
-    if (selectedTags.includes('ALL')) {
+    if (selectedTags.length === 0) {
       return true;
     }
     return article.node.frontmatter.tags.some((tag) =>
@@ -174,11 +178,13 @@ export const imageQuery = graphql`
     ) {
       edges {
         node {
+          fields {
+            slug
+          }
           frontmatter {
             author
             blurb
             date(formatString: "DD MMM, YY")
-            slug
             tags
             title
             featuredImage {
@@ -197,8 +203,10 @@ export const imageQuery = graphql`
     ) {
       edges {
         node {
-          frontmatter {
+          fields {
             slug
+          }
+          frontmatter {
             title
             featuredImage {
               childImageSharp {

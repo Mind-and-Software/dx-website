@@ -32,7 +32,7 @@ const PreviewColumn = ({
             <ArticlePreview
               title={frontmatter.title}
               tags={frontmatter.tags}
-              articleUrl={`${pathPrefix}/${frontmatter.slug}`}
+              articleUrl={dataObject.node ? dataObject.node.fields.slug : `${pathPrefix}/${frontmatter.slug}`}
               date={frontmatter.date}
               description={frontmatter.description}
               readingTime={frontmatter.readingTime}

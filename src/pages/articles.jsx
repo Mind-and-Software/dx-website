@@ -41,7 +41,7 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
 
   const handlePageChange = (nextPageNum) => {
     setCurrentPage(nextPageNum);
-    navigate(`/articles?page=${nextPageNum}`);
+    navigate(`/articles?page=${nextPageNum || currentPage}`);
   };
 
   const filterBySearch = (article) =>

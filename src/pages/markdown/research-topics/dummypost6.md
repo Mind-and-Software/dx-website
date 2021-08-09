@@ -1,10 +1,15 @@
 ---
-slug: 'dummypost'
-title: 'Dispositional Flow State Scale'
+slug: 'dummypost6'
+date: '2021-02-19'
+title: 'Dummy Article 6'
+author: 'Dummy Dumdum - Dummy Inc'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
-description: 'Dispositional Flow State Scale'
-type: 'Research'
+tags: ['case study']
+readingTime: '1'
+blurb: 'Dummy blurb'
+description: 'Dummy description'
+type: 'Research topic'
 ---
 
 This post exists to display all content features.

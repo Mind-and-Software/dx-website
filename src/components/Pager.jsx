@@ -12,7 +12,7 @@ import {
   pagerItem,
   pagerItems,
   pagerItemCurrent,
-  linkText
+  linkText,
 } from '../styles/pager.module.scss';
 
 const Pager = ({ pages, currentPage, handleClick }) => {

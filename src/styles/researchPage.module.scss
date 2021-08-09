@@ -6,26 +6,48 @@
 
   .column {
     margin-right: var.$article-list-column-margin-right;
+    @include mixin.breakpoint('md', max) {
+      margin-right: 0;
+    }
   }
 
   p {
     white-space: nowrap;
     margin-right: var.$article-list-column-margin-right;
   }
+
+  .articlesAndPager {
+    @include mixin.breakpoint('md', max) {
+      width: 100%;
+    }
+  }
 }
 
 .research-topics {
   display: flex;
-  flex-wrap: wrap;
+  @include mixin.breakpoint('md', max) {
+    flex-wrap: wrap;
+  }
 }
 
 .middleColumn {
   @extend .column;
   h2 {
     visibility: hidden;
+    @include mixin.breakpoint('md', max) {
+      display: none;
+    }
   }
 }
 
 .hidden-column {
   visibility: hidden;
+}
+
+.search-area {
+  ul {
+    li {
+      margin-right: var.$search-area-tag-wide-margin;
+    }
+  }
 }

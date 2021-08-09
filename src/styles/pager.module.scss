@@ -2,13 +2,11 @@
   button {
     background: none;
     padding: 0;
-    border: none;
     font: inherit;
     cursor: pointer;
     outline: inherit;
     text-decoration: none;
     border: none;
-    background-color: none;
 
     &:hover {
       text-decoration: underline;
@@ -48,8 +46,6 @@
 
 .pager-items {
   @include mixin.breakpoint('md', max) {
-    justify-content: center;
-    width: 100%;
     order: 1;
   }
 
@@ -66,7 +62,8 @@
   flex-direction: row;
   flex-wrap: nowrap;
   font-weight: var.$bold;
-  padding: var.$space;
+  padding: var.$pager-item-padding;
+
   color: var.$color-secondary;
 
   @include mixin.breakpoint('md', max) {
@@ -76,18 +73,20 @@
   &--left {
     @extend .arrow-link;
     order: 1;
-    margin-right: var.$pager-arrow-margin;
     max-width: var.$pager-arrow-left-width;
+    margin-right: var.$space-half;
 
     @include mixin.breakpoint('md', max) {
       order: 2;
+      margin-left: var.$space-half;
+      margin-right: 0;
     }
   }
 
   &--right {
     @extend .arrow-link;
     order: 3;
-    margin-left: var.$pager-arrow-margin;
+    margin-left: var.$space-half;
   }
 
   .link-text {

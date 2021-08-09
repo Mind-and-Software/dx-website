@@ -9,21 +9,7 @@ import {
   wideTag,
 } from '../styles/tag.module.scss';
 
-const Tag = ({
-  children,
-  type,
-  action,
-  handleToggle,
-  isActiveAtStart,
-  wide,
-}) => {
-  const [isActive, setIsActive] = useState(isActiveAtStart);
-
-  const toggle = () => {
-    handleToggle(children);
-    setIsActive(!isActive);
-  };
-
+const Tag = ({ children, type, action, handleToggle, isActive, wide }) => {
   if (type === 'link') {
     return (
       <Link to={action} className={tag} aria-label={`Goto ${children}`}>
@@ -38,7 +24,7 @@ const Tag = ({
         className={`${toggleTag} ${isActive ? toggleTagActive : ''} ${
           wide ? wideTag : ''
         }`}
-        onClick={() => toggle()}
+        onClick={() => handleToggle(children)}
         aria-label={`Toggle ${isActive ? 'off' : 'on'} filter for ${children} `}
       >
         {children}
@@ -52,7 +38,7 @@ Tag.defaultProps = {
   action: '',
   type: '',
   handleToggle: null,
-  isActiveAtStart: false,
+  isActive: false,
   wide: false,
 };
 
@@ -61,7 +47,7 @@ Tag.propTypes = {
   children: PropTypes.string.isRequired,
   type: PropTypes.string,
   handleToggle: PropTypes.func,
-  isActiveAtStart: PropTypes.bool,
+  isActive: PropTypes.bool,
   wide: PropTypes.bool,
 };
 

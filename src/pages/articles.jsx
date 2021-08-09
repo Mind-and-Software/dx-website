@@ -8,6 +8,8 @@ import HeaderSearchArea from '../components/HeaderSearchArea';
 import ArticlePreviewList from '../components/ArticlePreviewList';
 import Pager from '../components/Pager';
 
+import utils from '../utils';
+
 import {
   contentPage,
   contentSection,
@@ -28,14 +30,7 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
   const handleSearchValueChange = (event) => setSearchValue(event.target.value);
 
   const handleTagToggle = (tagValue) => {
-    const newSelectedTags = selectedTags;
-    const indexOfTag = newSelectedTags.indexOf(tagValue);
-    // If the toggled tag is found in the selected tags, remove it from the state, otherwise add it to the state
-    if (indexOfTag > -1) {
-      newSelectedTags.splice(indexOfTag, 1);
-    } else {
-      newSelectedTags.push(tagValue);
-    }
+    const newSelectedTags = utils.getNewTagArray(tagValue, selectedTags);
     setSelectedTags([...newSelectedTags]);
   };
 
@@ -44,50 +39,22 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
     navigate(`/articles?page=${nextPageNum || currentPage}`);
   };
 
-  const filterBySearch = (article) =>
-    article.node.frontmatter.title
-      .toLowerCase()
-      .includes(searchValue.toLowerCase());
-
-  const filterByTags = (article) => {
-    if (selectedTags.includes('ALL')) {
-      return true;
-    }
-    return article.node.frontmatter.tags.some((tag) =>
-      selectedTags.includes(tag.toUpperCase())
-    );
-  };
-
-  const filteredArticles = articleEdges.filter(
-    (article) => filterBySearch(article) && filterByTags(article)
+  const filteredArticles = utils.filterItems(
+    articleEdges,
+    searchValue,
+    selectedTags
   );
 
-  // Gets articles for the current page, maximum 9 articles per page.
-  const getPageArticles = (pageNumber, move) => {
-    const start = (pageNumber - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const articles = filteredArticles.slice(start, end);
-    /* 
-      If we are not at the first page and the page has no articles, try moving to the previous page,
-      until we find a page that has articles or reach the first page.
-    */
-    if (articles.length === 0 && pageNumber !== 1) {
-      getPageArticles(pageNumber - 1, true);
-    }
-    if (move) {
-      handlePageChange(pageNumber);
-    }
-    return articles;
-  };
+  const currentPageArticles = utils.getItemsForPage(
+    currentPage,
+    itemsPerPage,
+    filteredArticles,
+    handlePageChange,
+    false
+  );
 
-  // Forms an array of the page numbers required for the pager component
-  const getPages = () => {
-    const pageAmount = Math.ceil(filteredArticles.length / itemsPerPage);
-    if (pageAmount === 0) return [0];
-    return Array.from({ length: pageAmount }, (x, i) => i);
-  };
-
-  const currentPageArticles = getPageArticles(currentPage, false);
+  // Array of the page numbers required for the pager component
+  const pageArray = utils.getPages(filteredArticles, itemsPerPage);
 
   return (
     <div className={contentPage}>
@@ -97,7 +64,20 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
         searchPlaceholder="Search Articles"
         searchValue={searchValue}
         selectedTags={selectedTags}
-        tags={['ALL', 'DEVELOP', 'MANAGE', 'RESEARCH']}
+        tags={[
+          {
+            name: 'ALL',
+          },
+          {
+            name: 'DEVELOP',
+          },
+          {
+            name: 'MANAGE',
+          },
+          {
+            name: 'RESEARCH',
+          },
+        ]}
         handleTagToggle={handleTagToggle}
         handleSearchChange={handleSearchValueChange}
       />
@@ -110,7 +90,7 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
       </div>
       <div className={pager}>
         <Pager
-          pages={getPages()}
+          pages={pageArray}
           currentPage={currentPage}
           handleClick={handlePageChange}
         />

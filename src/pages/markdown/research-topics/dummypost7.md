@@ -1,10 +1,15 @@
 ---
-slug: 'dummypost'
-title: 'Developer Experience Scale'
+slug: 'dummypost7'
+date: '2021-02-25'
+title: 'Dummy Article 7'
+author: 'Dummy Dumdum - Dummy Inc'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
-description: 'Developer Experience Scale'
-type: 'Research'
+tags: ['open question']
+readingTime: '1'
+blurb: 'Dummy blurb'
+description: 'Dummy description'
+type: 'Research topic'
 ---
 
 This post exists to display all content features.

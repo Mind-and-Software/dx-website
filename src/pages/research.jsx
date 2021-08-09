@@ -12,19 +12,23 @@ import { contentPage, pager } from '../styles/contentPage.module.scss';
 
 import {
   researchTopics,
+  articlesAndPager,
   contentSection,
   column,
   middleColumn,
   hiddenColumn,
+  searchArea,
 } from '../styles/researchPage.module.scss';
 
+import utils from '../utils';
+
 const ResearchItemsContainer = ({
-  articleEdges,
-  researchEdges,
+  researchTopicsEdges,
+  researchInstrumentEdges,
   initCurrentPage,
 }) => {
   const [searchValue, setSearchValue] = useState('');
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState(['ALL']);
   const [currentPage, setCurrentPage] = useState(initCurrentPage);
 
   useEffect(() => {
@@ -36,14 +40,7 @@ const ResearchItemsContainer = ({
   const handleSearchValueChange = (event) => setSearchValue(event.target.value);
 
   const handleTagToggle = (tagValue) => {
-    const newSelectedTags = selectedTags;
-    const indexOfTag = newSelectedTags.indexOf(tagValue);
-    // If the toggled tag is found in the selected tags, remove it from the state, otherwise add it to the state
-    if (indexOfTag > -1) {
-      newSelectedTags.splice(indexOfTag, 1);
-    } else {
-      newSelectedTags.push(tagValue);
-    }
+    const newSelectedTags = utils.getNewTagArray(tagValue, selectedTags);
     setSelectedTags([...newSelectedTags]);
   };
 
@@ -52,50 +49,22 @@ const ResearchItemsContainer = ({
     navigate(`/research?page=${nextPageNum || currentPage}`);
   };
 
-  const filterBySearch = (article) =>
-    article.node.frontmatter.title
-      .toLowerCase()
-      .includes(searchValue.toLowerCase());
-
-  const filterByTags = (article) => {
-    if (selectedTags.length === 0) {
-      return true;
-    }
-    return article.node.frontmatter.tags.some((tag) =>
-      selectedTags.includes(tag.toUpperCase())
-    );
-  };
-
-  const filteredArticles = articleEdges.filter(
-    (article) => filterBySearch(article) && filterByTags(article)
+  const filteredArticles = utils.filterItems(
+    researchTopicsEdges,
+    searchValue,
+    selectedTags
   );
 
-  // Gets articles for the current page, maximum 6 articles per page.
-  const getPageArticles = (pageNumber, move) => {
-    const start = (pageNumber - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const articles = filteredArticles.slice(start, end);
-    /* 
-      If we are not at the first page and the page has no articles, try moving to the previous page,
-      until we find a page that has articles or reach the first page.
-    */
-    if (articles.length === 0 && pageNumber !== 1) {
-      getPageArticles(pageNumber - 1, true);
-    }
-    if (move) {
-      handlePageChange(pageNumber);
-    }
-    return articles;
-  };
+  const currentPageArticles = utils.getItemsForPage(
+    currentPage,
+    itemsPerPage,
+    filteredArticles,
+    handlePageChange,
+    false
+  );
 
-  // Forms an array of the page numbers required for the pager component
-  const getPages = () => {
-    const pageAmount = Math.ceil(filteredArticles.length / itemsPerPage);
-    if (pageAmount === 0) return [0];
-    return Array.from({ length: pageAmount }, (x, i) => i);
-  };
-
-  const currentPageArticles = getPageArticles(currentPage, false);
+  // Array of the page numbers required for the pager component
+  const pageArray = utils.getPages(filteredArticles, itemsPerPage);
 
   const firstColumnData = currentPageArticles.slice(0, 3);
   const secondColumnData = currentPageArticles.slice(3, 6);
@@ -108,37 +77,57 @@ const ResearchItemsContainer = ({
         searchPlaceholder="Search research topics"
         searchValue={searchValue}
         selectedTags={selectedTags}
-        tags={['SYNOPSIS', 'OPEN QUESTION', 'CASE STUDY']}
-        wideTags
+        tags={[
+          {
+            name: 'ALL',
+          },
+          {
+            name: 'SYNOPSIS',
+            isWide: true,
+          },
+          {
+            name: 'OPEN QUESTION',
+            isWide: true,
+          },
+          {
+            name: 'CASE STUDY',
+            isWide: true,
+          },
+        ]}
         handleTagToggle={handleTagToggle}
         handleSearchChange={handleSearchValueChange}
+        className={searchArea}
       />
       <div className={contentSection}>
-        <div>
-            <div className={researchTopics}>
-              <PreviewColumn
-                columnPreviewData={firstColumnData}
-                header="Research topics"
-                className={firstColumnData.length === 0 ? hiddenColumn : column}
-              />
-              <PreviewColumn
-                columnPreviewData={secondColumnData}
-                header="Hidden"
-                className={secondColumnData.length === 0 ? `${hiddenColumn} ${middleColumn}` : middleColumn}
-              />
-            </div>
-            { currentPageArticles.length === 0 && <p>No articles found</p>}
+        <div className={articlesAndPager}>
+          <div className={researchTopics}>
+            <PreviewColumn
+              columnPreviewData={firstColumnData}
+              header="Research topics"
+              className={firstColumnData.length === 0 ? hiddenColumn : column}
+            />
+            <PreviewColumn
+              columnPreviewData={secondColumnData}
+              header="Hidden"
+              className={
+                secondColumnData.length === 0
+                  ? `${hiddenColumn} ${middleColumn}`
+                  : middleColumn
+              }
+            />
+          </div>
+          {currentPageArticles.length === 0 && <p>No articles found</p>}
+          <div className={pager}>
+            <Pager
+              pages={pageArray}
+              currentPage={currentPage}
+              handleClick={handlePageChange}
+            />
+          </div>
         </div>
         <PreviewColumn
-          columnPreviewData={researchEdges.slice(0, 3)}
+          columnPreviewData={researchInstrumentEdges.slice(0, 3)}
           header="Research instruments"
-        />
-      </div>
-      <div className={pager}>
-        <Pager
-          pages={getPages()}
-          currentPage={currentPage}
-          handleClick={handlePageChange}
         />
       </div>
     </div>
@@ -146,9 +135,6 @@ const ResearchItemsContainer = ({
 };
 
 const ResearchPage = ({ data, location }) => {
-  const articleEdges = data.articles.edges;
-  const researchEdges = data.research.edges;
-
   const params = new URLSearchParams(location.search.slice(1));
 
   const getCurrentPage = () => Number(params.get('page')) || 1;
@@ -156,8 +142,8 @@ const ResearchPage = ({ data, location }) => {
   return (
     <Layout>
       <ResearchItemsContainer
-        articleEdges={articleEdges}
-        researchEdges={researchEdges}
+        researchTopicsEdges={data.researchTopics.edges}
+        researchInstrumentEdges={data.researchInstruments.edges}
         initCurrentPage={getCurrentPage()}
       />
     </Layout>
@@ -168,9 +154,9 @@ export default ResearchPage;
 
 export const imageQuery = graphql`
   query {
-    articles: allMarkdownRemark(
+    researchTopics: allMarkdownRemark(
       sort: { fields: frontmatter___date, order: DESC }
-      filter: { frontmatter: { type: { eq: "Article" } } }
+      filter: { frontmatter: { type: { eq: "Research topic" } } }
     ) {
       edges {
         node {
@@ -194,8 +180,8 @@ export const imageQuery = graphql`
         }
       }
     }
-    research: allMarkdownRemark(
-      filter: { frontmatter: { type: { eq: "Research" } } }
+    researchInstruments: allMarkdownRemark(
+      filter: { frontmatter: { type: { eq: "Research instrument" } } }
     ) {
       edges {
         node {

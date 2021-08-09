@@ -18,7 +18,7 @@ import {
   searchArea,
   hidden,
   accordionMenu,
-  menuLogo
+  menuLogo,
 } from '../styles/researchPage.module.scss';
 
 import utils from '../utils';
@@ -38,12 +38,17 @@ const ResearchInstrumentList = ({ instrumentData }) => (
   </ul>
 );
 
-const Plus = () => <div className={menuLogo}>+</div>
-const Minus = () => <div className={menuLogo}>-</div>
+const Plus = () => <div className={menuLogo}>+</div>;
+const Minus = () => <div className={menuLogo}>-</div>;
 
 const AccordionMenuHeader = ({ children, handleClick, isOpen }) => (
-  <button type="button" onClick={handleClick} className={accordionMenu}>
-    { !isOpen ? <Plus /> : <Minus />}
+  <button
+    type="button"
+    onClick={handleClick}
+    className={accordionMenu}
+    aria-label={isOpen ? 'Close the menu' : 'Open the menu'}
+  >
+    {!isOpen ? <Plus /> : <Minus />}
     <h2 className="list-header">{children}</h2>
   </button>
 );
@@ -71,10 +76,10 @@ const ResearchItemsContainer = ({
     handleResize();
 
     if (windowWidth > 1280) {
-      toggleTopicsVisibility(true);
-      toggleInstrumentsVisibility(true);
+      toggleTopicsVisibility(false);
+      toggleInstrumentsVisibility(false);
     }
-  }, [initCurrentPage]);
+  }, [initCurrentPage, windowWidth]);
 
   const itemsPerPage = 9;
 

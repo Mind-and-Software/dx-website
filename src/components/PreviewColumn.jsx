@@ -56,7 +56,7 @@ const PreviewColumn = ({
     <div
       className={className ? `${previewColumn} ${className}` : previewColumn}
     >
-      {header && <h2>{header}</h2>}
+      {header && <h2 className="list-header">{header}</h2>}
       {renderColumn()}
       {bottomLink && (
         <div className={linkArrow}>

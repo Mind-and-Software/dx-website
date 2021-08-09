@@ -6,21 +6,38 @@ import { navigate } from '@reach/router';
 import Layout from '../components/layout';
 import HeaderSearchArea from '../components/HeaderSearchArea';
 import Pager from '../components/Pager';
-import PreviewColumn from '../components/PreviewColumn';
-
-import { contentPage, pager } from '../styles/contentPage.module.scss';
+import ArticlePreview from '../components/ArticlePreview';
+import ArticlePreviewList from '../components/ArticlePreviewList';
 
 import {
-  researchTopics,
-  articlesAndPager,
-  contentSection,
-  column,
-  middleColumn,
-  hiddenColumn,
+  contentPage,
+  pager,
+} from '../styles/contentPage.module.scss';
+
+import {
+  instrumentSection,
+  instrumentsHeader,
+  topicsHeader,
+  instruments,
   searchArea,
 } from '../styles/researchPage.module.scss';
 
 import utils from '../utils';
+
+const ResearchInstrumentList = ({ instrumentData }) => (
+  <ul className={instruments} aria-label="List of research instruments">
+    {instrumentData.map((edge) => (
+      <li>
+        <ArticlePreview
+          title={edge.node.frontmatter.title}
+          imageAlt={edge.node.frontmatter.imageAlt}
+          previewImage={edge.node.frontmatter.featuredImage}
+          articleUrl={edge.node.fields.slug}
+        />
+      </li>
+    ))}
+  </ul>
+);
 
 const ResearchItemsContainer = ({
   researchTopicsEdges,
@@ -66,9 +83,6 @@ const ResearchItemsContainer = ({
   // Array of the page numbers required for the pager component
   const pageArray = utils.getPages(filteredArticles, itemsPerPage);
 
-  const firstColumnData = currentPageArticles.slice(0, 3);
-  const secondColumnData = currentPageArticles.slice(3, 6);
-
   return (
     <div className={contentPage}>
       <HeaderSearchArea
@@ -98,37 +112,25 @@ const ResearchItemsContainer = ({
         handleSearchChange={handleSearchValueChange}
         className={searchArea}
       />
-      <div className={contentSection}>
-        <div className={articlesAndPager}>
-          <div className={researchTopics}>
-            <PreviewColumn
-              columnPreviewData={firstColumnData}
-              header="Research topics"
-              className={firstColumnData.length === 0 ? hiddenColumn : column}
-            />
-            <PreviewColumn
-              columnPreviewData={secondColumnData}
-              header="Hidden"
-              className={
-                secondColumnData.length === 0
-                  ? `${hiddenColumn} ${middleColumn}`
-                  : middleColumn
-              }
-            />
-          </div>
-          {currentPageArticles.length === 0 && <p>No articles found</p>}
-          <div className={pager}>
-            <Pager
-              pages={pageArray}
-              currentPage={currentPage}
-              handleClick={handlePageChange}
-            />
-          </div>
-        </div>
-        <PreviewColumn
-          columnPreviewData={researchInstrumentEdges.slice(0, 3)}
-          header="Research instruments"
+      <h2 className={`${topicsHeader} list-header`}>RESEARCH TOPICS</h2>
+      {currentPageArticles.length > 0 ? (
+        <ArticlePreviewList
+          previewData={currentPageArticles}
+          type="research"
         />
+      ) : (
+        <p>No articles found</p>
+      )}
+      <div className={pager}>
+        <Pager
+          pages={pageArray}
+          currentPage={currentPage}
+          handleClick={handlePageChange}
+        />
+      </div>
+      <div className={instrumentSection}>
+        <h2 className={`${instrumentsHeader} list-header`}>RESEARCH INSTRUMENTS</h2>
+        <ResearchInstrumentList instrumentData={researchInstrumentEdges} />
       </div>
     </div>
   );

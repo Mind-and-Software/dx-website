@@ -83,7 +83,10 @@ const ArticleListContainer = ({ articleEdges, initCurrentPage }) => {
       />
       <div className={contentSection}>
         {currentPageArticles.length > 0 ? (
-          <ArticlePreviewList previewData={currentPageArticles} />
+          <ArticlePreviewList
+            previewData={currentPageArticles}
+            type="articles"
+          />
         ) : (
           <p>No articles found</p>
         )}

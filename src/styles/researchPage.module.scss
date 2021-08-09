@@ -1,53 +1,44 @@
-.content-section {
-  display: flex;
-  flex-wrap: wrap;
-
-  margin-top: var.$content-page-margin;
-
-  .column {
-    margin-right: var.$article-list-column-margin-right;
-    @include mixin.breakpoint('md', max) {
-      margin-right: 0;
-    }
-  }
-
-  p {
-    white-space: nowrap;
-    margin-right: var.$article-list-column-margin-right;
-  }
-
-  .articlesAndPager {
-    @include mixin.breakpoint('md', max) {
-      width: 100%;
-    }
-  }
-}
-
-.research-topics {
-  display: flex;
-  @include mixin.breakpoint('md', max) {
-    flex-wrap: wrap;
-  }
-}
-
-.middleColumn {
-  @extend .column;
-  h2 {
-    visibility: hidden;
-    @include mixin.breakpoint('md', max) {
-      display: none;
-    }
-  }
-}
-
-.hidden-column {
-  visibility: hidden;
-}
-
 .search-area {
   ul {
     li {
       margin-right: var.$search-area-tag-wide-margin;
+    }
+  }
+}
+
+.topics-header {
+  margin: 0;
+  margin-top: var.$content-page-margin;
+}
+
+.instruments {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.instrumentSection {
+  @include mixin.no-content-margins();
+  @include mixin.content-paddings();
+  display: flex;
+  flex-direction: column;
+  margin-top: var.$content-page-margin;
+  padding-top: 5.5rem;
+  background-color: var.$color-homepage-section-bg--researchers;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .instruments {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      margin-right: var.$article-list-column-margin-right;
+      margin-bottom: var.$article-list-item-margin-top;
+      @include mixin.breakpoint('md', max) {
+        margin-right: 0;
+      }
     }
   }
 }

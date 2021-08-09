@@ -57,7 +57,7 @@ export default function Article({ data }) {
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>
-      <RelatedContent contentList={relatedContent} />
+      <RelatedContent title="Related content" contentList={relatedContent} />
     </Layout>
   );
 }
@@ -93,14 +93,25 @@ export const query = graphql`
             slug
           }
           frontmatter {
+            tags
+            readingTime
             title
-            featuredImage {
-              childImageSharp {
-                gatsbyImageData(width: 200, height: 120)
+            description
+            authorCredentials
+            author
+            authorUrl
+            date(formatString: "DD MMM, YY")
+            imageAlt
+            authorImage {
+              childrenImageSharp {
+                gatsbyImageData(width: 30)
               }
             }
-            imageAlt
-            type
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(width: 350, height: 135)
+              }
+            }
           }
         }
       }

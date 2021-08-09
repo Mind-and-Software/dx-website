@@ -63,7 +63,8 @@ $space-double: 2 * $space;
 
 /* gutters */
 $margin-body: 10rem;
-$margin-body-mobile: 2rem;
+$margin-body--tablet: 5rem;
+$margin-body--mobile: 2rem;
 
 /* box-shadow */
 $box-shadow: 0px 4px 4px lighten(color.$black, 75%);
@@ -123,7 +124,7 @@ $hero-padding--top: $space-double;
 $homepage-section-padding: $space-double;
 $homepage-section-icon-padding: $space-double;
 $homepage-section-icon-width: 4rem;
-$homepage-section-item-margin: 4rem;
+$homepage-section-item-margin: $space;
 $homepage-section-item-width: 30rem;
 $homepage-section-title-fs: $fs24;
 
@@ -161,10 +162,10 @@ $profile-image-width: 3.2rem;
 /* related content listing */
 $related-content-ls: 0.2rem;
 $related-content-margins: 6rem 0;
-$related-content-item-fs: $fs-secondary;
-$related-content-item-lh: $fs-secondary;
+$related-content-item-fs: $fs24;
+$related-content-item-lh: $lh-body;
 $related-content-item-margins: 0 3rem 3rem 0;
-$related-content-item-width: 20rem;
+$related-content-item-width: 30rem;
 
 /* tags */
 $tag-font-color: color.$black;
@@ -182,6 +183,11 @@ $toggle-tag-border-color--active: darken($color-secondary, 40%);
 $toggle-tag-border-radius: 3.2rem;
 $toggle-tag-font-color: lighten(color.$black, 50);
 $toggle-tag-font-color--active: color.$white;
+
+/* pages */
+
+$notFound-page-margin: 5rem 0 3rem;
+$notFound-page--articles-margin: 4rem;
 
 /* header search area */
 $search-area-title-margin: 1.9rem;

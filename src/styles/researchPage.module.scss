@@ -1,3 +1,24 @@
+button {
+  background: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  text-decoration: none;
+  border: none;
+  width: auto;
+  height: auto;
+  &:hover,
+  &:focus {
+    background: none;
+    text-decoration: none;
+  }
+}
+
+h2 {
+  margin: 0;
+}
+
 .search-area {
   ul {
     li {
@@ -6,8 +27,12 @@
   }
 }
 
-.topics-header {
-  margin: 0;
+.accordion-menu {
+  display: flex;
+  align-items: center;
+}
+
+.topics-menu-header {
   margin-top: var.$content-page-margin;
 }
 
@@ -25,6 +50,9 @@
   margin-top: var.$content-page-margin;
   padding-top: 5.5rem;
   background-color: var.$color-homepage-section-bg--researchers;
+  @include mixin.breakpoint('lg', 'max') {
+    padding-bottom: 5.5rem;
+  }
 
   h2 {
     margin-top: 0;
@@ -41,4 +69,15 @@
       }
     }
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.menu-logo {
+  align-items: center;
+  color: var.$color-sub-heading;
+  font-size: var.$fs24;
+  margin-right: var.$space;
 }

@@ -9,17 +9,16 @@ import Pager from '../components/Pager';
 import ArticlePreview from '../components/ArticlePreview';
 import ArticlePreviewList from '../components/ArticlePreviewList';
 
-import {
-  contentPage,
-  pager,
-} from '../styles/contentPage.module.scss';
+import { contentPage, pager } from '../styles/contentPage.module.scss';
 
 import {
   instrumentSection,
-  instrumentsHeader,
-  topicsHeader,
+  topicsMenuHeader,
   instruments,
   searchArea,
+  hidden,
+  accordionMenu,
+  menuLogo
 } from '../styles/researchPage.module.scss';
 
 import utils from '../utils';
@@ -27,7 +26,7 @@ import utils from '../utils';
 const ResearchInstrumentList = ({ instrumentData }) => (
   <ul className={instruments} aria-label="List of research instruments">
     {instrumentData.map((edge) => (
-      <li>
+      <li key={edge.node.fields.slug}>
         <ArticlePreview
           title={edge.node.frontmatter.title}
           imageAlt={edge.node.frontmatter.imageAlt}
@@ -39,6 +38,16 @@ const ResearchInstrumentList = ({ instrumentData }) => (
   </ul>
 );
 
+const Plus = () => <div className={menuLogo}>+</div>
+const Minus = () => <div className={menuLogo}>-</div>
+
+const AccordionMenuHeader = ({ children, handleClick, isOpen }) => (
+  <button type="button" onClick={handleClick} className={accordionMenu}>
+    { !isOpen ? <Plus /> : <Minus />}
+    <h2 className="list-header">{children}</h2>
+  </button>
+);
+
 const ResearchItemsContainer = ({
   researchTopicsEdges,
   researchInstrumentEdges,
@@ -47,12 +56,27 @@ const ResearchItemsContainer = ({
   const [searchValue, setSearchValue] = useState('');
   const [selectedTags, setSelectedTags] = useState(['ALL']);
   const [currentPage, setCurrentPage] = useState(initCurrentPage);
+  const [windowWidth, setWindowWidth] = useState(undefined);
+  const [topicsVisible, toggleTopicsVisibility] = useState(false);
+  const [instrumentsVisible, toggleInstrumentsVisibility] = useState(false);
+
+  const showTopics = topicsVisible || windowWidth >= 1280;
+  const showInstruments = instrumentsVisible || windowWidth >= 1280;
 
   useEffect(() => {
     setCurrentPage(initCurrentPage);
+    if (!window) return;
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    if (windowWidth > 1280) {
+      toggleTopicsVisibility(true);
+      toggleInstrumentsVisibility(true);
+    }
   }, [initCurrentPage]);
 
-  const itemsPerPage = 6;
+  const itemsPerPage = 9;
 
   const handleSearchValueChange = (event) => setSearchValue(event.target.value);
 
@@ -112,25 +136,50 @@ const ResearchItemsContainer = ({
         handleSearchChange={handleSearchValueChange}
         className={searchArea}
       />
-      <h2 className={`${topicsHeader} list-header`}>RESEARCH TOPICS</h2>
-      {currentPageArticles.length > 0 ? (
-        <ArticlePreviewList
-          previewData={currentPageArticles}
-          type="research"
-        />
-      ) : (
-        <p>No articles found</p>
-      )}
-      <div className={pager}>
-        <Pager
-          pages={pageArray}
-          currentPage={currentPage}
-          handleClick={handlePageChange}
-        />
+      <div className={topicsMenuHeader}>
+        {windowWidth >= 1280 ? (
+          <h2 className="list-header">RESEARCH TOPICS</h2>
+        ) : (
+          <AccordionMenuHeader
+            handleClick={() => toggleTopicsVisibility(!topicsVisible)}
+            isOpen={topicsVisible}
+          >
+            RESEARCH TOPICS
+          </AccordionMenuHeader>
+        )}
+      </div>
+      <div className={showTopics ? '' : hidden}>
+        {currentPageArticles.length > 0 ? (
+          <ArticlePreviewList
+            previewData={currentPageArticles}
+            type="research"
+          />
+        ) : (
+          <p>No articles found</p>
+        )}
+        <div className={pager}>
+          <Pager
+            pages={pageArray}
+            currentPage={currentPage}
+            handleClick={handlePageChange}
+          />
+        </div>
       </div>
       <div className={instrumentSection}>
-        <h2 className={`${instrumentsHeader} list-header`}>RESEARCH INSTRUMENTS</h2>
-        <ResearchInstrumentList instrumentData={researchInstrumentEdges} />
+        {windowWidth >= 1280 ? (
+          <h2 className="list-header">RESEARCH INSTRUMENTS</h2>
+        ) : (
+          <AccordionMenuHeader
+            handleClick={() => toggleInstrumentsVisibility(!instrumentsVisible)}
+            isOpen={instrumentsVisible}
+          >
+            RESEARCH INSTRUMENTS
+          </AccordionMenuHeader>
+        )}
+
+        <div className={showInstruments ? '' : hidden}>
+          <ResearchInstrumentList instrumentData={researchInstrumentEdges} />
+        </div>
       </div>
     </div>
   );

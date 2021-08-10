@@ -21,6 +21,9 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <Hero />
+      <button type="button" disabled>
+        Contact us
+      </button>
       <HomePageSection
         sectionId="for-developers"
         featuredArticles={filterGroup(develop, 'Article')}

@@ -1,32 +1,16 @@
 .article-preview-list {
   display: flex;
+  @include mixin.breakpoint('md', max) {
+    flex-wrap: wrap;
+    margin-right: 0;
+  }
 }
 
 .column {
   display: flex;
   flex-direction: column;
   margin-right: var.$article-list-column-margin-right;
-
-  &-first {
-    @extend .column;
-    @include mixin.breakpoint('md', max) {
-      margin-right: 0;
-    }
-  }
-  &-second {
-    @extend .column;
-    @include mixin.breakpoint('md', max) {
-      visibility: hidden;
-    }
-    @include mixin.breakpoint('lg', max) {
-      margin-right: 0;
-    }
-  }
-  &-third {
-    @extend .column;
-    @include mixin.breakpoint('lg', max) {
-      visibility: hidden;
-    }
+  @include mixin.breakpoint('md', max) {
     margin-right: 0;
   }
 

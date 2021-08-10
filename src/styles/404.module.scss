@@ -1,0 +1,9 @@
+.notFoundContainer {
+  h1 {
+    margin: var.$notFound-page-margin;
+  }
+
+  aside {
+    margin-top: var.$notFound-page--articles-margin;
+  }
+}

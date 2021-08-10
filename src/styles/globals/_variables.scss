@@ -63,7 +63,8 @@ $space-double: 2 * $space;
 
 /* gutters */
 $margin-body: 10rem;
-$margin-body-mobile: 2rem;
+$margin-body--tablet: 5rem;
+$margin-body--mobile: 2rem;
 
 /* box-shadow */
 $box-shadow: 0px 4px 4px lighten(color.$black, 75%);
@@ -123,7 +124,7 @@ $hero-padding--top: $space-double;
 $homepage-section-padding: $space-double;
 $homepage-section-icon-padding: $space-double;
 $homepage-section-icon-width: 4rem;
-$homepage-section-item-margin: 4rem;
+$homepage-section-item-margin: $space;
 $homepage-section-item-width: 30rem;
 $homepage-section-title-fs: $fs24;
 
@@ -144,11 +145,8 @@ $pager-arrow-height: 1.2rem;
 
 $pager-item-padding: 0 $space;
 
-/* pages */
-$article-heading-margin: $space 0;
-$article-img-height: 30rem;
-$article-img-margin: $space-double 0;
-$article-max-width: 80rem;
+$pager-arrow-margin: 2rem;
+$pager-arrow-left-width: 8rem;
 
 /* preview column */
 $preview-column-item-margin-top: 3.2rem;
@@ -164,10 +162,10 @@ $profile-image-width: 3.2rem;
 /* related content listing */
 $related-content-ls: 0.2rem;
 $related-content-margins: 6rem 0;
-$related-content-item-fs: $fs-secondary;
-$related-content-item-lh: $fs-secondary;
+$related-content-item-fs: $fs24;
+$related-content-item-lh: $lh-body;
 $related-content-item-margins: 0 3rem 3rem 0;
-$related-content-item-width: 20rem;
+$related-content-item-width: 30rem;
 
 /* tags */
 $tag-font-color: color.$black;
@@ -185,5 +183,31 @@ $toggle-tag-border-radius: 3.2rem;
 $toggle-tag-font-color: lighten(color.$black, 50);
 $toggle-tag-font-color--active: color.$white;
 
+$notFound-page-margin: 5rem 0 3rem;
+$notFound-page--articles-margin: 4rem;
+
+/* header search area */
+$search-area-title-margin: 1.9rem;
+$search-area-description-margin: 4.6rem;
+$search-area-tag-list-margin: 2.7rem;
+$search-area-tag-margin: 1rem;
+$search-area-button-height: $text-field-height;
+$search-area-button-width: $text-field-height * 2;
+
+/* link with arrow */
+$link-with-arrow-text-tertiary-margin: 0.5rem;
+$link-with-arrow-tertiary-size: 1rem;
+
+/* PAGES */
+
 /* about page */
 $about-page-text-width: 80rem;
+
+/* articles page */
+$articles-page-margin: 10rem;
+
+/* article page */
+$article-heading-margin: $space 0;
+$article-img-height: 30rem;
+$article-img-margin: $space-double 0;
+$article-max-width: 80rem;

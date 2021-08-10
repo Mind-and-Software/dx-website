@@ -1,0 +1,23 @@
+.header-search-area {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    margin-bottom: var.$search-area-title-margin;
+  }
+
+  span {
+    margin-bottom: var.$search-area-description-margin;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: var.$search-area-tag-list-margin;
+
+    li {
+      margin-right: var.$search-area-tag-margin;
+      margin-bottom: var.$search-area-tag-margin;
+    }
+  }
+}

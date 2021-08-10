@@ -5,46 +5,34 @@ import PreviewColumn from './PreviewColumn';
 
 import {
   articlePreviewList,
-  columnFirst,
-  columnSecond,
-  columnThird,
+  column,
 } from '../styles/articlePreviewList.module.scss';
 
-const ArticlePreviewList = ({
-  previewData,
-  previewImageEdges,
-  authorImageEdges,
-}) => {
-  const sortByDate = (object1, object2) => object2.date - object1.date;
-  const sortedData = previewData.sort(sortByDate);
-
-  const firstColumn = sortedData.slice(0, 3);
-  const secondColumn = sortedData.slice(3, 6);
-  const thirdColumn = sortedData.slice(6, 9);
+const ArticlePreviewList = ({ previewData }) => {
+  const firstColumn = previewData.slice(0, 3);
+  const secondColumn = previewData.slice(3, 6);
+  const thirdColumn = previewData.slice(6, 9);
   return (
     <ul className={articlePreviewList} aria-label="List of article previews">
       {firstColumn.length > 0 && (
         <PreviewColumn
           columnPreviewData={firstColumn}
-          previewImageEdges={previewImageEdges}
-          authorImageEdges={authorImageEdges}
-          className={columnFirst}
+          className={column}
+          pathPrefix="/articles"
         />
       )}
       {secondColumn.length > 0 && (
         <PreviewColumn
           columnPreviewData={secondColumn}
-          previewImageEdges={previewImageEdges}
-          authorImageEdges={authorImageEdges}
-          className={columnSecond}
+          className={column}
+          pathPrefix="/articles"
         />
       )}
       {thirdColumn.length > 0 && (
         <PreviewColumn
           columnPreviewData={thirdColumn}
-          previewImageEdges={previewImageEdges}
-          authorImageEdges={authorImageEdges}
-          className={columnThird}
+          className={column}
+          pathPrefix="/articles"
         />
       )}
     </ul>
@@ -53,8 +41,6 @@ const ArticlePreviewList = ({
 
 ArticlePreviewList.propTypes = {
   previewData: PropTypes.arrayOf(PropTypes.object).isRequired,
-  previewImageEdges: PropTypes.arrayOf(PropTypes.object).isRequired,
-  authorImageEdges: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ArticlePreviewList;

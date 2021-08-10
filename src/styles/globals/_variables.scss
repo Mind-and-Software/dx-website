@@ -118,7 +118,7 @@ $article-preview-type-fs: $fs-secondary;
 
 /* article preview list */
 $article-list-item-margin-top: 4.8rem;
-$article-list-column-margin-right: 5.1rem;
+$article-list-column-margin-right: 5.4rem;
 
 /* blurb */
 $blurb-bg-color: $color-primary;
@@ -192,6 +192,7 @@ $tag-height: 3.2rem;
 $tag-font-size: $fs-tertiary;
 $tag-separator-color: color.$black;
 $tag-separator-margin: $space-half;
+$tag-wide-width: 20rem;
 $tag-width: 11rem;
 
 $toggle-tag-bg-color: color.$alabaster;
@@ -210,6 +211,7 @@ $search-area-title-margin: 1.9rem;
 $search-area-description-margin: 4.6rem;
 $search-area-tag-list-margin: 2.7rem;
 $search-area-tag-margin: 1rem;
+$search-area-tag-wide-margin: 2rem;
 $search-area-button-height: $text-field-height;
 $search-area-button-width: $text-field-height * 2;
 
@@ -219,15 +221,20 @@ $link-with-arrow-tertiary-size: 1rem;
 
 /* PAGES */
 
+/* content page */
+$content-page-margin: 8rem;
+
 /* about page */
 $about-page-max-width: $page-content-max-width;
 $about-page-margin-bottom: $space-double;
-
-/* articles page */
-$articles-page-margin: 10rem;
 
 /* article page */
 $article-heading-margin: $space 0;
 $article-img-height: 30rem;
 $article-img-margin: $space-double 0;
 $article-max-width: $page-content-max-width;
+
+/* research page */
+$research-page-instrument-list-padding: 5.5rem;
+$research-page-accordion-active: $color-secondary;
+$research-page-accordion-active-hover: lighten($color-secondary, 10%);

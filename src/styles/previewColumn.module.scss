@@ -1,13 +1,5 @@
 .preview-column {
-  max-width: var.$preview-column-width;
-
-  h2 {
-    color: var.$color-sub-heading;
-    font-size: var.$fs-body;
-    font-weight: var.$medium;
-    letter-spacing: var.$preview-column-heading-letter-spacing;
-    text-transform: uppercase;
-  }
+  width: var.$preview-column-width;
 }
 
 .link-arrow {

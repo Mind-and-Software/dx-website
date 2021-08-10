@@ -1,8 +1,9 @@
 .article-preview-list {
   display: flex;
+  flex-wrap: wrap;
   @include mixin.breakpoint('md', max) {
-    flex-wrap: wrap;
     margin-right: 0;
+    width: 100%;
   }
 }
 
@@ -16,5 +17,12 @@
 
   li {
     margin-top: var.$article-list-item-margin-top;
+  }
+}
+
+.firstColumn {
+  @extend .column;
+  @include mixin.breakpoint('md', max) {
+    margin-top: 0;
   }
 }

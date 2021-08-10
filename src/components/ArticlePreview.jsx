@@ -42,7 +42,7 @@ AuthorSection.propTypes = {
 const Dot = () => <span className={dot}>•</span>;
 
 const renderTags = (tags) => {
-  if (tags.length > 0) {
+  if (tags && tags.length > 0) {
     return tags.map((tag) => (
       <div key={tag}>
         <Tag type="link" action={`/tags/${tag}`}>
@@ -98,7 +98,7 @@ const ArticlePreview = ({
       </div>
       <div>
         <Link to={articleUrl}>
-          <h3>{title}</h3>
+          <h4>{title}</h4>
         </Link>
         <div className={descriptionSection}>{description}</div>
         {type && <div className={typeSection}>{type}</div>}

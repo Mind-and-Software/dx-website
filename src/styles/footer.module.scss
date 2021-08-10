@@ -1,0 +1,38 @@
+.footer {
+  @include mixin.breakpoint('md', max) {
+    flex-direction: column;
+  }
+  background-color: var.$color-footer-bg;
+  color: var.$color-footer-text;
+  display: flex;
+  flex-direction: row;
+  font-weight: var.$weak;
+  padding: var.$footer-padding;
+
+  a {
+    @include mixin.breakpoint('md', max) {
+      display: flex;
+    }
+
+    color: var.$color-footer-link;
+    padding-right: var.$footer-link-padding;
+  }
+
+  &-text {
+    @include mixin.breakpoint('md', max) {
+      padding-left: 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+    padding-left: 4rem;
+  }
+
+  &-links {
+    @include mixin.breakpoint('md', max) {
+      flex-direction: column;
+    }
+
+    flex-direction: row;
+  }
+}

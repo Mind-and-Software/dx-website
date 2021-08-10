@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
-import HeaderLogoContainer from './HeaderLogoContainer';
+import LogoContainer from './LogoContainer';
 
 import HamburgerIcon from '../assets/menu-icon.svg';
 import CloseIcon from '../assets/cross.svg';
@@ -35,7 +35,7 @@ const Navbar = () => {
   return (
     <nav className={navbar}>
       <div className={navbarTop}>
-        <HeaderLogoContainer />
+        <LogoContainer />
         <button
           onClick={toggleMenu}
           className={menuToggle}

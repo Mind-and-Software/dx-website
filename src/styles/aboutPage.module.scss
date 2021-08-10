@@ -1,14 +1,33 @@
 .about-page-bg {
+  margin-top: var.$about-page-margin-top;
   width: 100%;
 }
 
 .about-page-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
+  max-width: var.$about-page-max-width;
+  margin-bottom: var.$about-page-margin-bottom;
 }
 
-.about-page-text {
-  width: var.$about-page-text-width;
+.contact-button {
+  align-items: center;
+  background-color: var.$button-bg-color--secondary;
+  border-radius: var.$button-border-radius;
+  color: var.$button-color;
+  display: flex;
+  font-size: var.$fs-button;
+  height: var.$button-height;
+  justify-content: center;
+  line-height: var.$lh-button;
+  text-transform: uppercase;
+  max-width: var.$button-width;
+
+  svg {
+    padding-right: var.$space;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var.$color-button-hover;
+    color: var.$button-color;
+  }
 }

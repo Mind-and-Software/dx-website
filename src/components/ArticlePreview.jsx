@@ -15,7 +15,7 @@ import {
   dot,
   descriptionSection,
   typeSection,
-  authorName
+  authorName,
 } from '../styles/articlePreview.module.scss';
 
 export const AuthorSection = ({ name, url, credentials, image }) => (
@@ -35,7 +35,7 @@ AuthorSection.defaultProps = {
   url: '',
   image: '',
   credentials: '',
-}
+};
 
 AuthorSection.propTypes = {
   name: PropTypes.string.isRequired,

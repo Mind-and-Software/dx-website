@@ -1,4 +1,4 @@
-const baseUrl = "https://dx-backend.herokuapp.com/" // TODO: backend url from env variable
+const baseUrl = 'https://dx-backend.herokuapp.com/'; // TODO: backend url from env variable
 
 const addEmail = async (email) => {
   const response = await fetch(`${baseUrl}/emails/`, {
@@ -17,5 +17,5 @@ const addEmail = async (email) => {
 };
 
 export default {
-  addEmail
-}
+  addEmail,
+};

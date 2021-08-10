@@ -1,6 +1,7 @@
 .sign-in-page {
   align-items: center;
   display: flex;
+  margin-bottom: var.$space-from-footer;
   flex-direction: column;
 
   form {
@@ -21,5 +22,14 @@
 
   a {
     margin-top: var.$sign-in-page-back-button-margin-top;
+  }
+}
+
+.info-section {
+  margin-top: var.$sign-in-page-info-margin;
+  a {
+    margin-top: 0;
+    margin-left: var.$space-half;
+    color: var.$color-secondary;
   }
 }

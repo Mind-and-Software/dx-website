@@ -2,13 +2,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'gatsby';
 
 import Layout from '../components/layout';
 import LinkButton from '../components/LinkButton';
 
 import emailService from '../services/emailService';
 
-import { signInPage } from '../styles/signInPage.module.scss';
+import { signInPage, infoSection } from '../styles/signInPage.module.scss';
 
 const SignInForm = ({ handleSubmit, register, error }) => {
   const isEmail = (value) =>
@@ -69,31 +70,38 @@ const SignInPage = () => {
       reset('email');
     } catch (error) {
       if (error.status === 400) {
-        const errorObject = await error.json()
+        const errorObject = await error.json();
         setBackendError({
-          message: errorObject.detail
-        })
+          message: errorObject.detail,
+        });
       } else {
         setBackendError({
-          message: "Server error"
-        })
+          message: 'Server error',
+        });
       }
     }
   };
 
-  const error = backendError || ((touchedFields.email || isSubmitted) && errors.email);
+  const error =
+    backendError || ((touchedFields.email || isSubmitted) && errors.email);
 
   return (
     <Layout>
-      {submittedValue ? (
-        <SignInSuccess email={submittedValue} />
-      ) : (
-        <SignInForm
-          register={register}
-          handleSubmit={() => handleSubmit(onSubmit)}
-          error={error}
-        />
-      )}
+      <div className={signInPage}>
+        {submittedValue ? (
+          <SignInSuccess email={submittedValue} />
+        ) : (
+          <SignInForm
+            register={register}
+            handleSubmit={() => handleSubmit(onSubmit)}
+            error={error}
+          />
+        )}
+        <span className={infoSection}>
+          DevX Lab has been created by the Mind and Software research group at
+          Aalto University. <Link to="/about">Learn more</Link>
+        </span>
+      </div>
     </Layout>
   );
 };

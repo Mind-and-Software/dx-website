@@ -1,0 +1,14 @@
+.about-page-bg {
+  width: 100%;
+}
+
+.about-page-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.about-page-text {
+  width: var.$about-page-text-width;
+}

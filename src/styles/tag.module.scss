@@ -7,6 +7,7 @@
   border-style: solid;
   border-width: 1px;
   color: var.$toggle-tag-font-color;
+  cursor: pointer;
   display: inline-block;
   font-size: var.$tag-font-size;
   height: var.$tag-height;
@@ -41,24 +42,6 @@
 }
 
 .tag {
-  button {
-    box-shadow: none;
-    box-sizing: content-box;
-    font-weight: normal;
-    height: var.$tag-height;
-    padding: 0;
-    text-transform: initial;
-
-    &:focus {
-      text-decoration: none;
-    }
-
-    &:hover {
-      background-color: lighten(var.$toggle-tag-bg-color, 15%);
-      text-decoration: none;
-    }
-  }
-
   color: var.$tag-font-color;
   font-size: var.$tag-font-size;
   font-weight: var.$bold;
@@ -66,5 +49,5 @@
 }
 
 a.tag {
-  color: var.$color-link;
+  color: var.$color-link-active;
 }

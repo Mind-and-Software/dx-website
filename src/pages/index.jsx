@@ -21,7 +21,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <Hero />
-      <button type="button" disabled>
+      <button className="button" type="button">
         Contact us
       </button>
       <HomePageSection

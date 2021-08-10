@@ -78,15 +78,6 @@ const Navbar = () => {
             <Link
               className={navbarLink}
               activeClassName={navbarLinkActive}
-              to="/discussions"
-            >
-              Discussions
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={navbarLink}
-              activeClassName={navbarLinkActive}
               to="/about"
             >
               About

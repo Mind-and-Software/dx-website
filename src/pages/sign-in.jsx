@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import Layout from '../components/layout';
 import LinkButton from '../components/LinkButton';
 
+import emailService from '../services/emailService';
+
 import { signInPage } from '../styles/signInPage.module.scss';
 
 const SignInForm = ({ handleSubmit, register, error }) => {
@@ -23,7 +25,7 @@ const SignInForm = ({ handleSubmit, register, error }) => {
           type="email"
           className={error ? 'field-error' : ''}
           placeholder="Enter your email address"
-          {...register('emailField', {
+          {...register('email', {
             required: 'This field is required',
             validate: (value) => isEmail(value) || 'Not valid email',
           })}
@@ -49,25 +51,41 @@ const SignInSuccess = ({ email }) => (
 
 const SignInPage = () => {
   const [submittedValue, setSubmittedValue] = useState('');
+  const [backendError, setBackendError] = useState(null);
+
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, touchedFields, isSubmitted, isSubmitSuccessful },
+    formState: { errors, touchedFields, isSubmitted },
   } = useForm({
     mode: 'onChange',
   });
 
-  const onSubmit = (data) => {
-    setSubmittedValue(data.emailField);
-    reset('emailField');
+  const onSubmit = async (data) => {
+    try {
+      const result = await emailService.addEmail(data);
+      setSubmittedValue(result.email);
+      reset('email');
+    } catch (error) {
+      if (error.status === 400) {
+        const errorObject = await error.json()
+        setBackendError({
+          message: errorObject.detail
+        })
+      } else {
+        setBackendError({
+          message: "Server error"
+        })
+      }
+    }
   };
 
-  const error = (touchedFields.emailField || isSubmitted) && errors.emailField;
+  const error = backendError || ((touchedFields.email || isSubmitted) && errors.email);
 
   return (
     <Layout>
-      {isSubmitSuccessful ? (
+      {submittedValue ? (
         <SignInSuccess email={submittedValue} />
       ) : (
         <SignInForm

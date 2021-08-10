@@ -2,14 +2,15 @@ import React from 'react';
 
 import Layout from '../components/layout';
 import Blurb from '../components/Blurb';
-import LinkButton from '../components/LinkButton';
 
 import AboutPageBg from '../assets/aboutPageBg.svg';
+import Envelope from '../assets/envelope.svg';
 
 import {
   aboutPageBg,
   aboutPageContainer,
   aboutPageText,
+  contactButton,
 } from '../styles/aboutPage.module.scss';
 
 const AboutPage = () => (
@@ -55,9 +56,14 @@ const AboutPage = () => (
         some data publically. In that case, we always make it clear that you are
         sending something for all to see.
       </p>
-      <LinkButton to="/" type="secondary">
+      <a
+        href="mailto:contact20211024@devxlab.org?subject=Sent from DevX Lab"
+        className={contactButton}
+        aria-label="Contact Us -Opens an e-mail client"
+      >
+        <Envelope />
         Contact Us
-      </LinkButton>
+      </a>
     </div>
   </Layout>
 );

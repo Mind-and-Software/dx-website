@@ -117,7 +117,7 @@ const ResearchItemsContainer = ({
 
   const handlePageChange = (nextPageNum) => {
     setCurrentPage(nextPageNum);
-    navigate(`/research?page=${nextPageNum || currentPage}`);
+    navigate(`research?page=${nextPageNum || currentPage}`);
   };
 
   const filteredTopics = utils.filterItems(

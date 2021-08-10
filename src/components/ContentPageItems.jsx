@@ -40,7 +40,7 @@ const ContentPageItems = ({
 
   const handlePageChange = (nextPageNum) => {
     setCurrentPage(nextPageNum);
-    navigate(`/${type.toLowerCase()}?page=${nextPageNum || currentPage}`);
+    navigate(`${type.toLowerCase()}?page=${nextPageNum || currentPage}`);
   };
 
   const filteredItems = utils.filterItems(itemEdges, searchValue, selectedTags);

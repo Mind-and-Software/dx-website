@@ -1,6 +1,6 @@
 ---
 slug: 'dummypost'
-title: 'Dispositional Flow State Scale'
+title: 'Dispositional Flow State Scale 2'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
 description: 'Dispositional Flow State Scale'

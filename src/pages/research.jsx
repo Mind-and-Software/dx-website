@@ -39,18 +39,26 @@ const ResearchInstrumentList = ({ instrumentData }) => (
   </ul>
 );
 
-const Plus = () => <div className={menuLogo} aria-hidden="true">+</div>;
-const Minus = () => <div className={menuLogo} aria-hidden="true">-</div>;
+const Plus = () => (
+  <div className={menuLogo} aria-hidden="true">
+    +
+  </div>
+);
+const Minus = () => (
+  <div className={menuLogo} aria-hidden="true">
+    -
+  </div>
+);
 
 const AccordionMenuHeader = ({ children, handleClick, isOpen }) => {
   const [focused, setFocused] = useState(false);
-  const buttonRef = useRef(null)
+  const buttonRef = useRef(null);
   const onClick = () => {
-    handleClick()
+    handleClick();
     if (focused) {
-      setFocused(false)
+      setFocused(false);
     }
-  }
+  };
 
   return (
     <h2>
@@ -67,8 +75,8 @@ const AccordionMenuHeader = ({ children, handleClick, isOpen }) => {
         <span className="list-header">{children}</span>
       </button>
     </h2>
-  )
-}
+  );
+};
 
 const ResearchItemsContainer = ({
   researchTopicsEdges,

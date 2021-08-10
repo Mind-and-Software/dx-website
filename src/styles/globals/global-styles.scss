@@ -1,6 +1,7 @@
 // put styles that affect everything on the site (for example heading styles) here
 html {
   font-size: var.$fs-base;
+  overflow-x: hidden;
 }
 
 body {
@@ -9,6 +10,7 @@ body {
   font-size: var.$fs-body;
   height: 100%;
   line-height: var.$lh-body;
+  overflow-x: hidden;
 }
 
 a {
@@ -73,6 +75,14 @@ input {
   }
 }
 
+.list-header {
+  color: var.$color-sub-heading;
+  font-size: var.$fs-body;
+  font-weight: var.$medium;
+  letter-spacing: var.$preview-column-heading-letter-spacing;
+  text-transform: uppercase;
+}
+
 h1,
 h2 {
   font-family: var.$font-heading;
@@ -87,6 +97,7 @@ h3 {
 }
 h4 {
   font-size: var.$fs-heading;
+  line-height: var.$lh-body;
 }
 h5 {
   font-size: var.$fs-heading;

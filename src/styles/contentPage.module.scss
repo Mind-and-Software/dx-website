@@ -1,0 +1,13 @@
+.content-page {
+  display: flex;
+  flex-direction: column;
+
+  .content-section {
+    display: flex;
+    margin-top: var.$content-page-margin;
+  }
+
+  .pager {
+    margin-top: var.$content-page-margin;
+  }
+}

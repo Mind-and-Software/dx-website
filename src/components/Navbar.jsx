@@ -37,6 +37,7 @@ const Navbar = () => {
       <div className={navbarTop}>
         <HeaderLogoContainer />
         <button
+          type="button"
           onClick={toggleMenu}
           className={menuToggle}
           aria-label={hamburgerMenuOpen ? 'Close the menu' : 'Open the menu'}

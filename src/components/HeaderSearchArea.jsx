@@ -15,11 +15,12 @@ const HeaderSearchArea = ({
   selectedTags,
   handleTagToggle,
   handleSearchChange,
+  className,
 }) => {
-  const isTagSelected = (tag) => selectedTags.includes(tag);
+  const isTagSelected = (tagName) => selectedTags.includes(tagName);
 
   return (
-    <div className={headerSearchArea}>
+    <div className={`${headerSearchArea} ${className}`}>
       <h1>{title}</h1>
       <span aria-label="Description of the page">{description}</span>
       <SearchBar
@@ -29,13 +30,14 @@ const HeaderSearchArea = ({
       />
       <ul>
         {tags.map((tag) => (
-          <li>
+          <li key={tag.name}>
             <Tag
               type="toggle"
               handleToggle={handleTagToggle}
-              isActiveAtStart={isTagSelected(tag)}
+              isActive={isTagSelected(tag.name)}
+              wide={tag.isWide}
             >
-              {tag}
+              {tag.name}
             </Tag>
           </li>
         ))}
@@ -44,15 +46,20 @@ const HeaderSearchArea = ({
   );
 };
 
+HeaderSearchArea.defaultProps = {
+  className: '',
+};
+
 HeaderSearchArea.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   searchPlaceholder: PropTypes.string.isRequired,
   searchValue: PropTypes.string.isRequired,
   selectedTags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tags: PropTypes.arrayOf(PropTypes.shape).isRequired,
   handleSearchChange: PropTypes.func.isRequired,
   handleTagToggle: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 export default HeaderSearchArea;

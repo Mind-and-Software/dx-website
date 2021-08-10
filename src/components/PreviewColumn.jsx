@@ -15,9 +15,10 @@ const PreviewColumn = ({
   header,
   className,
   pathPrefix,
+  bottomLink,
 }) => {
   const renderColumn = () => (
-    <ul className={className ? `${columnItems} ${className}` : columnItems}>
+    <ul className={columnItems}>
       {columnPreviewData.map((dataObject, index) => {
         let frontmatter;
         if (dataObject.frontmatter) {
@@ -31,7 +32,11 @@ const PreviewColumn = ({
             <ArticlePreview
               title={frontmatter.title}
               tags={frontmatter.tags}
-              articleUrl={`${pathPrefix}/${frontmatter.slug}`}
+              articleUrl={
+                dataObject.node
+                  ? dataObject.node.fields.slug
+                  : `${pathPrefix}/${frontmatter.slug}`
+              }
               date={frontmatter.date}
               description={frontmatter.description}
               readingTime={frontmatter.readingTime}
@@ -48,13 +53,15 @@ const PreviewColumn = ({
   );
 
   return (
-    <div className={previewColumn}>
-      {header && <h2>{header}</h2>}
+    <div
+      className={className ? `${previewColumn} ${className}` : previewColumn}
+    >
+      {header && <h2 className="list-header">{header}</h2>}
       {renderColumn()}
-      {header && (
+      {bottomLink && (
         <div className={linkArrow}>
           <LinkWithArrow to={pathPrefix} type="secondary">
-            More <span>{header}</span>
+            More <span>{bottomLink}</span>
           </LinkWithArrow>
         </div>
       )}
@@ -66,6 +73,7 @@ PreviewColumn.defaultProps = {
   className: '',
   header: '',
   pathPrefix: '',
+  bottomLink: '',
 };
 
 PreviewColumn.propTypes = {
@@ -73,6 +81,7 @@ PreviewColumn.propTypes = {
   className: PropTypes.string,
   header: PropTypes.string,
   pathPrefix: PropTypes.string,
+  bottomLink: PropTypes.string,
 };
 
 export default PreviewColumn;

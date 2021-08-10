@@ -5,34 +5,35 @@ import PreviewColumn from './PreviewColumn';
 
 import {
   articlePreviewList,
+  firstColumn,
   column,
 } from '../styles/articlePreviewList.module.scss';
 
-const ArticlePreviewList = ({ previewData }) => {
-  const firstColumn = previewData.slice(0, 3);
-  const secondColumn = previewData.slice(3, 6);
-  const thirdColumn = previewData.slice(6, 9);
+const ArticlePreviewList = ({ previewData, type }) => {
+  const firstColumnData = previewData.slice(0, 3);
+  const secondColumnData = previewData.slice(3, 6);
+  const thirdColumnData = previewData.slice(6, 9);
   return (
     <ul className={articlePreviewList} aria-label="List of article previews">
-      {firstColumn.length > 0 && (
+      {firstColumnData.length > 0 && (
         <PreviewColumn
-          columnPreviewData={firstColumn}
-          className={column}
-          pathPrefix="/articles"
+          columnPreviewData={firstColumnData}
+          className={firstColumn}
+          pathPrefix={`/${type}`}
         />
       )}
-      {secondColumn.length > 0 && (
+      {secondColumnData.length > 0 && (
         <PreviewColumn
-          columnPreviewData={secondColumn}
+          columnPreviewData={secondColumnData}
           className={column}
-          pathPrefix="/articles"
+          pathPrefix={`/${type}`}
         />
       )}
-      {thirdColumn.length > 0 && (
+      {thirdColumnData.length > 0 && (
         <PreviewColumn
-          columnPreviewData={thirdColumn}
+          columnPreviewData={thirdColumnData}
           className={column}
-          pathPrefix="/articles"
+          pathPrefix={`/${type}`}
         />
       )}
     </ul>
@@ -41,6 +42,7 @@ const ArticlePreviewList = ({ previewData }) => {
 
 ArticlePreviewList.propTypes = {
   previewData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default ArticlePreviewList;

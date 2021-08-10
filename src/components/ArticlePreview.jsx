@@ -42,7 +42,7 @@ AuthorSection.propTypes = {
 const Dot = () => <span className={dot}>•</span>;
 
 const renderTags = (tags) => {
-  if (tags.length > 0) {
+  if (tags && tags.length > 0) {
     return tags.map((tag) => (
       <div key={tag}>
         <Tag type="link" action={`/tags/${tag}`}>

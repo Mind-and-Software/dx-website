@@ -81,7 +81,7 @@ const ResearchItemsContainer = ({
     }
   }, [initCurrentPage, windowWidth]);
 
-  const itemsPerPage = 9;
+  const topicsPerPage = 9;
 
   const handleSearchValueChange = (event) => setSearchValue(event.target.value);
 
@@ -95,22 +95,22 @@ const ResearchItemsContainer = ({
     navigate(`/research?page=${nextPageNum || currentPage}`);
   };
 
-  const filteredArticles = utils.filterItems(
+  const filteredTopics = utils.filterItems(
     researchTopicsEdges,
     searchValue,
     selectedTags
   );
 
-  const currentPageArticles = utils.getItemsForPage(
+  const currentPageTopics = utils.getItemsForPage(
     currentPage,
-    itemsPerPage,
-    filteredArticles,
+    topicsPerPage,
+    filteredTopics,
     handlePageChange,
     false
   );
 
   // Array of the page numbers required for the pager component
-  const pageArray = utils.getPages(filteredArticles, itemsPerPage);
+  const pageArray = utils.getPages(filteredTopics, topicsPerPage);
 
   return (
     <div className={contentPage}>
@@ -154,9 +154,9 @@ const ResearchItemsContainer = ({
         )}
       </div>
       <div className={showTopics ? '' : hidden}>
-        {currentPageArticles.length > 0 ? (
+        {currentPageTopics.length > 0 ? (
           <ArticlePreviewList
-            previewData={currentPageArticles}
+            previewData={currentPageTopics}
             type="research"
           />
         ) : (

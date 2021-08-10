@@ -14,6 +14,9 @@ $color-text-article: color.$mine-shaft;
 $color-text-heading: $color-text-body;
 $color-text-heading--small: $color-text-heading;
 $color-text-field-bg: color.$snow;
+$color-footer-bg: color.$mine-shaft;
+$color-footer-text: color.$dusty-gray;
+$color-footer-link: color.$snow;
 $color-hero-link: $color-text-body;
 $color-text-button-disabled: color.$dark-gray;
 $color-homepage-section-bg--developers: color.$polar;
@@ -64,6 +67,9 @@ $weak: 400;
 $space: 1.6rem;
 $space-half: 0.5 * $space;
 $space-double: 2 * $space;
+$space-triple: 3 * $space;
+
+$page-content-max-width: 80rem;
 
 /* gutters */
 $margin-body: 10rem;
@@ -120,6 +126,10 @@ $blurb-font-color: $color-primary--dark;
 $blurb-margin: 3rem 0;
 $blurb-padding: 2rem 4rem;
 
+/* footer */
+$footer-padding: $space-triple;
+$footer-link-padding: $space-double;
+
 /* hero */
 $hero-padding--left: $space-double;
 $hero-padding--top: $space-double;
@@ -131,6 +141,11 @@ $homepage-section-icon-width: 4rem;
 $homepage-section-item-margin: $space;
 $homepage-section-item-width: 30rem;
 $homepage-section-title-fs: $fs24;
+
+$logo-container-width: 26rem;
+$logo-fs: $fs-heading--large;
+$logo-fs--mobile: $fs-heading--medium;
+$logo-lh: 5.4rem;
 
 /* mobile menu */
 $mobile-menu-separator: 1px solid $color-mobile-menu-separator;
@@ -210,13 +225,15 @@ $link-with-arrow-tertiary-size: 1rem;
 $content-page-margin: 8rem;
 
 /* about page */
-$about-page-text-width: 80rem;
+$about-page-max-width: $page-content-max-width;
+$about-page-margin-bottom: $space-double;
+$about-page-margin-top: $space-triple;
 
 /* article page */
 $article-heading-margin: $space 0;
 $article-img-height: 30rem;
 $article-img-margin: $space-double 0;
-$article-max-width: 80rem;
+$article-max-width: $page-content-max-width;
 
 /* research page */
 $research-page-instrument-list-padding: 5.5rem;

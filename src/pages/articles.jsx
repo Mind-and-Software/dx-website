@@ -6,7 +6,6 @@ import { navigate } from '@reach/router';
 import Layout from '../components/layout';
 import ContentPageItems from '../components/ContentPageItems';
 
-
 const ArticlesPage = ({ data, location }) => {
   const articleEdges = data.allMarkdownRemark.edges;
 

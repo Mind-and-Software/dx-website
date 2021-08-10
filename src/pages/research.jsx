@@ -155,10 +155,7 @@ const ResearchItemsContainer = ({
       </div>
       <div className={showTopics ? '' : hidden}>
         {currentPageTopics.length > 0 ? (
-          <ArticlePreviewList
-            previewData={currentPageTopics}
-            type="research"
-          />
+          <ArticlePreviewList previewData={currentPageTopics} type="research" />
         ) : (
           <p>No articles found</p>
         )}

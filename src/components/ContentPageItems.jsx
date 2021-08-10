@@ -14,7 +14,13 @@ import {
   pager,
 } from '../styles/contentPage.module.scss';
 
-const ContentPageItems = ({ title, description, type, itemEdges, initCurrentPage }) => {
+const ContentPageItems = ({
+  title,
+  description,
+  type,
+  itemEdges,
+  initCurrentPage,
+}) => {
   const [searchValue, setSearchValue] = useState('');
   const [selectedTags, setSelectedTags] = useState(['ALL']);
   const [currentPage, setCurrentPage] = useState(initCurrentPage);
@@ -37,11 +43,7 @@ const ContentPageItems = ({ title, description, type, itemEdges, initCurrentPage
     navigate(`/${type.toLowerCase()}?page=${nextPageNum || currentPage}`);
   };
 
-  const filteredItems = utils.filterItems(
-    itemEdges,
-    searchValue,
-    selectedTags
-  );
+  const filteredItems = utils.filterItems(itemEdges, searchValue, selectedTags);
 
   const currentPageArticles = utils.getItemsForPage(
     currentPage,
@@ -105,7 +107,7 @@ ContentPageItems.propTypes = {
   description: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   itemEdges: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  initCurrentPage: PropTypes.number.isRequired
-}
+  initCurrentPage: PropTypes.number.isRequired,
+};
 
 export default ContentPageItems;

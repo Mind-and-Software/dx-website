@@ -26,6 +26,12 @@ const getNewTagArray = (tagValue, currentTags) => {
 const filterBySearch = (article, searchValue) =>
   article.node.frontmatter.title
     .toLowerCase()
+    .includes(searchValue.toLowerCase()) ||
+  article.node.frontmatter.author
+    .toLowerCase()
+    .includes(searchValue.toLowerCase()) ||
+  article.node.frontmatter.description
+    .toLowerCase()
     .includes(searchValue.toLowerCase());
 
 const filterByTags = (article, selectedTags) => {

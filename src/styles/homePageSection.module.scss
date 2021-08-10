@@ -2,7 +2,7 @@ section {
   @include mixin.content-paddings();
   @include mixin.no-content-margins();
 
-  padding-bottom: var.$homepage-section-padding;
+  padding-bottom: var.$homepage-section-padding-bot;
   padding-top: var.$homepage-section-padding;
 }
 
@@ -10,14 +10,9 @@ section {
   &-item {
     @include mixin.breakpoint('sm', max) {
       margin-right: 0;
+      margin-top: var.$space-double;
     }
     margin-right: var.$homepage-section-item-margin;
-    max-width: var.$homepage-section-item-width;
-
-    h3 {
-      color: var.$color-homepage-section-title;
-      font-size: var.$homepage-section-title-fs;
-    }
   }
 
   &-section {
@@ -39,6 +34,8 @@ section {
   &-section {
     align-items: center;
     display: flex;
+    margin-bottom: var.$homepage-section-title-margin;
+    margin-top: var.$homepage-section-title-margin;
   }
 }
 .developers {

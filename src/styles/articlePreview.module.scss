@@ -21,7 +21,6 @@ a {
   display: flex;
   font-size: var.$fs-tertiary;
   flex-wrap: wrap;
-  margin-bottom: var.$article-preview-row-section-margin-bottom;
   div {
     display: flex;
   }
@@ -32,9 +31,8 @@ a {
   display: flex;
   font-size: var.$fs-tertiary;
   flex-wrap: wrap;
-  margin-top: var.$article-preview-space-double;
 
-  a {
+  .author-name {
     margin-right: var.$article-preview-space-double;
   }
 }

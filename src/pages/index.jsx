@@ -76,7 +76,7 @@ export const query = graphql`
             type
             featuredImage {
               childImageSharp {
-                gatsbyImageData(width: 300, height: 130)
+                gatsbyImageData(width: 348, height: 160)
               }
             }
           }
@@ -108,7 +108,7 @@ export const query = graphql`
             type
             featuredImage {
               childImageSharp {
-                gatsbyImageData(width: 300, height: 130)
+                gatsbyImageData(width: 348, height: 160)
               }
             }
           }
@@ -140,7 +140,7 @@ export const query = graphql`
             type
             featuredImage {
               childImageSharp {
-                gatsbyImageData(width: 300, height: 130)
+                gatsbyImageData(width: 348, height: 160)
               }
             }
           }

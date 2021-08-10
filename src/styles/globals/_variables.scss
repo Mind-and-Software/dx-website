@@ -15,17 +15,21 @@ $color-text-heading: $color-text-body;
 $color-text-heading--small: $color-text-heading;
 $color-text-field-bg: color.$snow;
 $color-hero-link: $color-text-body;
+$color-text-button-disabled: color.$dark-gray;
 $color-homepage-section-bg--developers: color.$polar;
 $color-homepage-section-bg--managers: color.$white;
 $color-homepage-section-bg--researchers: color.$linen;
 $color-homepage-section-title: color.$black;
-$color-link: $color-secondary;
+$color-link: color.$mine-shaft;
+$color-link-active: $color-secondary;
 $color-link--main-nav: color.$mine-shaft;
 $color-link--with-arrow: color.$black;
 $color-sub-heading: lighten(color.$mine-shaft, 30);
 $color-mobile-menu-icon: color.$mine-shaft;
 $color-mobile-menu-icon-bg: color.$white;
 $color-mobile-menu-separator: color.$dusty-gray;
+$color-button-hover: color.$mine-shaft;
+$color-button-disabled: color.$light-gray;
 
 /* typography */
 $font-body: 'Rubik', sans-serif;
@@ -173,7 +177,7 @@ $tag-height: 3.2rem;
 $tag-font-size: $fs-tertiary;
 $tag-separator-color: color.$black;
 $tag-separator-margin: $space-half;
-$tag-width: 8rem;
+$tag-width: 11rem;
 
 $toggle-tag-bg-color: color.$alabaster;
 $toggle-tag-bg-color--active: $color-secondary;

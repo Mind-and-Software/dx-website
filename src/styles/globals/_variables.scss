@@ -187,8 +187,6 @@ $toggle-tag-border-radius: 3.2rem;
 $toggle-tag-font-color: lighten(color.$black, 50);
 $toggle-tag-font-color--active: color.$white;
 
-/* pages */
-
 $notFound-page-margin: 5rem 0 3rem;
 $notFound-page--articles-margin: 4rem;
 
@@ -205,6 +203,9 @@ $link-with-arrow-text-tertiary-margin: 0.5rem;
 $link-with-arrow-tertiary-size: 1rem;
 
 /* PAGES */
+
+/* about page */
+$about-page-text-width: 80rem;
 
 /* articles page */
 $articles-page-margin: 10rem;

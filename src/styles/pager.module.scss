@@ -8,12 +8,9 @@
     text-decoration: none;
     border: none;
 
-    &:hover {
-      text-decoration: underline;
-    }
-
+    &:hover,
     &:focus {
-      outline-color: var.$color-secondary;
+      color: var.$color-secondary;
     }
   }
 

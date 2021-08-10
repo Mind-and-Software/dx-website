@@ -30,6 +30,22 @@ h2 {
 .accordion-menu {
   display: flex;
   align-items: center;
+  span {
+    &:hover,
+    &:focus {
+      color: var.$research-page-accordion-active;
+    }
+  }
+  &-active {
+    @extend .accordion-menu;
+    span {
+      color: var.$research-page-accordion-active;
+      &:hover,
+      &:focus {
+        color: var.$research-page-accordion-active-hover;
+      }
+    }
+  }
 }
 
 .topics-menu-header {
@@ -53,10 +69,6 @@ h2 {
   @include mixin.breakpoint('lg', max) {
     padding-bottom: var.$research-page-instrument-list-padding;
     padding-top: var.$research-page-instrument-list-padding;
-  }
-
-  h2 {
-    margin-top: 0;
   }
 
   .instruments {

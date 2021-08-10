@@ -16,12 +16,10 @@
 
   width: var.$tag-width;
 
+  &:hover,
   &:focus {
-    background-color: var.$toggle-tag-bg-color;
-  }
-
-  &:hover {
     background-color: lighten(var.$toggle-tag-bg-color, 5%);
+    border-color: var.$color-secondary;
   }
 
   &--active {
@@ -29,13 +27,9 @@
     border-color: var.$toggle-tag-border-color--active;
     color: var.$toggle-tag-font-color--active;
 
+    &:hover,
     &:focus {
-      background-color: var.$toggle-tag-bg-color--active;
-    }
-
-    &:hover {
       background-color: lighten(var.$toggle-tag-bg-color--active, 15%);
-      text-decoration: none;
     }
   }
 }

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 import { navigate } from '@reach/router';
 
@@ -18,6 +18,7 @@ import {
   searchArea,
   hidden,
   accordionMenu,
+  accordionMenuActive,
   menuLogo,
 } from '../styles/researchPage.module.scss';
 
@@ -38,20 +39,36 @@ const ResearchInstrumentList = ({ instrumentData }) => (
   </ul>
 );
 
-const Plus = () => <div className={menuLogo}>+</div>;
-const Minus = () => <div className={menuLogo}>-</div>;
+const Plus = () => <div className={menuLogo} aria-hidden="true">+</div>;
+const Minus = () => <div className={menuLogo} aria-hidden="true">-</div>;
 
-const AccordionMenuHeader = ({ children, handleClick, isOpen }) => (
-  <button
-    type="button"
-    onClick={handleClick}
-    className={accordionMenu}
-    aria-label={isOpen ? 'Close the menu' : 'Open the menu'}
-  >
-    {!isOpen ? <Plus /> : <Minus />}
-    <h2 className="list-header">{children}</h2>
-  </button>
-);
+const AccordionMenuHeader = ({ children, handleClick, isOpen }) => {
+  const [focused, setFocused] = useState(false);
+  const buttonRef = useRef(null)
+  const onClick = () => {
+    handleClick()
+    if (focused) {
+      setFocused(false)
+    }
+  }
+
+  return (
+    <h2>
+      <button
+        type="button"
+        ref={buttonRef}
+        onClick={onClick}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        className={isOpen || focused ? accordionMenuActive : accordionMenu}
+        aria-expanded={isOpen}
+      >
+        {!isOpen ? <Plus /> : <Minus />}
+        <span className="list-header">{children}</span>
+      </button>
+    </h2>
+  )
+}
 
 const ResearchItemsContainer = ({
   researchTopicsEdges,

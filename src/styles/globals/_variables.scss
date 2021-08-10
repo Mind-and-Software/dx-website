@@ -215,3 +215,5 @@ $article-max-width: 80rem;
 
 /* research page */
 $research-page-instrument-list-padding: 5.5rem;
+$research-page-accordion-active: $color-secondary;
+$research-page-accordion-active-hover: lighten($color-secondary, 10%);

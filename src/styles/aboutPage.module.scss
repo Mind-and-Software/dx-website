@@ -19,7 +19,7 @@
   justify-content: center;
   line-height: var.$lh-button;
   text-transform: uppercase;
-  width: var.$button-width;
+  max-width: var.$button-width;
 
   svg {
     padding-right: var.$space;
@@ -27,7 +27,7 @@
 
   &:hover,
   &:focus {
-    background-color: var.$button-bg-color-focus--secondary;
-    color: var.$button-color-focus--secondary;
+    background-color: var.$color-button-hover;
+    color: var.$button-color;
   }
 }

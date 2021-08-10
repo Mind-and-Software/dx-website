@@ -15,28 +15,33 @@ import {
   dot,
   descriptionSection,
   typeSection,
+  authorName,
 } from '../styles/articlePreview.module.scss';
 
 export const AuthorSection = ({ name, url, credentials, image }) => (
   <div className={authorSection}>
-    {image && (
+    {/* {image && (
       <ProfilePicture
         url={url}
         imageData={image.node.childImageSharp.gatsbyImageData}
       />
-    )}
-    <Link to={url} aria-label={`Link to user profile: ${name}`}>
-      {credentials ? `${name},` : name}
-    </Link>
+    )} */}
+    <span className={authorName}>{credentials ? `${name},` : name}</span>
     {credentials}
   </div>
 );
 
+AuthorSection.defaultProps = {
+  url: '',
+  image: '',
+  credentials: '',
+};
+
 AuthorSection.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
-  credentials: PropTypes.string.isRequired,
+  url: PropTypes.string,
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  credentials: PropTypes.string,
 };
 
 const Dot = () => <span className={dot}>•</span>;

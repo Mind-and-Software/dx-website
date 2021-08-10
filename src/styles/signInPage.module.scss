@@ -1,0 +1,35 @@
+.sign-in-page {
+  align-items: center;
+  display: flex;
+  margin-bottom: var.$space-from-footer;
+  flex-direction: column;
+
+  form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: var.$sign-in-page-form-margin-top;
+    width: 100%;
+    input {
+      width: 100%;
+      text-align: center;
+    }
+    button {
+      margin-top: var.$sign-in-page-submit-button-margin-top;
+      width: 100%;
+    }
+  }
+
+  a {
+    margin-top: var.$sign-in-page-back-button-margin-top;
+  }
+}
+
+.info-section {
+  margin-top: var.$sign-in-page-info-margin;
+  a {
+    margin-top: 0;
+    margin-left: var.$space-half;
+    color: var.$color-secondary;
+  }
+}

@@ -71,6 +71,8 @@ $space-triple: 3 * $space;
 
 $page-content-max-width: 80rem;
 
+$space-from-footer: 5rem;
+
 /* gutters */
 $margin-body: 10rem;
 $margin-body--tablet: 5rem;
@@ -87,7 +89,7 @@ $button-color-focus--secondary: $color-primary--dark;
 $button-border-radius: 4px;
 $button-color: color.$white;
 $button-height: 6.4rem;
-$button-width: 19.2rem;
+$button-width: 38.4rem;
 $button-width--link: 38.4rem;
 $fs-button: $fs-secondary;
 $lh-button: $button-height;
@@ -136,11 +138,12 @@ $hero-padding--top: $space-double;
 
 /* homepage section */
 $homepage-section-padding: $space-double;
+$homepage-section-padding-bot: 8rem;
 $homepage-section-icon-padding: $space-double;
 $homepage-section-icon-width: 4rem;
 $homepage-section-item-margin: $space;
-$homepage-section-item-width: 30rem;
 $homepage-section-title-fs: $fs24;
+$homepage-section-title-margin: 8rem;
 
 $logo-container-width: 26rem;
 $logo-fs: $fs-heading--large;
@@ -239,3 +242,9 @@ $article-max-width: $page-content-max-width;
 $research-page-instrument-list-padding: 5.5rem;
 $research-page-accordion-active: $color-secondary;
 $research-page-accordion-active-hover: lighten($color-secondary, 10%);
+
+/* sign in page */
+$sign-in-page-form-margin-top: 3.3rem;
+$sign-in-page-submit-button-margin-top: 4.5rem;
+$sign-in-page-back-button-margin-top: 6.5rem;
+$sign-in-page-info-margin: 17rem;

@@ -1,13 +1,35 @@
 // put styles that affect everything on the site (for example heading styles) here
+
+// Disable basic button style
+button {
+  background: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  text-decoration: none;
+  border: none;
+  width: auto;
+  height: auto;
+  &:hover,
+  &:focus {
+    background: none;
+    text-decoration: none;
+  }
+}
+
 html {
   font-size: var.$fs-base;
   overflow-x: hidden;
+  height: 100%;
 }
 
 body {
   color: var.$color-text-body;
   font-family: var.$font-body;
   font-size: var.$fs-body;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   line-height: var.$lh-body;
   overflow-x: hidden;
@@ -38,7 +60,7 @@ ul {
   font-weight: bolder;
   height: var.$button-height;
   text-transform: uppercase;
-  width: var.$button-width;
+  max-width: var.$button-width;
   &:hover,
   &:focus {
     background-color: var.$color-button-hover;
@@ -73,6 +95,14 @@ input {
   &:focus {
     border-color: var.$color-secondary;
   }
+}
+
+.field-error {
+  border-color: red;
+}
+
+.error-text {
+  color: red;
 }
 
 .list-header {

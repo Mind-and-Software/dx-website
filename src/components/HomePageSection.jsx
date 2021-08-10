@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PreviewColumn from '../components/PreviewColumn';
+import PreviewColumn from './PreviewColumn';
 import Lightbulb from '../assets/lightbulb.svg';
 
 import {
@@ -16,7 +16,6 @@ import {
 
 const HomePageSection = ({
   featuredArticles,
-  featuredDiscussions,
   featuredTutorials,
   sectionId,
   targetGroup,
@@ -67,6 +66,7 @@ HomePageSection.propTypes = {
   featuredTutorials: PropTypes.array.isRequired,
   sectionId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  targetGroup: PropTypes.string.isRequired,
 };
 
 export default HomePageSection;

@@ -10,13 +10,12 @@ import {
 } from '../styles/tag.module.scss';
 
 const Tag = ({ children, type, action, handleToggle, isActive, wide }) => {
-  const buttonRef = useRef(null)
+  const buttonRef = useRef(null);
 
   const handleClick = () => {
-    handleToggle(children)
-    buttonRef.current.blur()
-
-  }
+    handleToggle(children);
+    buttonRef.current.blur();
+  };
 
   if (type === 'link') {
     return (

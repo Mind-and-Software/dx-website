@@ -1,6 +1,6 @@
 ---
 slug: 'dummypost'
-title: 'Developer Experience Scale'
+title: 'Developer Experience Scale 2'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'
 description: 'Dispositional Flow State Scale'

@@ -3,7 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import Navbar from '../components/Navbar';
+import Navbar from './Navbar';
 
 const Header = () => {
   const data = useStaticQuery(graphql`

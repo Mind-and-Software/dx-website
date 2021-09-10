@@ -1,7 +1,7 @@
 ---
-slug: 'dummypost6'
+slug: 'dummypost9'
 date: '2021-02-19'
-title: 'Dummy Article 6'
+title: 'Dummy Article 9'
 author: 'Dummy Dumdum - Dummy Inc'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'

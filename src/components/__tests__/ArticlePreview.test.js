@@ -1,33 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import ArticlePreview, { AuthorSection } from '../ArticlePreview';
-
-const mockImage = {
-  childImageSharp: {
-    gatsbyImageData: {
-      id: 'test',
-      backgroundColor: 'transparent',
-      layout: 'constrained',
-      images: {
-        fallback: {
-          sizes: '(min-width 383px) 383px, 100vw',
-          src: '/mock',
-          srcSet: '/mock',
-        },
-        sources: [
-          {
-            sizes: '(min-width 383px) 383px, 100vw',
-            srcSet: '/mock',
-            type: 'image/webp',
-          },
-        ],
-      },
-      placeholder: {
-        fallback: 'mock',
-      },
-    },
-  },
-};
+import mockImage from './mocks/mockImage';
 
 describe('ArticlePreview component', () => {
   it('Renders title', () => {

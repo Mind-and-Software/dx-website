@@ -14,6 +14,7 @@ import {
   pager,
 } from '../styles/contentPage.module.scss';
 
+// This component is used by generic pages that list content (article page, tutorial page)
 const ContentPageItems = ({
   title,
   description,

@@ -1,5 +1,5 @@
 const getNewTagArray = (tagValue, currentTags) => {
-  // If the all tag is toggled, all other tags are disabled
+  // If the "ALL" tag is toggled, all other tags are disabled
   if (tagValue === 'ALL' && currentTags.length > 0) {
     return ['ALL'];
   }
@@ -37,14 +37,17 @@ const filterBySearch = (article, searchValue) =>
       .includes(searchValue.toLowerCase()));
 
 const filterByTags = (article, selectedTags) => {
+  // If "ALL" tag is selected, all of the articles are shown
   if (selectedTags.includes('ALL')) {
     return true;
   }
+  // Check if the article has one of the selected tag
   return article.node.frontmatter.tags.some((tag) =>
     selectedTags.includes(tag.toUpperCase())
   );
 };
 
+// Page items are filtered by the search value and tags selected by the user
 const filterItems = (items, searchValue, selectedTags) =>
   items.filter(
     (item) =>
@@ -62,7 +65,7 @@ const getItemsForPage = (
   const end = start + itemsPerPage;
   const pageItems = allItems.slice(start, end);
   /* 
-    If we are not at the first page and the page has no items, try moving to the previous page,
+    If we are not on the first page and the page has no items, try moving to the previous page,
     until we find a page that has items or reach the first page.
   */
   if (pageItems.length === 0 && pageNumber !== 1) {

@@ -14,6 +14,7 @@ import {
   pager,
 } from '../styles/contentPage.module.scss';
 
+// This component is used by generic pages that list content (article page, tutorial page)
 const ContentPageItems = ({
   title,
   description,
@@ -54,7 +55,7 @@ const ContentPageItems = ({
   );
 
   // Array of the page numbers required for the pager component
-  const pageArray = utils.getPages(filteredItems, itemsPerPage);
+  const pageArray = utils.getPages(filteredItems.length, itemsPerPage);
 
   return (
     <div className={contentPage}>

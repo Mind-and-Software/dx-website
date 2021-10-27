@@ -48,9 +48,6 @@
   @include breakpoint('sm', max) {
     padding: 0 var.$margin-body--mobile;
   }
-  @include breakpoint('xl', min) {
-    padding: 0 calc((100vw - 1700px) / 2);
-  }
 
   padding: 0 var.$margin-body;
 }
@@ -63,11 +60,6 @@
   @include breakpoint('sm', max) {
     margin-left: -(var.$margin-body--mobile);
     margin-right: -(var.$margin-body--mobile);
-  }
-
-  @include breakpoint('xl', min) {
-    margin-left: -(calc((100vw - 1700px) / 2));
-    margin-right: -(calc((100vw - 1700px) / 2));
   }
 
   margin-left: -(var.$margin-body);

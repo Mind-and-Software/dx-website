@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-pages-sign-in-jsx","path":"/sign-in/","result":{"pageContext":{}},"staticQueryHashes":["3159585216"]}
+{
+    "componentChunkName": "component---src-pages-sign-in-jsx",
+    "path": "/sign-in/",
+    "result": {"pageContext":{}},
+    "staticQueryHashes": ["3159585216"]}

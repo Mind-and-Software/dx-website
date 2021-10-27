@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-templates-single-tag-jsx","path":"/tags/open-question/","result":{"data":{"allMarkdownRemark":{"totalCount":3,"edges":[{"node":{"fields":{"slug":"/research-topics/dummypost2/"},"frontmatter":{"title":"Dummy Article 2"}}},{"node":{"fields":{"slug":"/research-topics/dummypost10/"},"frontmatter":{"title":"Dummy Article 10"}}},{"node":{"fields":{"slug":"/research-topics/dummypost4/"},"frontmatter":{"title":"Dummy Article 4"}}}]}},"pageContext":{"tag":"open question"}},"staticQueryHashes":["3159585216"]}
+{
+    "componentChunkName": "component---src-templates-single-tag-jsx",
+    "path": "/tags/open-question/",
+    "result": {"data":{"allMarkdownRemark":{"totalCount":3,"edges":[{"node":{"fields":{"slug":"/research-topics/dummypost2/"},"frontmatter":{"title":"Dummy Article 2"}}},{"node":{"fields":{"slug":"/research-topics/dummypost10/"},"frontmatter":{"title":"Dummy Article 10"}}},{"node":{"fields":{"slug":"/research-topics/dummypost4/"},"frontmatter":{"title":"Dummy Article 4"}}}]}},"pageContext":{"tag":"open question"}},
+    "staticQueryHashes": ["3159585216"]}

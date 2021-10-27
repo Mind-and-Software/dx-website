@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import ArticlePreview, { AuthorSection } from '../ArticlePreview';
+import ArticlePreview, { AuthorSection } from '../components/ArticlePreview';
 import mockImage from './mocks/mockImage';
 
 describe('ArticlePreview component', () => {

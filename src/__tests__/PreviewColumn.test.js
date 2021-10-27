@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import PreviewColumn from '../PreviewColumn';
+import PreviewColumn from '../components/PreviewColumn';
 import testColumnData1 from './testData/testContentData';
 
 describe('PreviewColumn component', () => {

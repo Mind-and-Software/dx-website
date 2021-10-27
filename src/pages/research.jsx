@@ -135,7 +135,7 @@ const ResearchItemsContainer = ({
   );
 
   // Array of the page numbers required for the pager component
-  const pageArray = utils.getPages(filteredTopics, topicsPerPage);
+  const pageArray = utils.getPages(filteredTopics.length, topicsPerPage);
 
   return (
     <div className={contentPage}>

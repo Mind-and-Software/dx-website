@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import ArticlePreviewList from '../ArticlePreviewList';
+import ArticlePreviewList from '../components/ArticlePreviewList';
 import testContentData from './testData/testContentData';
 
 describe('ArticlePreviewList component', () => {

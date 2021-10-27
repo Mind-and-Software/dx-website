@@ -1,3 +1,4 @@
+// Returns a new array of tags based on the current tag array and the new tagValue
 const getNewTagArray = (tagValue, currentTags) => {
   // If the "ALL" tag is toggled, all other tags are disabled
   if (tagValue === 'ALL' && currentTags.length > 0) {
@@ -23,18 +24,16 @@ const getNewTagArray = (tagValue, currentTags) => {
   return newSelectedTags;
 };
 
-const filterBySearch = (article, searchValue) =>
-  article.node.frontmatter.title
-    .toLowerCase()
-    .includes(searchValue.toLowerCase()) ||
-  (article.node.frontmatter.author &&
-    article.node.frontmatter.author
-      .toLowerCase()
-      .includes(searchValue.toLowerCase())) ||
-  (article.node.frontmatter.description &&
-    article.node.frontmatter.description
-      .toLowerCase()
-      .includes(searchValue.toLowerCase()));
+// Returns true if the searchValue is found in the article title, author name or description, false otherwise
+const filterBySearch = (article, searchValue) => {
+  const { title, author, description } = article.node.frontmatter;
+  return (
+    title.toLowerCase().includes(searchValue.toLowerCase()) ||
+    (author && author.toLowerCase().includes(searchValue.toLowerCase())) ||
+    (description &&
+      description.toLowerCase().includes(searchValue.toLowerCase()))
+  );
+};
 
 const filterByTags = (article, selectedTags) => {
   // If "ALL" tag is selected, all of the articles are shown
@@ -42,13 +41,15 @@ const filterByTags = (article, selectedTags) => {
     return true;
   }
   // Check if the article has one of the selected tag
-  return article.node.frontmatter.tags.some((tag) =>
-    selectedTags.includes(tag.toUpperCase())
-  );
+  const { tags } = article.node.frontmatter;
+  if (tags === undefined) {
+    return false;
+  }
+  return tags.some((tag) => selectedTags.includes(tag.toUpperCase()));
 };
 
 // Page items are filtered by the search value and tags selected by the user
-const filterItems = (items, searchValue, selectedTags) =>
+const filterItems = (items, searchValue = '', selectedTags = ['ALL']) =>
   items.filter(
     (item) =>
       filterBySearch(item, searchValue) && filterByTags(item, selectedTags)
@@ -64,12 +65,15 @@ const getItemsForPage = (
   const start = (pageNumber - 1) * itemsPerPage;
   const end = start + itemsPerPage;
   const pageItems = allItems.slice(start, end);
+  if (move) {
+    handlePageChange(pageNumber);
+  }
   /* 
     If we are not on the first page and the page has no items, try moving to the previous page,
     until we find a page that has items or reach the first page.
   */
   if (pageItems.length === 0 && pageNumber !== 1) {
-    getItemsForPage(
+     return getItemsForPage(
       pageNumber - 1,
       itemsPerPage,
       allItems,
@@ -77,15 +81,12 @@ const getItemsForPage = (
       true
     );
   }
-  if (move) {
-    handlePageChange(pageNumber);
-  }
   return pageItems;
 };
 
 // Forms an array of the page numbers required for the pager component
-const getPages = (items, itemsPerPage) => {
-  const pageAmount = Math.ceil(items.length / itemsPerPage);
+const getPages = (itemAmount, itemsPerPage) => {
+  const pageAmount = Math.ceil(itemAmount / itemsPerPage);
   if (pageAmount === 0) return [0];
   return Array.from({ length: pageAmount }, (x, i) => i);
 };

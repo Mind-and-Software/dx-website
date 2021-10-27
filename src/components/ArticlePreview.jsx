@@ -15,10 +15,11 @@ import {
   dot,
   descriptionSection,
   typeSection,
-  authorName,
+  author,
 } from '../styles/articlePreview.module.scss';
 
 export const AuthorSection = ({ name, url, credentials, image }) => (
+  // TODO: Profile picture for user and link to their profile
   <div className={authorSection}>
     {/* {image && (
       <ProfilePicture
@@ -26,7 +27,7 @@ export const AuthorSection = ({ name, url, credentials, image }) => (
         imageData={image.node.childImageSharp.gatsbyImageData}
       />
     )} */}
-    <span className={authorName}>{credentials ? `${name},` : name}</span>
+    <span className={author}>{credentials ? `${name},` : name}</span>
     {credentials}
   </div>
 );

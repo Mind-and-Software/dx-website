@@ -8,6 +8,7 @@ const testArticleListData = [
       },
       frontmatter: {
         title: 'Test Article 1',
+        tags: ['TAG1', 'TAG2']
       },
     },
   },
@@ -20,6 +21,7 @@ const testArticleListData = [
         author: 'Test Author 2',
         description: 'Test description 2',
         title: 'Test Article 2',
+        tags: ['TAG1']
       },
     },
   },
@@ -46,6 +48,7 @@ const testArticleListData = [
         author: 'Test Author 4',
         description: 'Test description 4',
         title: 'Test Article 4',
+        tags: ['TAG3']
       },
     },
   },

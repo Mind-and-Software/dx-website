@@ -38,7 +38,7 @@ const Pager = ({ pages, currentPage, handleClick }) => {
       key="next"
       aria-label="Goto next page"
       className={arrowLinkRight}
-      data-cy="nextPageButton"
+      data-test-id="nextPageButton"
     >
       <span className={linkText}>Next</span>
       <LinkArrow className={arrowRight} />

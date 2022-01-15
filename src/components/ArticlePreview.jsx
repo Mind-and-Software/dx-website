@@ -85,7 +85,7 @@ const ArticlePreview = ({
   authorImage,
   authorUrl,
 }) => (
-  <div className={articlePreview} aria-label="Article preview" data-cy="articlePreview">
+  <div className={articlePreview} aria-label="Article preview" data-test-id="articlePreview">
     {previewImage && (
       <div className={imageLink}>
         <ImageLink

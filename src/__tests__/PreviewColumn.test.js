@@ -23,12 +23,14 @@ describe('PreviewColumn component', () => {
     );
     expect(container.getAllByRole('listitem')).toHaveLength(4);
   });
+
   it('Renders 1 preview', () => {
     const container = render(
       <PreviewColumn columnPreviewData={testColumnData2} />
     );
     expect(container.getAllByRole('listitem')).toHaveLength(1);
   });
+
   it('Renders correct information in each preview', () => {
     const container = render(
       <PreviewColumn columnPreviewData={testColumnData1} />
@@ -42,6 +44,7 @@ describe('PreviewColumn component', () => {
     expect(previews[2]).toHaveTextContent('Test description 3');
     expect(previews[2]).toHaveTextContent('3 Jul, 21');
   });
+  
   it('Renders header and bottom link', () => {
     const container = render(
       <PreviewColumn

@@ -18,7 +18,7 @@ const PreviewColumn = ({
   bottomLink,
 }) => {
   const renderColumn = () => (
-    <ul className={columnItems} data-testid="previewColumn">
+    <ul className={columnItems} id="previewColumn">
       {columnPreviewData.map((dataObject, index) => {
         let frontmatter;
         if (dataObject.frontmatter) {

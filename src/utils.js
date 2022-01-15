@@ -73,7 +73,7 @@ const getItemsForPage = (
     until we find a page that has items or reach the first page.
   */
   if (pageItems.length === 0 && pageNumber !== 1) {
-     return getItemsForPage(
+    return getItemsForPage(
       pageNumber - 1,
       itemsPerPage,
       allItems,

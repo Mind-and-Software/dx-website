@@ -1,6 +1,6 @@
 {
   "baseUrl": "http://localhost:8000/",
-  "integrationFolder": "cypress/e2e",
+  "integrationFolder": "cypress/integration",
   "viewportHeight": 900,
   "viewPortWidth": 400,
   "video": false

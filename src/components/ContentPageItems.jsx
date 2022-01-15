@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { navigate } from '@reach/router';
 import PropTypes from 'prop-types';
 
 import ArticlePreviewList from './ArticlePreviewList';
@@ -41,7 +40,6 @@ const ContentPageItems = ({
 
   const handlePageChange = (nextPageNum) => {
     setCurrentPage(nextPageNum);
-    navigate(`${type.toLowerCase()}?page=${nextPageNum || currentPage}`);
   };
 
   const filteredItems = utils.filterItems(itemEdges, searchValue, selectedTags);

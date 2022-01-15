@@ -14,7 +14,7 @@ const ArticlePreviewList = ({ previewData, type }) => {
   const secondColumnData = previewData.slice(3, 6);
   const thirdColumnData = previewData.slice(6, 9);
   return (
-    <ul className={articlePreviewList} aria-label="List of article previews">
+    <ul className={articlePreviewList} aria-label="List of article previews" id="articleList">
       {firstColumnData.length > 0 && (
         <PreviewColumn
           columnPreviewData={firstColumnData}

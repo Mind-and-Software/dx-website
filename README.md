@@ -31,6 +31,8 @@ A scaffolding for a Developer Experience website made with Gatsby.
 4.  **Linting**
 
     `npm run lint` - See linting errors.
+    `npm run prettier` To format code
+
 
 5.  **Test the site**
 

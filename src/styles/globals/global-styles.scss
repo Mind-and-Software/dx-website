@@ -39,8 +39,7 @@ a {
   text-decoration: none;
   color: var.$color-link;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: var.$color-link-active;
   }
 }

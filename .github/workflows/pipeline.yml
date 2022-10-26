@@ -28,7 +28,7 @@ jobs:
       - name: npm install
         run: npm ci
       - name: format check
-        run: npm run prettier
+        run: npm run format
       - name: lint
         run: npm run lint
       - name: run unit tests

@@ -9,7 +9,6 @@ import Envelope from '../assets/envelope.svg';
 import {
   aboutPageBg,
   aboutPageContainer,
-  aboutPageText,
   contactButton,
 } from '../styles/aboutPage.module.scss';
 
@@ -24,7 +23,7 @@ const AboutPage = () => (
         on understanding software developers. Many of us are or have been
         software developers ourselves.
       </Blurb>
-      <p className={aboutPageText}>
+      <p>
         Increasingly, software development tools and platforms stand out for the
         Developer Experience they promote. The way software development is
         organised is also started to get recognised as a factor contributing to
@@ -37,13 +36,13 @@ const AboutPage = () => (
         design for good Developer Experience, and how to link it with
         experiences that others have.
       </p>
-      <p className={aboutPageText}>
+      <p>
         The aim of this site is to create a fun, meaningful, and safe space
         where developers can share their experiences with other developers,
         learn about the science behind Developer Experience, and connect with
         researchers who study Developer Experience.
       </p>
-      <p className={aboutPageText}>
+      <p>
         <b>Your data is safe with us.</b> Our scientific mission depends on
         doing things ethically. As a participant, you always control what you
         share and what you keep private. We do not collect any data from you
@@ -56,14 +55,15 @@ const AboutPage = () => (
         some data publically. In that case, we always make it clear that you are
         sending something for all to see.
       </p>
-      <a
+      {/*    <a
         href="mailto:contact20211024@devxlab.org?subject=Sent from DevX Lab"
         className={contactButton}
         aria-label="Contact Us -Opens an e-mail client"
       >
         <Envelope />
         Contact Us
-      </a>
+      </a> */}
+      <b>Contact via email: verificate.devxlab@gmail.com</b>
     </div>
   </Layout>
 );

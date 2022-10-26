@@ -46,7 +46,7 @@ const Navbar = () => {
         </button>
       </div>
       <div className={navbarLinksContainer}>
-        <ul className={`${navbarLinksContainer} ${showLinks ? '' : hidden}`}>
+        {/* <ul className={`${navbarLinksContainer} ${showLinks ? '' : hidden}`}>
           <li>
             <Link
               className={navbarLink}
@@ -92,7 +92,7 @@ const Navbar = () => {
               Sign In
             </Link>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </nav>
   );

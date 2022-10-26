@@ -4,7 +4,6 @@ date: '2021-07-30'
 title: 'Test3'
 author: 'Tester'
 authorCredentials: 'Developer'
-authorImage: ../../../../images/profilepics/meer98.png
 authorUrl: '/'
 featuredImage: ../../../../images/placeholder.png
 imageAlt: 'Cute bunny'

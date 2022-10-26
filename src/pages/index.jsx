@@ -2,10 +2,12 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
+import About from './about';
 import Layout from '../components/layout';
 
 import Hero from '../components/Hero';
 import HomePageSection from '../components/HomePageSection';
+
 
 const IndexPage = ({ data }) => {
   const { develop, manage, research } = data;
@@ -150,4 +152,5 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage;
+// Temporarily just show the about page to the visitors
+export default About;

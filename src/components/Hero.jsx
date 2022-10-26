@@ -10,6 +10,7 @@ import {
   heroImage,
   heroLeft,
   heroRight,
+  heroLink
 } from '../styles/hero.module.scss';
 
 const Hero = () => (
@@ -22,7 +23,7 @@ const Hero = () => (
         development.”
       </p>
       <ul aria-label="Frontpage section" role="navigation">
-        <li>
+        <li className={heroLink}>
           <AnchorLink
             to="/#for-developers"
             title="Grow as a developer"
@@ -32,7 +33,7 @@ const Hero = () => (
           />
           <LinkArrow />
         </li>
-        <li>
+        <li className={heroLink}>
           <AnchorLink
             to="/#for-managers"
             title="Work better with developers"
@@ -42,7 +43,7 @@ const Hero = () => (
           />
           <LinkArrow />
         </li>
-        <li>
+        <li className={heroLink}>
           <AnchorLink
             to="/#for-researchers"
             title="Research developer experience"

@@ -63,7 +63,7 @@ const AboutPage = () => (
         <Envelope />
         Contact Us
       </a> */}
-      <b>Contact via email: verificate.devxlab@gmail.com</b>
+      <b>Contact via email: info@devxlab.org</b>
     </div>
   </Layout>
 );

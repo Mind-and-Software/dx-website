@@ -36,14 +36,14 @@ const Navbar = () => {
     <nav className={navbar}>
       <div className={navbarTop}>
         <LogoContainer />
-        <button
+     {/*    <button
           type="button"
           onClick={toggleMenu}
           className={menuToggle}
           aria-label={hamburgerMenuOpen ? 'Close the menu' : 'Open the menu'}
         >
           {hamburgerMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
-        </button>
+        </button> */}
       </div>
       <div className={navbarLinksContainer}>
         {/* <ul className={`${navbarLinksContainer} ${showLinks ? '' : hidden}`}>

@@ -1,0 +1,69 @@
+{
+  "name": "dx-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DX Website",
+  "author": "MindAndSoftware",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "deploy": "gatsby build --prefix-paths",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@fontsource/rubik": "^4.5.0",
+    "@gatsbyjs/reach-router": "^1.3.9",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "@types/gatsbyjs__reach-router": "^1.3.0",
+    "gatsby": "^3.4.1",
+    "gatsby-plugin-anchor-links": "^1.2.1",
+    "gatsby-plugin-image": "^1.10.1",
+    "gatsby-plugin-mdx": "^2.6.0",
+    "gatsby-plugin-react-helmet": "^4.10.0",
+    "gatsby-plugin-react-svg": "^3.0.1",
+    "gatsby-plugin-sass": "^4.10.0",
+    "gatsby-plugin-sharp": "^3.10.2",
+    "gatsby-source-filesystem": "^3.6.0",
+    "gatsby-transformer-remark": "^4.3.0",
+    "gatsby-transformer-sharp": "^3.10.0",
+    "normalize.css": "^8.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.12.2",
+    "sass": "^1.36.0"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^7.0.6",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
+    "babel-jest": "^26.6.3",
+    "babel-preset-gatsby": "^1.6.0",
+    "cypress": "^7.4.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-jest": "^24.4.0",
+    "gatsby-plugin-prettier-eslint": "^1.0.6",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.0",
+    "jest-preset-gatsby": "^1.0.128",
+    "prettier": "^2.3.0",
+    "react-test-renderer": "^17.0.1"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
+  }
+}

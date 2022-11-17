@@ -1,0 +1,13 @@
+.layout {
+  background-color: var.$color-background;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+footer,
+header,
+main {
+  @include mixin.content-paddings();
+}

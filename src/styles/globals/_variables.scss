@@ -1,0 +1,250 @@
+@use './colors' as color;
+
+/* colors */
+$color-primary: color.$polar;
+$color-primary--dark: color.$blumine;
+$color-secondary: color.$coral;
+$color-secondary--light: color.$linen;
+$color-background: color.$white;
+$color-placeholder: color.$gothic;
+
+$color-text-body: color.$black;
+$color-text-secondary: color.$black;
+$color-text-article: color.$mine-shaft;
+$color-text-heading: $color-text-body;
+$color-text-heading--small: $color-text-heading;
+$color-text-field-bg: color.$snow;
+$color-footer-bg: color.$mine-shaft;
+$color-footer-text: color.$dusty-gray;
+$color-footer-link: color.$snow;
+$color-hero-link: $color-text-body;
+$color-text-button-disabled: color.$dark-gray;
+$color-homepage-section-bg--developers: color.$polar;
+$color-homepage-section-bg--managers: color.$white;
+$color-homepage-section-bg--researchers: color.$linen;
+$color-homepage-section-title: color.$black;
+$color-link: color.$mine-shaft;
+$color-link-active: $color-secondary;
+$color-link--main-nav: color.$mine-shaft;
+$color-link--with-arrow: color.$black;
+$color-sub-heading: lighten(color.$mine-shaft, 30);
+$color-mobile-menu-icon: color.$mine-shaft;
+$color-mobile-menu-icon-bg: color.$white;
+$color-mobile-menu-separator: color.$dusty-gray;
+$color-button-hover: color.$mine-shaft;
+$color-button-disabled: color.$light-gray;
+
+/* typography */
+$font-body: 'Rubik', sans-serif;
+$font-heading: $font-body;
+$font-button: $font-body;
+
+$fs-base: 62.5%; // only for setting the font size for base html element
+$fs14: 1.4rem;
+$fs16: 1.6rem;
+$fs20: 2rem;
+$fs24: 2.4rem;
+$fs32: 3.2rem;
+$fs44: 4.4rem;
+
+$fs-body: $fs20;
+$fs-secondary: $fs16;
+$fs-tertiary: $fs14;
+$fs-heading: $fs24;
+$fs-heading--medium: $fs32;
+$fs-heading--large: $fs44;
+
+$lh-body: 3.2rem;
+$lh-heading: 3.6rem;
+$lh-small: 2.4rem;
+$lh-heading--large: 4.8rem;
+
+$bold: 700;
+$medium: 500;
+$weak: 400;
+
+/* spacing */
+$space: 1.6rem;
+$space-half: 0.5 * $space;
+$space-double: 2 * $space;
+$space-triple: 3 * $space;
+
+$page-content-max-width: 80rem;
+
+$space-from-footer: 5rem;
+
+/* gutters */
+$margin-body: 10rem;
+$margin-body--tablet: 5rem;
+$margin-body--mobile: 2rem;
+
+/* box-shadow */
+$box-shadow: 0px 4px 4px lighten(color.$black, 75%);
+
+/* buttons */
+$button-bg-color--primary: $color-primary--dark;
+$button-bg-color--secondary: $color-secondary;
+$button-bg-color-focus--secondary: $color-primary;
+$button-color-focus--secondary: $color-primary--dark;
+$button-border-radius: 4px;
+$button-color: color.$white;
+$button-height: 6.4rem;
+$button-width: 38.4rem;
+$button-width--link: 38.4rem;
+$fs-button: $fs-secondary;
+$lh-button: $button-height;
+
+/* contact paragraph */
+$contact-paragraph-width: 34rem;
+$contact-paragraph-header-lh: 2rem;
+$contact-paragraph-content-space: 9rem;
+$contact-paragraph-logo-space: 2rem;
+
+/* text fields */
+$text-field-background: $color-text-field-bg;
+$text-field-border: 0.1rem solid rgba(0, 0, 0, 0.24);
+$text-field-height: 6rem;
+$text-field-padding: 2rem;
+$text-field-radius: 0.4rem;
+$text-field-width: 62rem;
+
+/* COMPONENTS */
+
+/* article preview */
+$article-preview-width: 38.4rem;
+$article-preview-img-space: 1.4rem;
+$article-preview-space: 0.4rem;
+$article-preview-space-double: 2 * $article-preview-space;
+$article-preview-row-section-margin-bottom: 0.1rem;
+$article-preview-type-fs: $fs-secondary;
+
+/* article preview list */
+$article-list-item-margin-top: 4.8rem;
+$article-list-column-margin-right: 5.4rem;
+
+/* blurb */
+$blurb-bg-color: $color-primary;
+$blurb-font-color: $color-primary--dark;
+$blurb-margin: 3rem 0;
+$blurb-padding: 2rem 4rem;
+
+/* footer */
+$footer-padding: $space-triple;
+$footer-link-padding: $space-double;
+
+/* hero */
+$hero-padding--left: $space-double;
+$hero-padding--top: $space-double;
+
+/* homepage section */
+$homepage-section-padding: $space-double;
+$homepage-section-padding-bot: 8rem;
+$homepage-section-icon-padding: $space-double;
+$homepage-section-icon-width: 4rem;
+$homepage-section-item-margin: $space;
+$homepage-section-title-fs: $fs24;
+$homepage-section-title-margin: 8rem;
+
+$logo-container-width: 27rem;
+$logo-fs: $fs-heading--large;
+$logo-fs--mobile: $fs-heading--medium;
+$logo-lh: 5.4rem;
+
+/* mobile menu */
+$mobile-menu-separator: 1px solid $color-mobile-menu-separator;
+$mobile-menu-item-padding: $space 0;
+$mobile-menu-icon-size: 4rem;
+
+/* navbar */
+$navbar-margins: $space-double 0;
+$navbar-link-padding: 0 $space;
+
+/* pager */
+$pager-fs: $fs-secondary;
+$pager-padding: $space $space $space 0;
+
+$pager-arrow-height: 1.2rem;
+
+$pager-item-padding: 0 $space;
+
+$pager-arrow-margin: 2rem;
+$pager-arrow-left-width: 8rem;
+
+/* preview column */
+$preview-column-item-margin-top: 3.2rem;
+$preview-column-width: 38.4rem;
+$preview-column-heading-letter-spacing: 0.1em;
+
+/* profile picture */
+$profile-image-background: $color-placeholder;
+$profile-image-border-radius: 20rem;
+$profile-image-height: 3.2rem;
+$profile-image-width: 3.2rem;
+
+/* related content listing */
+$related-content-ls: 0.2rem;
+$related-content-margins: 6rem 0;
+$related-content-item-fs: $fs24;
+$related-content-item-lh: $lh-body;
+$related-content-item-margins: 0 3rem 3rem 0;
+$related-content-item-width: 30rem;
+
+/* tags */
+$tag-font-color: color.$black;
+$tag-height: 3.2rem;
+$tag-font-size: $fs-tertiary;
+$tag-separator-color: color.$black;
+$tag-separator-margin: $space-half;
+$tag-wide-width: 20rem;
+$tag-width: 11rem;
+
+$toggle-tag-bg-color: color.$alabaster;
+$toggle-tag-bg-color--active: $color-secondary;
+$toggle-tag-border-color: color.$gothic;
+$toggle-tag-border-color--active: darken($color-secondary, 40%);
+$toggle-tag-border-radius: 3.2rem;
+$toggle-tag-font-color: lighten(color.$black, 50);
+$toggle-tag-font-color--active: color.$white;
+
+$notFound-page-margin: 5rem 0 3rem;
+$notFound-page--articles-margin: 4rem;
+
+/* header search area */
+$search-area-title-margin: 1.9rem;
+$search-area-description-margin: 4.6rem;
+$search-area-tag-list-margin: 2.7rem;
+$search-area-tag-margin: 1rem;
+$search-area-tag-wide-margin: 2rem;
+$search-area-button-height: $text-field-height;
+$search-area-button-width: $text-field-height * 2;
+
+/* link with arrow */
+$link-with-arrow-text-tertiary-margin: 0.5rem;
+$link-with-arrow-tertiary-size: 1rem;
+
+/* PAGES */
+
+/* content page */
+$content-page-margin: 8rem;
+
+/* about page */
+$about-page-max-width: $page-content-max-width;
+$about-page-margin-bottom: $space-double;
+$about-page-margin-top: $space-triple;
+
+/* article page */
+$article-heading-margin: $space 0;
+$article-img-height: 30rem;
+$article-img-margin: $space-double 0;
+$article-max-width: $page-content-max-width;
+
+/* research page */
+$research-page-instrument-list-padding: 5.5rem;
+$research-page-accordion-active: $color-secondary;
+$research-page-accordion-active-hover: lighten($color-secondary, 10%);
+
+/* sign in page */
+$sign-in-page-form-margin-top: 3.3rem;
+$sign-in-page-submit-button-margin-top: 4.5rem;
+$sign-in-page-back-button-margin-top: 6.5rem;
+$sign-in-page-info-margin: 17rem;

@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+.toggleTag {
+  background-color: var.$toggle-tag-bg-color;
+  border-color: var.$toggle-tag-border-color;
+  border-radius: var.$toggle-tag-border-radius;
+  border-style: solid;
+  border-width: 1px;
+  color: var.$toggle-tag-font-color;
+  cursor: pointer;
+  display: inline-block;
+  font-size: var.$tag-font-size;
+  height: var.$tag-height;
+  line-height: var.$tag-height;
+  text-align: center;
+  text-transform: uppercase;
+
+  width: var.$tag-width;
+
+  &:hover,
+  &:focus {
+    background-color: lighten(var.$toggle-tag-bg-color, 5%);
+    border-color: var.$color-secondary;
+  }
+
+  &--active {
+    background-color: var.$toggle-tag-bg-color--active;
+    border-color: var.$toggle-tag-border-color--active;
+    color: var.$toggle-tag-font-color--active;
+
+    &:hover,
+    &:focus {
+      background-color: lighten(var.$toggle-tag-bg-color--active, 15%);
+    }
+  }
+}
+
+.tag {
+  color: var.$tag-font-color;
+  font-size: var.$tag-font-size;
+  font-weight: var.$bold;
+  text-transform: uppercase;
+}
+
+a.tag {
+  color: var.$color-link-active;
+}
+
+.wide-tag {
+  width: var.$tag-wide-width;
+}

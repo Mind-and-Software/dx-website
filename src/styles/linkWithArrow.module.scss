@@ -1,0 +1,33 @@
+.link-with-arrow {
+  align-items: center;
+  color: var.$color-link--with-arrow;
+  display: flex;
+  flex-direction: row;
+  font-size: var.$fs-secondary;
+
+  .link-text {
+    margin-right: var.$space;
+  }
+
+  &--secondary {
+    @extend .link-with-arrow;
+    font-size: var.$fs-body;
+  }
+
+  &--tertiary {
+    @extend .link-with-arrow;
+    font-size: var.$fs-secondary;
+    color: var.$color-secondary;
+    .link-arrow {
+      width: var.$link-with-arrow-tertiary-size;
+      height: var.$link-with-arrow-tertiary-size;
+    }
+    .link-text {
+      margin-right: var.$link-with-arrow-text-tertiary-margin;
+    }
+  }
+
+  &:focus {
+    text-decoration: underline;
+  }
+}

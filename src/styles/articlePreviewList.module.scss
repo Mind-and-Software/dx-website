@@ -1,0 +1,28 @@
+.article-preview-list {
+  display: flex;
+  flex-wrap: wrap;
+  @include mixin.breakpoint('md', max) {
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin-right: var.$article-list-column-margin-right;
+  @include mixin.breakpoint('sm', max) {
+    margin-right: 0;
+  }
+
+  li {
+    margin-top: var.$article-list-item-margin-top;
+  }
+}
+
+.firstColumn {
+  @extend .column;
+  @include mixin.breakpoint('md', max) {
+    margin-top: 0;
+  }
+}

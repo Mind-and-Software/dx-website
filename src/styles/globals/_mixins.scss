@@ -1,0 +1,67 @@
+// add helper mixins here
+@use 'breakpoints.scss' as br;
+@use 'variables.scss' as var;
+
+/* breakpoints */
+@mixin breakpoint($breakpoint, $direction) {
+  @if map-has-key(br.$breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get(br.$breakpoints, $breakpoint);
+
+    @if $direction == max {
+      @media (max-width: ($breakpoint-value - 1)) {
+        @content;
+      }
+    } @else if $direction == min {
+      @media (min-width: $breakpoint-value) {
+        @content;
+      }
+    } @else {
+      @media ($direction: $breakpoint-value) {
+        @content;
+      }
+    }
+
+    // If the breakpoint doesn't exist in the map.
+  } @else {
+    @if $direction == max {
+      @media (max-width: $breakpoint) {
+        @content;
+      }
+    } @else if $direction == min {
+      @media (min-width: $breakpoint) {
+        @content;
+      }
+    } @else {
+      @media ($direction: $breakpoint) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin content-paddings() {
+  @include breakpoint('md', max) {
+    padding-left: var.$margin-body--tablet;
+    padding-right: var.$margin-body--tablet;
+  }
+  @include breakpoint('sm', max) {
+    padding: 0 var.$margin-body--mobile;
+  }
+
+  padding: 0 var.$margin-body;
+}
+
+@mixin no-content-margins() {
+  @include breakpoint('md', max) {
+    margin-left: -(var.$margin-body--tablet);
+    margin-right: -(var.$margin-body--tablet);
+  }
+  @include breakpoint('sm', max) {
+    margin-left: -(var.$margin-body--mobile);
+    margin-right: -(var.$margin-body--mobile);
+  }
+
+  margin-left: -(var.$margin-body);
+  margin-right: -(var.$margin-body);
+}

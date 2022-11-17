@@ -1,0 +1,18 @@
+{
+  "plugins": ["react", "cypress", "jest"],
+  "extends": [
+    "airbnb",
+    "plugin:cypress/recommended",
+    "plugin:jest/recommended",
+    "prettier"
+  ],
+  "ignorePatterns": ["public", "node_modules", "coverage", ".cache", "build"],
+  "rules": {
+    "func-names": ["error", "never"],
+    "react/forbid-prop-types": 0,
+    "import/no-extraneous-dependencies": ["off"],
+    "react/jsx-filename-extension": [0],
+    "operator-linebreak": ["off"],
+    "jest/expect-expect": 0
+  }
+}

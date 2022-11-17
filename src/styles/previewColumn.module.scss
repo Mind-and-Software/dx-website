@@ -1,0 +1,25 @@
+.preview-column {
+  width: var.$preview-column-width;
+}
+
+.link-arrow {
+  margin-top: var.$preview-column-item-margin-top;
+  font-weight: var.$bold;
+
+  span {
+    text-transform: lowercase;
+  }
+}
+
+.column-items {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    margin-top: var.$preview-column-item-margin-top;
+  }
+
+  :first-child {
+    margin-top: 0;
+  }
+}

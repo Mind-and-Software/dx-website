@@ -1,0 +1,22 @@
+
+.logo {
+  &-text {
+    @include mixin.breakpoint('sm', max) {
+      font-size: var.$logo-fs--mobile;
+    }
+    display: flex;
+    font-size: var.$logo-fs;
+    font-weight: var.$bold;
+    line-height: var.$logo-lh;
+    margin-left: var.$space-half;
+  }
+
+  &-container {
+    align-items: center;
+    display: flex;
+    min-width: var.$logo-container-width;
+    &:hover {
+      color: black;
+    }
+  }
+}

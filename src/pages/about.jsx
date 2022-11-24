@@ -6,6 +6,8 @@ import Blurb from '../components/Blurb';
 import AboutPageBg from '../assets/aboutPageBg.svg';
 import Envelope from '../assets/envelope.svg';
 
+import aboutPageImage from '../../images/frontpage/aboutPageBg.png'
+
 import {
   aboutPageBg,
   aboutPageContainer,
@@ -16,7 +18,9 @@ const AboutPage = () => (
   <Layout>
     <div className={aboutPageContainer} role="document">
       <h1>About us</h1>
-      <AboutPageBg className={aboutPageBg} />
+      <div className={aboutPageBg}>
+        <img src={aboutPageImage} />
+      </div>
       <Blurb>
         This site is built by researchers in the Mind and Software research
         group at Aalto University, Finland. We are passionate about our research

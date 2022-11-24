@@ -1,6 +1,10 @@
 .about-page-bg {
   margin-top: var.$about-page-margin-top;
   width: 100%;
+  
+  img {
+    width: 100%;
+  }
 }
 
 .about-page-container {

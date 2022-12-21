@@ -17,7 +17,7 @@ const Footer = () => (
       <div className={footerLinks}>
         <Link to="/">Privacy Policy</Link>
         <Link to="/">Terms of Service</Link>
-        <Link to="/">Feedback</Link>
+        <a href="mailto:info@devxlab.org">Feedback</a>
       </div>
     </div>
   </footer>

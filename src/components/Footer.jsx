@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 import LogoContainer from './LogoContainer';
 
@@ -15,8 +14,8 @@ const Footer = () => (
         professionals, developers. managers and researchers.
       </p>
       <div className={footerLinks}>
-        <Link to="/">Privacy Policy</Link>
-        <Link to="/">Terms of Service</Link>
+        <a href="/documents/privacy-policy.pdf">Privacy Policy</a>
+        <a href="/documents/terms-and-conditions.pdf">Terms of Service</a>
         <a href="mailto:info@devxlab.org">Feedback</a>
       </div>
     </div>

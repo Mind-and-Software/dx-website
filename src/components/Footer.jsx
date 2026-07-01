@@ -14,8 +14,8 @@ const Footer = () => (
         professionals, developers. managers and researchers.
       </p>
       <div className={footerLinks}>
-        <a href="/documents/privacy-policy.pdf">Privacy Policy</a>
-        <a href="/documents/terms-and-conditions.pdf">Terms of Service</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms-and-conditions">Terms of Service</a>
         <a href="mailto:info@devxlab.org">Feedback</a>
       </div>
     </div>
